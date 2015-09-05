@@ -1,5 +1,7 @@
+//Banco
 create database componizer;
 
+//Tabelas
 create table users(
   id int auto_increment,
   nome varchar(50) not null,
