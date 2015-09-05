@@ -27,4 +27,14 @@ create table subcategorias(
   PRIMARY KEY (id)
 );
 
+/*create table planos(
+id int auto_increment,
+assunto_aula varchar(50) not null,
+data_aula date not null,
+hora_aula time not null,
+descricao_aula varchar(500) not null,
+status varchar(20) not null,
+PRIMARY KEY (id)
+);*/
+
 alter table `subcategorias` add constraint `fk_categoria` foreign key (`categoria_id`) references `categorias`(`id`);

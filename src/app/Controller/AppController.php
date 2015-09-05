@@ -40,7 +40,7 @@ class AppController extends Controller {
     );
 
     function beforeFilter() {
-      $this->Auth->allow('index','add');  
+      $this->Auth->allow('index','add','view','edit');  
     }
 }
 

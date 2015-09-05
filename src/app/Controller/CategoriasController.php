@@ -44,6 +44,7 @@
     public function view($id) {
         $this->set('categories', $this->Categoria->findById($id));
     }
+    
     function delete($id) {
       if (!$this->request->is('get')) {
             throw new MethodNotAllowedException();
