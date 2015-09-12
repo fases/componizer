@@ -10,7 +10,6 @@
     'options' => array('professor'=>'Professor',
                        'bolsista'=>'Bolsista',
                        'admin'=>'Administrador'
-            ),
-    'empty' => '(Selecione o tipo de usuario)'));
+            )));
   echo $this->Form->end("Cadastrar");
 ?>
