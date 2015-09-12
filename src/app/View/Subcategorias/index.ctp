@@ -1,13 +1,14 @@
-<h1> Sub-categoria de Componentes </h1>
+<fieldset>
+  <legend> Subcategorias </legend>
 <?php echo $this->Html->link('Adicionar Sub-Categoria',array('action' => 'add')); ?>
 <table>
-  <th> Id </th>
   <th> Nome </th>
   <th> Descrição </th>
   <th> Categoria </th>
+  <th> Editar </th>
+  <th> Remover </th>
   <?php foreach ($subcategories as $valor): ?>
   <tr>
-  <td> <?php echo $valor['Subcategoria']['id']; ?> </td>
 	<td> <?php echo $this->Html->link($valor['Subcategoria']['nome'],array('action' => 'view',$valor['Subcategoria']['id'])); ?> </td>
   <td> <?php echo $valor ['Subcategoria']['descricao']; ?> </td>
   <td> <?php echo $valor ['Categoria']['nome']; ?> </td>
@@ -16,3 +17,4 @@
   </tr>
   <?php endforeach; ?>
 </table>
+</fieldset>

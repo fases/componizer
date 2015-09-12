@@ -10,11 +10,15 @@
       );
 
 	    public $validate = array(
-		        'nome' => array(
-			      'rule' => 'notEmpty'
-		        ),
+		    'nome' => array(
+			   'rule' => 'notEmpty',
+               'required' => 'true',
+               'message' => 'O campo nome é obrigatório!'
+		     ),
             'descricao' => array(
-            'rule' => 'notEmpty'
+               'rule' => 'notEmpty',
+               'required' => 'true',
+               'message' => 'O campo descricão é obrigatório!'
             )
         );
     }
