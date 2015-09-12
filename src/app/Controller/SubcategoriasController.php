@@ -26,7 +26,6 @@
       $this->set('categories',$this->Subcategoria->Categoria->find('list',array('fields' => array('Categoria.id','Categoria.nome'))));
 		  if ($this->request->is('post')) {
 			  $this->Subcategoria->create();
-        $this->set('list_data',$this->Subcategoria->Categoria->find('list',array('field' => array('Categoria.id','Categoria.nome'))));
 			  if ($this->Subcategoria->save($this->request->data)) {
 			     $this->Session->setFlash(__('A Sub-Categoria foi salva!'));
 			     return $this->redirect(array('action' => 'index'));

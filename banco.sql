@@ -34,7 +34,7 @@ id int auto_increment not null,
 nome varchar(50) not null,
 categoria_id int not null,
 subcategoria_id int,
-descricao varchar(400),
+descricao varchar(400) not null,
 PRIMARY KEY (id)
 );
 
