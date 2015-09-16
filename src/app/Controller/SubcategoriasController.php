@@ -22,8 +22,12 @@
       $this->set('subcategories',$this->Subcategoria->findById($id));
     }
 
-    public function add () {
-      $this->set('categories',$this->Subcategoria->Categoria->find('list',array('fields' => array('Categoria.id','Categoria.nome'))));
+    public function add ($categoria_id = null,$categoria_nome = null) {
+      if($categoria_id == null){
+        $this->set('categories',$this->Subcategoria->Categoria->find('list',array('fields' => array('Categoria.id','Categoria.nome'))));
+      }else{
+        $this->set('categories',array($categoria_id => $categoria_nome));
+      }
 		  if ($this->request->is('post')) {
 			  $this->Subcategoria->create();
 			  if ($this->Subcategoria->save($this->request->data)) {
