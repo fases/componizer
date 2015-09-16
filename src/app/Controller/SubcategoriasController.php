@@ -22,11 +22,11 @@
       $this->set('subcategories',$this->Subcategoria->findById($id));
     }
 
-    public function add ($categoria_id = null,$categoria_nome = null) {
+    public function add ($categoria_id = null) {
       if($categoria_id == null){
         $this->set('categories',$this->Subcategoria->Categoria->find('list',array('fields' => array('Categoria.id','Categoria.nome'))));
       }else{
-        $this->set('categories',array($categoria_id => $categoria_nome));
+        $this->set('categories',$this->Subcategoria->Categoria->find('list',array('conditions' => array('Categoria.id' => $categoria_id),'fields' => array('Categoria.id','Categoria.nome'))));
       }
 		  if ($this->request->is('post')) {
 			  $this->Subcategoria->create();

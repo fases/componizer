@@ -21,6 +21,7 @@ class ComponentesController extends AppController{
   public function view($id){
       $this->set('componentes',$this->Componente->findById($id));
   }
+  
   public function add ($categoria_id = null,$subcategoria_id = null) {
     if($categoria_id == null){
       $this->set('categoria',$this->Componente->Categoria->find('list',array('fields' => array('Categoria.id','Categoria.nome'))));
