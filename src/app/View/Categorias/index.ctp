@@ -6,7 +6,8 @@
   <th> Descrição </th>
   <th> Editar </th>
   <th> Remover </th>
-  <th> Cadastrar Subcategoria </th></tr>
+  <th> Cadastrar Subcategoria </th>
+  <th> Cadastrar Componente </th></tr>
   <?php foreach ($categories as $valor): ?>
   <tr>
 	<td> <?php echo $this->Html->link($valor['Categoria']['nome'],array('action' => 'view', $valor['Categoria']['id'])) ?> </td>
@@ -14,6 +15,7 @@
 	<td> <?php echo $this->Html->link('Editar',array('action' => 'edit', $valor['Categoria']['id'])) ?></td>
 	<td> <?php echo $this->Html->link('Remover',array('action' => 'delete', $valor['Categoria']['id']))?></td>
   <td> <?php echo $this->Html->link('Subcategoria',array('controller' => 'subcategorias','action' => 'add',$valor['Categoria']['id'],$valor['Categoria']['nome'])) ?>
+  <td> <?php echo $this->Html->link('Componente',array('controller' => 'componentes','action' => 'add',$valor['Categoria']['id'])) ?>
   </tr>
   <?php endforeach; ?>
 </table>
