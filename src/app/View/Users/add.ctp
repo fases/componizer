@@ -1,3 +1,4 @@
+<div class="user view">
 <h1> Adicionar Usuário </h1>
 <?php
   echo $this->Form->create('User',array('action' => 'add'));
@@ -13,3 +14,11 @@
             )));
   echo $this->Form->end("Cadastrar");
 ?>
+</div>
+<div class="actions">
+	<h3><?php echo __('Usuários'); ?></h3>
+	<ul>
+		<li><?php echo $this->Html->link(__('Novo usuário'), array('action' => 'add')); ?></li>
+		<li><?php echo $this->Html->link(__('Listar usuários'), array('action' => 'index')); ?> </li>
+	</ul>
+</div>

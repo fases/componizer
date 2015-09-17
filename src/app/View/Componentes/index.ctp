@@ -1,15 +1,16 @@
+<div class="componentes view">
 <fieldset>
   <legend> Componentes </legend>
 </fieldset>
-<p> <?php echo $this->Html->link('Adicionar Componentes', array('action' => 'add'));?></p>
-
 <table>
 <tr><th> Categoria </th>
 <th> Subcategoria </th>
 <th> Nome </th>
-<th> Descrição </th></tr>
+<th> Descrição </th>
+<th> Editar </th>
+<th> Remover </th>
+</tr>
 <?php foreach ($componentes as $valor): ?>
-
   <tr>
     <td> <?php echo $valor['Categoria']['nome']; ?> </td>
     <td> <?php echo $valor['Subcategoria']['nome']; ?> </td>
@@ -20,3 +21,18 @@
   </tr>
 <?php endforeach; ?>
 </table>
+</div>
+<div class="actions">
+	<h3><?php echo __('Componente'); ?></h3>
+	<ul>
+		<li><?php echo $this->Html->link(__('Listar componentes'), array('action' => 'index')); ?> </li>
+	</ul>
+  <h3><?php echo __('Categoria'); ?></h3>
+  <ul>
+		<li><?php echo $this->Html->link(__('Listar categorias'), array('controller' => 'categorias','action' => 'index')); ?> </li>
+	</ul>
+  <h3><?php echo __('Subcategoria'); ?></h3>
+  <ul>
+    <li><?php echo $this->Html->link(__('Listar subcategorias'), array('controller' => 'subcategorias','action' => 'index')); ?> </li>
+	</ul>
+</div>
