@@ -15,20 +15,30 @@ class Componente extends AppModel{
              'fields' => array('id','nome')
       ));
       public $validate = array(
-        'nome' => array(
+      'nome' => array(
         'rule' => 'notEmpty',
-        'required' => true
+        'required' => true,
+        'message' => 'O campo nome é obrigatório!'
       ),
       'categoria_id' => array(
           'rule' => 'notEmpty',
-          'required' => true
-      ),
-      'subcategoria_id' => array(
-          'rule' => 'notEmpty',
-          'required' => true
+          'required' => true,
+          'message' => 'É necessario associar a uma Categoria!'
       ),
       'descricao' => array(
-      'rule' => 'notEmpty'
+        'rule' => 'notEmpty',
+        'required' => true,
+        'message' => 'É necessario uma descricão do componente!'
+      ),
+      'localizacaox' => array(
+        'rule' => 'notEmpty',
+        'required' => true,
+        'message' => 'O campo localização é obrigatório!'
+      ),
+      'localizacaoy' => array(
+        'rule' => 'notEmpty',
+        'required' => true,
+        'message' => 'O campo localização é obrigatório!'
       ));
 }
 ?>

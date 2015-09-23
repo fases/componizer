@@ -8,7 +8,7 @@ create table users(
   username varchar(50) not null,
   password varchar(50) not null,
   email varchar(50) not null,
-  telefone varchar(50) not null,
+  telefone varchar(50),
   role varchar(30) not null,
   PRIMARY KEY (id)
 );
@@ -35,6 +35,8 @@ nome varchar(50) not null,
 categoria_id int not null,
 subcategoria_id int,
 descricao varchar(400) not null,
+localizacaox int not null,
+localizacaoy int not null,
 PRIMARY KEY (id)
 );
 

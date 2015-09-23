@@ -7,6 +7,8 @@
 <th> Subcategoria </th>
 <th> Nome </th>
 <th> Descrição </th>
+<th> Linha </th>
+<th> Coluna </th>
 <th> Editar </th>
 <th> Remover </th>
 </tr>
@@ -16,6 +18,8 @@
     <td> <?php echo $valor['Subcategoria']['nome']; ?> </td>
     <td> <?php echo $this->Html->link($valor['Componente']['nome'], array('action' => 'view', $valor['Componente']['id'])); ?> </td>
     <td> <?php echo $valor ['Componente']['descricao']; ?> </td>
+    <td> <?php echo $valor ['Componente']['localizacaox']; ?> </td>
+    <td> <?php echo $valor ['Componente']['localizacaoy']; ?> </td>
     <td> <?php echo $this->Html->link('Editar', array('action' => 'edit', $valor['Componente']['id']));?> </td>
     <td> <?php echo $this->Html->link('Remover',array('action' => 'delete', $valor['Componente']['id']));?> </td>
   </tr>
