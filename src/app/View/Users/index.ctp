@@ -7,22 +7,21 @@
 <?php endif; ?>
 </fieldset>
 <table>
-  <tr><th> Nome </th>
+  <tr><th> ID </th>
+  <th> Nome </th>
   <th> Usuário </th>
-  <th> Senha </th>
-  <th> E-mail </th>
-  <th> Telefone </th>
   <th> Tipo </th>
-  <th> Editar </th>
-  <th> Remover </th>
+  <!--<th> Editar </th>
+  <th> Remover </th> -->
 </tr>
   <?php foreach ($users as $valor): ?>
     <tr>
+      <td> <?php echo $valor ['User']['id']; ?> </td>
       <td> <?php echo $this->Html->link($valor['User']['nome'], array('action' => 'view', $valor['User']['id'])); ?> </td>
       <td> <?php echo $valor ['User']['username']; ?> </td>
-      <td> <?php echo $valor['User']['password']; ?> </td>
-      <td> <?php echo $valor["User"]["email"]; ?> </td>
-      <td> <?php echo $valor ["User"]["telefone"]; ?> </td>
+      <!--<td> <?php //echo $valor['User']['password']; ?> </td>
+      <td> <?php //echo $valor["User"]["email"]; ?> </td>
+      <td> <?php //echo $valor ["User"]["telefone"]; ?> </td> -->
       <td> <?php echo $valor ["User"]["role"]; ?> </td>
       <td> <?php echo $this->Html->link('Editar', array('action' => 'edit', $valor['User']['id']));?> </td>
       <td> <?php echo $this->Html->link('Remover',array('action' => 'delete', $valor['User']['id']));?> </td>

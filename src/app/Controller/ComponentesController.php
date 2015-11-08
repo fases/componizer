@@ -21,7 +21,7 @@ class ComponentesController extends AppController{
   public function view($id){
       $this->set('componentes',$this->Componente->findById($id));
   }
-  
+
   public function add ($categoria_id = null,$subcategoria_id = null) {
     if($categoria_id == null){
       $this->set('categoria',$this->Componente->Categoria->find('list',array('fields' => array('Categoria.id','Categoria.nome'))));
@@ -36,11 +36,6 @@ class ComponentesController extends AppController{
         $this->set('subcategoria',$this->Componente->Subcategoria->find('list',array('conditions' => array('Subcategoria.id' => $subcategoria_id),'fields' => array('Subcategoria.id','Subcategoria.nome'))));
       }
     }
-
-
-
-
-
     if ($this->request->is('post')) {
       $this->Componente->create();
       if ($this->Componente->save($this->request->data)) {
@@ -72,5 +67,14 @@ class ComponentesController extends AppController{
      $this->redirect(array('action' => 'index'));
    }
  }
+
+ public function search(){
+			if ($this->request->is('post')) {
+				$componente = $this->paginate('Componente', array('Componente.nome LIKE' => '%'.$this->request->data['Componente']['pedaco_nome'].'%'));
+			} else {
+				$componente = $this->paginate('Componente');
+			}
+			$this->set('componentes', $componente);
+		}
 }
 ?>

@@ -10,7 +10,7 @@
 <div class="actions">
 	<h3><?php echo __('Categoria'); ?></h3>
 	<ul>
-		<li><?php echo $this->Html->link(__('Nova categoria'), array('action' => 'add')); ?></li>
+		<!--<li><?php //echo $this->Html->link(__('Nova categoria'), array('action' => 'add')); ?></li> -->
 		<li><?php echo $this->Html->link(__('Listar categorias'), array('action' => 'index')); ?> </li>
 	</ul>
   <h3><?php echo __('Subcategoria'); ?></h3>
