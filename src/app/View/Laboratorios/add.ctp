@@ -4,6 +4,7 @@
 <?php
   echo $this->Form->create('Laboratorio',array('action' => 'add'));
   echo $this->Form->input('nome');
+  echo $this->Form->input('sala');
   echo $this->Form->end('Cadastrar');
 ?>
 </div>

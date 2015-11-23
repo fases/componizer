@@ -4,18 +4,16 @@
 <table>
   <tr><th> Nome </th>
   <th> Descrição </th>
-  <!--<th> Editar </th>
-  <th> Remover </th>
-  <th> Subcategoria </th>
-  <th> Componente </th>--></tr>
+  <th> Ações </th></tr>
   <?php foreach ($categories as $valor): ?>
   <tr>
 	<td> <?php echo $this->Html->link($valor['Categoria']['nome'],array('action' => 'view', $valor['Categoria']['id'])) ?> </td>
   <td> <?php echo $valor ['Categoria']['descricao']; ?> </td>
-	<td> <?php echo $this->Html->link('Editar',array('action' => 'edit', $valor['Categoria']['id'])) ?></td>
-	<td> <?php echo $this->Html->link('Remover',array('action' => 'delete', $valor['Categoria']['id']))?></td>
-  <!--<td> <?php //echo $this->Html->link('Cadastrar',array('controller' => 'subcategorias','action' => 'add',$valor['Categoria']['id'],$valor['Categoria']['nome'])) ?>
-  <td> <?php //echo $this->Html->link('Cadastrar',array('controller' => 'componentes','action' => 'add',$valor['Categoria']['id'])) ?> -->
+  <td class="actions"> 
+      <?php echo $this->Html->link('Associar Subcategoria',array('controller' => 'Subcategorias','action' => 'add', $valor['Categoria']['id']));?>
+      <?php echo $this->Html->link('Abrir',array('action' => 'view', $valor['Categoria']['id'])) ?>
+      <?php echo $this->Html->link('Editar',array('action' => 'edit', $valor['Categoria']['id'])) ?>
+      <?php echo $this->Html->link('Remover',array('action' => 'delete', $valor['Categoria']['id']))?></td>
   </tr>
   <?php endforeach; ?>
 </table>

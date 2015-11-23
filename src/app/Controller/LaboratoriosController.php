@@ -16,6 +16,9 @@
     public function index(){
       $this->set('laboratorios',$this->Laboratorio->find('all'));
     }
+    public function view($id) {
+      $this->set('laboratorios',$this->Laboratorio->findById($id));
+    }
     public function add () {
 		  if ($this->request->is('post')) {
 			  $this->Laboratorio->create();

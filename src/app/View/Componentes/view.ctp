@@ -3,8 +3,8 @@
 <p><small> Categoria: <?php echo $componentes['Categoria']['nome']?> </small></p>
 <p><small> Subcategoria: <?php echo $componentes['Subcategoria']['nome']?> </small></p>
 <p><small> Descrição: <?php echo $componentes['Componente']['descricao']?> </small></p>
-<p><small> Linha: <?php echo $componentes['Componente']['localizacaox']?> </small></p>
-<p><small> Coluna: <?php echo $componentes['Componente']['localizacaoy']?> </small></p>
+<p><small> Linha: <?php echo $componentes['Componente']['linha']?> </small></p>
+<p><small> Coluna: <?php echo $componentes['Componente']['coluna']?> </small></p>
 </div>
 <div class="actions">
 	<h3><?php echo __('Componente'); ?></h3>

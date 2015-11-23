@@ -11,7 +11,7 @@ class EmprestimosController extends AppController{
     );
     public function beforeFilter(){
       parent::beforeFilter();
-      $this->Auth->allow('index');
+      $this->Auth->allow('index','add','edit','delete');
     }
 
     public function index(){
@@ -24,16 +24,9 @@ class EmprestimosController extends AppController{
     }
 
     public function add($username_id = null, $nome_id = null){
-      if($username_id == null){
       $this->set('user',$this->Emprestimo->User->find('list',array('fields' => array('User.id','User.nome'))));
-      }else{
-        $this->set('user',$this->Emprestimo->User->find('list',array('conditions' => array('User.id' => $username_id),'fields' => array('User.id','User.nome'))));
-      }
-      if($nome_id == null){
       $this->set('laboratorio',$this->Emprestimo->Laboratorio->find('list',array('fields' => array('Laboratorio.id','Laboratorio.nome'))));
-      }else{
-        $this->set('laboratorio',$this->Emprestimo->Laboratorio->find('list',array('conditions' => array('Laboratorio.id' => $nome_id),'fields' => array('Laboratorio.id','Laboratorio.nome'))));
-      }
+      
       if ($this->request->is('post')) {
         $this->Emprestimo->create();
         if ($this->Emprestimo->save($this->request->data)) {

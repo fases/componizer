@@ -8,6 +8,6 @@
                 'message' => 'O campo nome é obrigatório!'
               )
             );
-  		  // );
+        public $hasMany = array('Emprestimo');
       }
 ?>

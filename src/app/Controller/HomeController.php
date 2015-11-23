@@ -11,7 +11,7 @@ class HomeController extends AppController{
 
   }
   public function procurar(){
-
+      $this->redirect(array('controller' => 'Users','action' => 'login'));
   }
 }
 ?>

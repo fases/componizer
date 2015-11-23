@@ -3,6 +3,7 @@
 <?php
     echo $this->Form->create('Laboratorio', array('action' => 'edit'));
 	  echo $this->Form->input('nome');
+          echo $this->Form->input('sala');
     echo $this->Form->end('Editar');
 ?>
 </div>

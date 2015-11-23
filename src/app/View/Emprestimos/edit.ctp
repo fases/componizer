@@ -2,10 +2,10 @@
 <h1> Editar Requisição </h1>
 <?php
     echo $this->Form->create('Emprestimo', array('action' => 'edit'));
-	  echo $this->Form->input('data');
-    echo $this->Form->input('hora');
-    echo $this->Form->input('nome_id', array('type' => 'select', 'options' => $laboratorio, 'label' => 'local'));
-    echo $this->Form->input('username_id',array('type' => 'select','options' => $user,'label' => 'Solicitante'));
+    echo $this->Form->input('horario');
+    echo $this->Form->input('turno');
+    echo $this->Form->input('laboratorio_id', array('type' => 'select', 'options' => $laboratorio, 'label' => 'local'));
+    echo $this->Form->input('user_id',array('type' => 'select','options' => $user,'label' => 'Solicitante'));
     echo $this->Form->input('objetivo',array('rows' => '5'));
     echo $this->Form->input('observacoes',array('rows' => '5'));
     echo $this->Form->input('material',array('rows' => '5'));

@@ -9,20 +9,21 @@
 <th> Descrição </th>
 <th> Linha </th>
 <th> Coluna </th>
-<!--<th> Editar </th>
-<th> Remover </th>-->
+<th> Ações </th>
 </tr>
 <?php foreach ($componentes as $valor): ?>
   <tr>
 
     <td> <?php echo $this->Html->link($valor['Componente']['nome'], array('action' => 'view', $valor['Componente']['id'])); ?> </td>
-    <td> <?php echo $valor['Categoria']['nome']; ?> </td>
-    <td> <?php echo $valor['Subcategoria']['nome']; ?> </td>
+    <td> <?php echo $this->Html->link($valor['Categoria']['nome'],array('controller' => 'Categorias','action' => 'view',$valor['Categoria']['id'])); ?> </td>
+    <td> <?php echo $this->Html->link($valor['Subcategoria']['nome'],array('controller' => 'Subcategorias','action' => 'view',$valor['Subcategoria']['id'])); ?> </td>
     <td> <?php echo $valor ['Componente']['descricao']; ?> </td>
-    <td> <?php echo $valor ['Componente']['localizacaox']; ?> </td>
-    <td> <?php echo $valor ['Componente']['localizacaoy']; ?> </td>
-    <td> <?php echo $this->Html->link('Editar', array('action' => 'edit', $valor['Componente']['id']));?> </td>
-    <td> <?php echo $this->Html->link('Remover',array('action' => 'delete', $valor['Componente']['id']));?> </td>
+    <td> <?php echo $valor ['Componente']['linha']; ?> </td>
+    <td> <?php echo $valor ['Componente']['coluna']; ?> </td>
+    <td class="actions">
+    <?php echo $this->Html->link('Abrir', array('action' => 'view', $valor['Componente']['id']));?>
+    <?php echo $this->Html->link('Editar', array('action' => 'edit', $valor['Componente']['id']));?>
+    <?php echo $this->Html->link('Remover',array('action' => 'delete', $valor['Componente']['id']));?> </td>
   </tr>
 <?php endforeach; ?>
 </table>

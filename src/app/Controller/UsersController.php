@@ -3,12 +3,13 @@ class UsersController extends AppController{
     public $helpers = array('Html', 'Form');
     public $name = 'Users';
     public $paginate = array(
-        'limit' => 25,
+        'limit' => 5,
         'order' => array(
             'User.id' => 'asc'
         )
     );
-
+    public $components = array('Paginator');
+    
     public function beforeFilter(){
       parent::beforeFilter();
       $this->Auth->allow('view','add','search');

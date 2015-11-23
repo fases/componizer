@@ -6,8 +6,8 @@
     echo $this->Form->input('categoria_id',array('type' => 'select','options' => $categorias,'label' => 'Categoria'));
     echo $this->Form->input('subcategoria_id',array('type' => 'select','options' => $subcategorias,'label' => 'Subcategoria'));
     echo $this->Form->input('descricao');
-    echo $this->Form->input('localizacaox');
-    echo $this->Form->input('localizacaoy');
+    echo $this->Form->input('linha');
+    echo $this->Form->input('coluna');
     echo $this->Form->end('Editar');
 ?>
 </div>
