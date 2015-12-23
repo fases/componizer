@@ -34,9 +34,9 @@ class Emprestimo extends AppModel {
             'message' => 'Insira um turno válido!'
         ),
         'data_aula' => array(
-            'rule' => 'date',
-            'message' => 'Insira uma data válida!',
-            'allowEmpty' => true
+            'rule' => 'notEmpty',
+            'required' => true,
+            'message' => 'Insira uma data válida!'
         ),
         'laboratorio_id' => array(
             'rule' => 'notEmpty',

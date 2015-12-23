@@ -5,7 +5,7 @@
   echo $this->Form->input('nome');
   echo $this->Form->input('categoria_id',array('type' => 'select','options' => $categoria,'label' => 'Categoria'));
   echo $this->Form->input('subcategoria_id', array('type' => 'select','options' => $subcategoria,'label' => 'Subcategoria'));
-  echo $this->Form->input('descricao', array('type' => 'textarea'));
+  echo $this->Form->input('descricao', array('type' => 'textarea','rows' => '5'));
   echo $this->Form->input('linha', array('label' => 'Linha'));
   echo $this->Form->input('coluna', array('label' => 'Coluna'));
   echo $this->Form->input('quantidade');

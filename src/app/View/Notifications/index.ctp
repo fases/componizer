@@ -16,7 +16,7 @@
                 <td> <?php echo $valor['Notification']['quantidade']; ?> </td>
                 <td class="actions">
 	<?php echo $this->Html->link('Editar', array('action' => 'edit', $valor['Notification']['id']));?>
-  <?php echo $this->Html->link('Remover',array('action' => 'delete', $valor['Notification']['id']));?>
+    <?php echo $this->Html->link('Remover',array('action' => 'delete', $valor['Notification']['id']));?>
                 </td>
             </tr>
 <?php endforeach ?>

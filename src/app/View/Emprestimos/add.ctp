@@ -3,13 +3,9 @@
         <legend> Criar Solicitação </legend>
 <?php
   echo $this->Form->create('Emprestimo',array('action' => 'add'));
-  echo $this->Form->input('horario',
-        array('options' => array(1 => '1º Horário',2 => '2º Horário',3 => '3º Horário',4 => '4º Horário',
-            5 => '5º Horário',6 => '6º Horário')));
-  $turno = array('Matutino','Vespertino','Noturno');
   echo $this->Form->input('turno', 
-          array('options' => array('matutino' => 'Matutino','vespertino' => 'Vespertino','noturno' => 'Noturno'),'label' => 'Turno')
-  );
+          array('options' => array('Matutino' => 'Matutino','Vespertino' => 'Vespertino','Noturno' => 'Noturno'),'label' => 'Turno'));
+  $turno = array('Matutino','Vespertino','Noturno');
   echo $this->Form->input('data_aula', array( 'label' => 'Data da Aula','type' => 'date', 
    'dateFormat' => 'DMY', 
    'minYear' => date('Y') - 0,
@@ -25,7 +21,6 @@
     <ul>
         <li><?php echo $this->Html->link(__('Listar solicitações'), array('action' => 'index')); ?> </li>
     </ul>
-
 </ul>
 </fieldset>
 </div>

@@ -1,8 +1,5 @@
 <?php 
 	echo $this->Form->Create('Notification');
-	if(isset($aviso)){
-		echo "<div id='flashMessage' class='message'> $aviso </div>";	
-	}
 	echo "<table>";
 	echo "<tr>";
 		echo "<th> Id </th>";
@@ -13,7 +10,7 @@
 	foreach ($componentes as $componente) {
 		echo "<tr>";
 			echo "<td>";
-				echo $this->Form->input('componente_id',array('type' => 'text'/*,'disabled' => 'disabled',*/,'label' => false,'value' => $componente[0]));
+				echo $this->Form->input('componente_id',array('type' => 'text'/*,'disabled' => 'disabled'*/,'label' => false,'value' => $componente[0]));
 			echo "</td>";
 			echo "<td>".$componente[1]."</td>";
 			echo "<td>";

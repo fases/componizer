@@ -27,11 +27,10 @@ class NotificationsController extends AppController{
       if(is_null($emprestimo)){
          return $this->redirect(array('controller' => 'emprestimos','action' => 'index')); 
       }else{
+        $this->Session->write('emprestimo',$emprestimo);
         $this->request->data['Notification']['emprestimo_id'] = $emprestimo;
-
         if ($this->request->is('post')) {
           $this->Notification->create();
-
           if ($this->Notification->save($this->request->data)) {
            $this->Session->setFlash(__('A Notificação foi salva!'));
            return $this->redirect(array('action' => 'index'));
