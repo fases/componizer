@@ -9,6 +9,7 @@
 <th> Descrição </th>
 <th> Linha </th>
 <th> Coluna </th>
+<th> Quantidade </th>
 <th> Ações </th>
 </tr>
 <?php foreach ($componentes as $valor): ?>
@@ -20,6 +21,7 @@
     <td> <?php echo $valor ['Componente']['descricao']; ?> </td>
     <td> <?php echo $valor ['Componente']['linha']; ?> </td>
     <td> <?php echo $valor ['Componente']['coluna']; ?> </td>
+    <td> <?php echo $valor ['Componente']['quantidade']; ?> </td>
     <td class="actions">
     <?php echo $this->Html->link('Abrir', array('action' => 'view', $valor['Componente']['id']));?>
     <?php echo $this->Html->link('Editar', array('action' => 'edit', $valor['Componente']['id']));?>

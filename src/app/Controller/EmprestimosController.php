@@ -23,15 +23,22 @@ class EmprestimosController extends AppController{
       $this->set('emprestimos',$this->Emprestimo->findById($id));
     }
 
-    public function add($username_id = null, $nome_id = null){
-      $this->set('user',$this->Emprestimo->User->find('list',array('fields' => array('User.id','User.nome'))));
+    public function add(){
+      if($this->Auth->user('role') == 1){
+          $this->set('user',$this->Emprestimo->User->find('list',array('conditions' => array('User.id' => $this->Auth->user('id')),'fields' => array('User.id','User.nome'))));
+      }else{
+          $this->set('user',$this->Emprestimo->User->find('list',array('fields' => array('User.id','User.nome'))));
+      }
+      
       $this->set('laboratorio',$this->Emprestimo->Laboratorio->find('list',array('fields' => array('Laboratorio.id','Laboratorio.nome'))));
       
       if ($this->request->is('post')) {
         $this->Emprestimo->create();
+        $this->request->data['Emprestimo']['estado'] = 0; // seta Requisição com estado Aberta
+        $this->request->data['Emprestimo']['notificar'] = 0; // seta Marcador notificar como inexistente
         if ($this->Emprestimo->save($this->request->data)) {
-           $this->Session->setFlash(__('A requisição foi salva!'));
-           return $this->redirect(array('action' => 'index'));
+           $this->Session->setFlash(__('A Solicitação foi salva!'));
+           return $this->redirect(array('controller' => 'notifications', 'action' => 'add'));
          }
         $this->Session->setFlash(__('A requisição não foi salva!'));
       }

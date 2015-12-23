@@ -1,6 +1,6 @@
-<div class="requisicoes view">
+<div class="Solicitacao view">
     <fieldset>
-        <legend> Criar Requisição </legend>
+        <legend> Criar Solicitação </legend>
 <?php
   echo $this->Form->create('Emprestimo',array('action' => 'add'));
   echo $this->Form->input('horario',
@@ -10,18 +10,20 @@
   echo $this->Form->input('turno', 
           array('options' => array('matutino' => 'Matutino','vespertino' => 'Vespertino','noturno' => 'Noturno'),'label' => 'Turno')
   );
+  echo $this->Form->input('data_aula', array( 'label' => 'Data da Aula','type' => 'date', 
+   'dateFormat' => 'DMY', 
+   'minYear' => date('Y') - 0,
+   'maxYear' => date('Y') + 5 ));
   echo $this->Form->input('user_id',array('type' => 'select','options' => $user,'label' => 'Solicitante'));
   echo $this->Form->input('laboratorio_id', array('type' => 'select', 'options' => $laboratorio, 'label' => 'Local'));
-  echo $this->Form->input('objetivo');
-  echo $this->Form->input('observacoes');
-  echo $this->Form->input('material');
-  echo $this->Form->end('Requisitar');
+  echo $this->Form->input('observacoes',array('label' => 'Observações','rows' => '5'));
+  echo $this->Form->end('Solicitar');
 ?>
 </div>
 <div class="actions">
     <h3><?php echo __('Requisição'); ?></h3>
     <ul>
-        <li><?php echo $this->Html->link(__('Listar requições'), array('action' => 'index')); ?> </li>
+        <li><?php echo $this->Html->link(__('Listar solicitações'), array('action' => 'index')); ?> </li>
     </ul>
 
 </ul>

@@ -3,15 +3,12 @@
 <?php
   echo $this->Form->create('User',array('action' => 'add'));
   echo $this->Form->input('nome');
-  echo $this->Form->input('username');
+  echo $this->Form->input('username',array('label' => 'Matricula'));
   echo $this->Form->input('password');
   echo $this->Form->input('email');
   echo $this->Form->input('telefone');
-  echo $this->Form->input('role', array(
-    'options' => array('professor'=>'Professor',
-                       'bolsista'=>'Bolsista',
-                       'admin'=>'Administrador'
-            )));
+  echo $this->Form->input('role', array('label' => 'Tipo de Usuário',
+    'options' => array('Professor','Bolsista','Administrador')));
   echo $this->Form->end("Cadastrar");
 ?>
 </div>

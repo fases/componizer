@@ -8,6 +8,7 @@
   echo $this->Form->input('descricao', array('type' => 'textarea'));
   echo $this->Form->input('linha', array('label' => 'Linha'));
   echo $this->Form->input('coluna', array('label' => 'Coluna'));
+  echo $this->Form->input('quantidade');
   echo $this->Form->end('Cadastrar');
 ?>
 </div>

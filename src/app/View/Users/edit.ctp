@@ -8,10 +8,7 @@
   echo $this->Form->input('email');
   echo $this->Form->input('telefone');
   echo $this->Form->input('role', array(
-    'options' => array('professor'=>'Professor',
-                       'bolsista'=>'Bolsista',
-                       'admin'=>'Administrador'
-            )));
+    'options' => array('Professor','Bolsista','Administrador')));
   echo $this->Form->end("Editar");
 ?>
 </div>

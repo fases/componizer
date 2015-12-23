@@ -1,6 +1,6 @@
-<div class= "requisicao view">
+<div class= "solicitacao view">
     <fieldset>
-        <legend> Requisições </legend>
+        <legend> Solicitações </legend>
         <table>
             <tr>
                 <th> ID </th>
@@ -27,10 +27,10 @@
     </fieldset>
 </div>
 <div class="actions">
-    <h3><?php echo __('Requisição'); ?></h3>
+    <h3><?php echo __('Solicitação'); ?></h3>
     <ul>
-        <li><?php echo $this->Html->link(__('Nova requisição'), array('action' => 'add')); ?></li>
-        <li><?php echo $this->Html->link(__('Listar requisições'), array('action' => 'index')); ?> </li>
+        <li><?php echo $this->Html->link(__('Nova solicitação'), array('action' => 'add')); ?></li>
+        <li><?php echo $this->Html->link(__('Listar solicitações'), array('action' => 'index')); ?> </li>
     </ul>
 <!--<h3><?php //echo __('Subcategoria'); ?></h3>
 <ul>

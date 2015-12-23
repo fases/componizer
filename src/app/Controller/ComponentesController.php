@@ -1,7 +1,9 @@
 <?php
 class ComponentesController extends AppController{
-  public $helpers = array('Html', 'Form');
+  public $helpers = array('Html', 'Form','Js' => array('Jquery'));
   public $name = 'Componentes';
+  public $components = array('RequestHandler');
+
   public $paginate = array(
       'limit' => 25,
       'order' => array(
@@ -27,6 +29,7 @@ class ComponentesController extends AppController{
         $this->set('categoria',$this->Componente->Categoria->find('list',array('fields' => array('Categoria.id','Categoria.nome'))));
         $this->set('subcategoria',$this->Componente->Subcategoria->find('list',array('fields' => array('Subcategoria.id','Subcategoria.nome'))));
       }else{
+        $this->set('categoria',$this->Componente->Categoria->find('list',array('fields' => array('Categoria.id','Categoria.nome'))));
         $this->set('subcategoria',$this->Componente->Subcategoria->find('list',array('conditions' => array('Subcategoria.id' => $subcategoria_id),'fields' => array('Subcategoria.id','Subcategoria.nome'))));
       }
     if ($this->request->is('post')) {
@@ -38,6 +41,40 @@ class ComponentesController extends AppController{
       $this->Session->setFlash(__('O Componente não foi salvo!'));
     }
   }
+
+  public function lista(){
+    if ($this->request->is('ajax')) {
+      $this->layout = 'ajax';
+      $this->set('options',$this->Componente->find('list',array('conditions' => array('Componente.nome LIKE' => '%'.$this->request->data['Componente']['campo'].'%'),
+            'fields' => array('Componente.id','Componente.nome'))));
+    }else{
+      return $this->redirect(array('controller' => 'notifications','action' => 'index'));
+    }      
+  }
+
+  public function add_list(){
+    $this->layout = 'ajax';
+    $campos[0] = $this->request->data['Componente']['resultado'];
+    $nome = $this->Componente->find('first',array('conditions' => array('Componente.id' => $this->request->data['Componente']['resultado']),
+      'fields' => 'Componente.nome'));
+    $campos[1] = $nome['Componente']['nome'];
+    $campos[2] = $this->request->data['Componente']['quantidade'];
+    
+    if($this->Session->check('lista')){
+      $lista_componentes = $this->Session->read('lista');
+      array_push($lista_componentes,$campos);
+      $this->set('componentes',$lista_componentes);
+      $this->Session->write('lista',$lista_componentes);
+    }else{
+      $inserir = array();
+      array_push($inserir,$campos);
+      $this->Session->write('lista',$inserir);
+      $this->set('componentes',$inserir);
+    }
+    
+
+  }
+
   public function edit($id = null) {
     $this->Componente->id = $id;
     $this->set('categorias',$this->Componente->Categoria->find('list',array('fields' => array('Categoria.id','Categoria.nome'))));

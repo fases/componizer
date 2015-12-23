@@ -16,6 +16,14 @@ class Componente extends AppModel {
             'conditions' => '',
             'fields' => array('id', 'nome')
     ));
+    public $hasMany = array('Notification' => array(
+            'className' => 'Notification',
+            'foreignKey' => 'componente_id',
+            'conditions' => '',
+            'dependent' => false,
+            'fields' => ''
+        ));
+
     public $validate = array(
         'nome' => array(
             'rule' => 'notEmpty',
@@ -34,7 +42,12 @@ class Componente extends AppModel {
         'coluna' => array(
             'rule' => 'numeric',
             'message' => 'O campo coluna é obrigatório!'
-    ));
+        ),
+        'quantidade' => array(
+            'rule' => 'numeric',
+            'message' => 'O campo quantidade é obrigatório!'
+        )
+    );
 
 }
 

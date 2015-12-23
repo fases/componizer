@@ -2,7 +2,7 @@
     <fieldset>
         <legend> Usuários </legend>
 <?php if ($this->Session->read('Auth.User')): ?>
-        <p> Você está logado como: <b><?php echo $this->Session->read('Auth.User.username'); ?></b> <p>
+        <p> Você está logado como: <b><?php echo $this->Session->read('Auth.User.nome'); ?></b> <p>
         <p><?php echo $this->Html->link('Logout', array('controller' => 'users','action' => 'logout'));?> </p>
 <?php endif; ?>
     </fieldset>
@@ -20,7 +20,7 @@
             <td> <?php echo $this->Html->link($valor['User']['nome'], array('action' => 'view', $valor['User']['id'])); ?> </td>
             <td> <?php echo $valor ['User']['username']; ?> </td>
             <td> <?php echo $valor['User']['password']; ?> </td>
-            <td> <?php echo $valor['User']['role'] == 1 ?'Administrador':($valor['User']['role'] == 2? 'Professor':'Aluno'); ?> </td>
+            <td> <?php echo $valor['User']['role'] == 0 ?'Professor':($valor['User']['role'] == 1? 'Bolsista':'Administrador'); ?> </td>
             <td class="actions">
 			     <?php echo $this->Html->link(__('Abrir'), array('action' => 'view', $valor['User']['id'])); ?>
 			     <?php echo $this->Html->link(__('Edit'), array('action' => 'edit', $valor['User']['id'])); ?>

@@ -3,6 +3,13 @@
 class Emprestimo extends AppModel {
 
     public $name = 'Emprestimo';
+    public $hasMany = array('Notification' => array(
+            'className' => 'Notification',
+            'foreignKey' => 'emprestimo_id',
+            'conditions' => '',
+            'dependent' => false,
+            'fields' => ''
+        ));
     public $belongsTo = array('User' => array(
             'className' => 'User',
             'foreignKey' => 'user_id',
@@ -16,22 +23,20 @@ class Emprestimo extends AppModel {
             'conditions' => '',
             'fields' => array('id', 'nome')
         ));
-        /*
-        'Componente' => array(
-            'className' => 'Componente',
-            'foreignKey' => 'componente_id',
-            'dependent' => true,
-            'conditions' => '',
-            'fields' => array('id', 'nome'))
-    );*/
+    
     public $validate = array(
         'horario' => array(
             'rule' => 'notEmpty',
-            'message' => 'Insira um horário válido'
+            'message' => 'Insira um horário válido!'
         ),
         'turno' => array(
             'rule' => 'notEmpty',
-            'message' => 'Insira um turno válido'
+            'message' => 'Insira um turno válido!'
+        ),
+        'data_aula' => array(
+            'rule' => 'date',
+            'message' => 'Insira uma data válida!',
+            'allowEmpty' => true
         ),
         'laboratorio_id' => array(
             'rule' => 'notEmpty',
@@ -42,16 +47,6 @@ class Emprestimo extends AppModel {
             'rule' => 'notEmpty',
             'required' => true,
             'message' => 'É necessário associar a um usuário!'
-        ),
-        'objetivo' => array(
-            'rule' => 'notEmpty',
-            'required' => 'true',
-            'message' => 'O campo objetivo é obrigatório!'
-        ),
-        'material' => array(
-            'rule' => 'notEmpty',
-            'required' => 'true',
-            'message' => 'O campo material é obrigatório!'
         )
     );
 

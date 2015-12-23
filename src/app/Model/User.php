@@ -35,11 +35,10 @@ class User extends AppModel {
             'message' => 'Insira um endereço válido de email'
         ),
         'role' => array(
-            'valid' => array(
-                'rule' => array('inList', array('admin', 'bolsista', 'professor')),
-                'message' => 'Escolha um tipo de usuário válido',
-                'allowEmpty' => false
-            )
+            'required' => array(
+                'rule' => array('notEmpty'),
+                'message' => 'O campo tipo é obrigatório!'
+            )  
         )
     );
 
