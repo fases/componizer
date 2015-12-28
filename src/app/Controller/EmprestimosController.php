@@ -1,12 +1,13 @@
 <?php
 class EmprestimosController extends AppController{
- public $helpers = array('Html', 'Form');
+ public $helpers = array('Html', 'Form','Js' => array('Jquery'));
     public $name = 'Emprestimos';
+    public $components = array('RequestHandler');
 
     public $paginate = array(
         'limit' => 25,
         'order' => array(
-            'emprestimos.id' => 'asc'
+            'Emprestimo.id' => 'asc'
         )
     );
     public function beforeFilter(){
