@@ -67,7 +67,7 @@ class ComponentesController extends AppController{
         if($this->Session->check('lista')){ //Verifica se sessão existe
           $lista_componentes = $this->Session->read('lista');
           foreach ($lista_componentes as $key => $value) {
-            if($value[0] == $this->request->data['Componente']['resultado']){
+            if($key == $this->request->data['Componente']['resultado']){
               $existe_componente = true; //Verifica se já existe o id 
             }
           }
@@ -105,6 +105,7 @@ class ComponentesController extends AppController{
           foreach ($indices as $indice) {
             unset($lista_componentes[$indice]);
           }
+          unset($indices);
           $this->set('componentes',$lista_componentes);
           $this->Session->write('lista',$lista_componentes);
         }

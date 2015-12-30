@@ -23,21 +23,19 @@ class NotificationsController extends AppController{
       $this->set('notifications',$this->Notification->findById($id));
     }
 
-    public function add($emprestimo = null){
-      if(is_null($emprestimo)){
-         return $this->redirect(array('controller' => 'emprestimos','action' => 'index')); 
-      }else{
-        $this->Session->write('emprestimo',$emprestimo);
-        $this->request->data['Notification']['emprestimo_id'] = $emprestimo;
+    public function add(){
         if ($this->request->is('post')) {
           $this->Notification->create();
-          if ($this->Notification->save($this->request->data)) {
-           $this->Session->setFlash(__('A Notificação foi salva!'));
-           return $this->redirect(array('action' => 'index'));
-          }
-          $this->Session->setFlash(__('A Notificação não foi salva!'));
+        if ($this->Notification->save($this->request->data)) {
+          $this->Session->setFlash(__('The notification has been saved.'));
+          return $this->redirect(array('action' => 'index'));
+        } else {
+          $this->Session->setFlash(__('The notification could not be saved. Please, try again.'));
         }
       }
+      $emprestimos = $this->Notification->Emprestimo->find('list');
+      $componentes = $this->Notification->Componente->find('list');
+      $this->set(compact('emprestimos', 'componentes'));
     }
 
     public function edit($id = null) {

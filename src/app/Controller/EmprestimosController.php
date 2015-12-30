@@ -37,11 +37,24 @@ class EmprestimosController extends AppController{
         $this->Emprestimo->create();
         $this->request->data['Emprestimo']['estado'] = 0; // seta Requisição com estado Aberta
         $this->request->data['Emprestimo']['notificar'] = 0; // seta Marcador notificar como inexistente
-        if ($this->Emprestimo->save($this->request->data)) {
-           $this->Session->setFlash(__('A Solicitação foi salva!'));
-           return $this->redirect(array('controller' => 'notifications', 'action' => 'add'));
+        if ($this->Emprestimo->save($this->request->data['Emprestimo'])) {
+           // $this->Session->setFlash(__('A Solicitação foi salva!'));
+           // return $this->redirect(array('controller' => 'notifications','action' => 'index'));
+
+           $this->loadModel('Notification');
+           $this->Notification->create();
+           foreach ($this->request->data['Notification'] as $key => $value) {
+              $this->request->data['Notification'][$key]['emprestimo_id'] = $this->Emprestimo->id;
+           }
+           if ($this->Notification->saveMany($this->request->data['Notification'])) {
+              $this->Session->setFlash(__('A Notificação foi salva!'));
+              return $this->redirect(array('action' => 'index'));
+            }
+            $this->Session->setFlash(__('A Notificação não foi salva!'));  
+           // return $this->redirect(array('controller' => 'notifications', 'action' => 'add',$this->Emprestimo->id));
+         }else{
+          $this->Session->setFlash(__('A requisição não foi salva!'));
          }
-        $this->Session->setFlash(__('A requisição não foi salva!'));
       }
     }
 

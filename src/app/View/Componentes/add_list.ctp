@@ -1,5 +1,4 @@
 <?php 
-	echo $this->Form->Create('Notification');
 	if(isset($aviso)){
 		echo "<div id='flashMessage' class='message'> $aviso </div>";	
 	}
@@ -10,21 +9,26 @@
 		echo "<th> Quantidade </th>";
 		echo "<th> Remover </th>";
 	echo "</tr>";
-	foreach ($componentes as $id => $componente) {
-		echo "<tr>";
-			echo "<td>";
-				echo $this->Form->input('componente_id',array('type' => 'text'/*,'disabled' => 'disabled',*/,'label' => false,'value' => $id));
-			echo "</td>";
-			echo "<td>".$componente[0]."</td>";
-			echo "<td>";
-				echo $this->Form->input('quantidade',array('type' => 'text','label' => false,'value' => $componente[1]));
-			echo "</td>";
-			echo "<td>";
+	if(!is_null($componentes)){
+		echo $this->Form->create('Notification',array('controller' => 'emprestimos','action' => 'add')); 
+		$indice = 0;
+          foreach ($componentes as $id => $componente) {
+            echo "<tr>";
+              echo "<td>";
+                echo $this->Form->input('Notification.'.$indice.'.componente_id',array('type' => 'text'/*,'disabled' => 'disabled'*/,'label' => false,'value' => $id));
+              echo "</td>";
+              echo "<td>".$componente[0]."</td>";
+              echo "<td>";
+                echo $this->Form->input('Notification.'.$indice.'.quantidade',array('type' => 'text','label' => false,'value' => $componente[1]));
+              echo "</td>";
+              echo "<td>";
                 echo $this->Js->link('Remover', array('controller'=>'componentes', 'action'=>'rem_list',
                   $id),array('update'=>'#car'));
-            echo "</td>";
-		echo "</tr>";
+              echo "</td>";
+            echo "</tr>";
+            $indice++;
+          }
+		echo "</table>";
+		echo $this->Form->end('Concluir');	
 	}
-	echo "</table>";
-	echo $this->Form->end('Concluir');
 ?>
