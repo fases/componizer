@@ -14,7 +14,7 @@ class Notification extends AppModel {
             'className' => 'Componente',
             'foreignKey' => 'componente_id',
             'conditions' => '',
-            'fields' => ''
+            'fields' => array('Componente.id','Componente.nome')
         ));
         
     public $validate = array(

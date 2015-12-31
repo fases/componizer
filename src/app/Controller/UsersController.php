@@ -3,7 +3,7 @@ class UsersController extends AppController{
     public $helpers = array('Html', 'Form');
     public $name = 'Users';
     public $paginate = array(
-        'limit' => 5,
+        'limit' => 25,
         'order' => array(
             'User.id' => 'asc'
         )

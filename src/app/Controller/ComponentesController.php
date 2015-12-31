@@ -113,6 +113,10 @@ class ComponentesController extends AppController{
   }
   public function edit($id = null) {
     $this->Componente->id = $id;
+    if(!$this->Componente->exists()){
+        $this->Session->setFlash('Componente inexistente!');
+        return $this->redirect(array('action' => 'index'));
+    }
     $this->set('categorias',$this->Componente->Categoria->find('list',array('fields' => array('Categoria.id','Categoria.nome'))));
     $this->set('subcategorias',$this->Componente->Subcategoria->find('list',array('fields' => array('Subcategoria.id','Subcategoria.nome'))));
     if ($this->request->is('get')) {

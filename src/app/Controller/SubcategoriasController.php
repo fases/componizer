@@ -5,7 +5,7 @@ class SubcategoriasController extends AppController {
     public $helpers = array('Html', 'Form');
     public $name = 'Subcategorias';
     public $paginate = array(
-        'limit' => 5,
+        'limit' => 25,
         'order' => array(
             'Subcategoria.id' => 'asc'
         )

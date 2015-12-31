@@ -6,6 +6,9 @@
                 <th> ID </th>
                 <th> Horário </th>
                 <th> Turno </th>
+                <th> Data da Aula </th>
+                <th> Estado </th>
+                <th> Status </th>
                 <th> Local </th>
                 <th> Solicitante </th>
                 <th> Ações </th>
@@ -15,6 +18,9 @@
                 <td> <?php echo $this->Html->link($valor['Emprestimo']['id'],array('action' => 'view',$valor['Emprestimo']['id'])); ?> </td>
                 <td> <?php echo $valor['Emprestimo']['horario']; ?> </td>
                 <td> <?php echo $valor['Emprestimo']['turno']; ?> </td>
+                <td> <?php echo $valor['Emprestimo']['data_aula'];?></td>
+                <td> <?php echo $valor['Emprestimo']['estado'];?></td>
+                <td> <?php echo $valor['Emprestimo']['notificar'];?></td>
                 <td> <?php echo $this->Html->link($valor['Laboratorio']['nome'],array('controller' => 'Laboratorios','action' => 'view',$valor['Laboratorio']['id'])); ?> </td>
                 <td> <?php echo $this->Html->link($valor['User']['nome'],array('controller' => 'Users','action' => 'view',$valor['User']['id'])); ?> </td>
                 <td class="actions">

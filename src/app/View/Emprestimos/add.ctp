@@ -14,19 +14,15 @@
   echo $this->Form->input('Emprestimo.user_id',array('type' => 'select','options' => $user,'label' => 'Solicitante'));
   echo $this->Form->input('Emprestimo.laboratorio_id', array('type' => 'select', 'options' => $laboratorio, 'label' => 'Local'));
   echo $this->Form->input('Emprestimo.observacoes',array('label' => 'Observações','rows' => '5'));
-  // echo $this->Form->end('solicitar');
 ?>
 <?php
-  // echo $this->Form->create('Componente',array('controller' => 'componentes','action' => 'lista'));
   echo $this->Form->input('Componente.campo');
   echo $this->Js->submit('Buscar',array('url' => array('controller' => 'componentes','action' => 'lista'),'update' => '#ComponenteResultado'));
   echo $this->Form->input('Componente.resultado',array('type' => 'select'));
   echo $this->Form->input('Componente.quantidade',array('type' => 'text','value' => 0));
   echo $this->Js->submit('Adicionar',array('url' => array('controller' => 'componentes','action' => 'add_list'),'update' => '#car'));
-  // echo $this->Form->end();
 ?>
 <div id="car">
-  <?php //echo $this->Form->create('Notification',array('controller' => 'emprestimos','action' => 'add')); ?>
     <table>
       <tr>
           <th>Id</th>
