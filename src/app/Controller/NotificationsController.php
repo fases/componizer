@@ -2,8 +2,7 @@
 class NotificationsController extends AppController{
     public $helpers = array('Html','Form','Js' => array('Jquery'));
     public $name = 'Notifications';
-    public $components = array('RequestHandler');
-
+    public $components = array('RequestHandler','Paginator');
     public $paginate = array(
         'limit' => 25,
         'order' => array(

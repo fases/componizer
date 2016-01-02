@@ -8,13 +8,15 @@
             'Laboratorio.id' => 'asc'
         )
     );
+    public $components = array('Paginator');
 
     public function beforeFilter(){
       parent::beforeFilter();
       $this->Auth->allow('add','view','edit','delete');
     }
     public function index(){
-      $this->set('laboratorios',$this->Laboratorio->find('all'));
+      $this->Laboratorio->recursive = 0;
+      $this->set('laboratorios',$this->Paginate());
     }
     public function view($id) {
       $this->set('laboratorios',$this->Laboratorio->findById($id));

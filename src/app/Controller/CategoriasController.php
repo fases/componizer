@@ -8,6 +8,7 @@
             'Categoria.id' => 'asc'
         )
     );
+    public $components = array('Paginator');
 
     public function beforeFilter(){
       parent::beforeFilter();
@@ -15,7 +16,8 @@
     }
 
     public function index() {
-      $this->set('categories',$this->Categoria->find('all'));
+      $this->Categoria->recursive = 0;
+      $this->set('categories',$this->Paginate());
     }
 
     public function add() {

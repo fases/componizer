@@ -18,6 +18,19 @@
   <?php endforeach; ?>
 </table>
 </fieldset>
+<p>
+    <?php
+    echo $this->Paginator->counter(array(
+        'format' => __('Página {:page} de {:pages}, mostrando {:current} registros de um total de {:count}, começando em {:start}, terminando em {:end}')
+    ));
+    ?>  </p>
+    <div class="paging">
+    <?php
+        echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
+        echo $this->Paginator->numbers(array('separator' => ''));
+        echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+    ?>
+    </div>
 </div>
 <div class="actions">
 	<h3><?php echo __('Categoria'); ?></h3>

@@ -2,7 +2,7 @@
 class ComponentesController extends AppController{
   public $helpers = array('Html', 'Form','Js' => array('Jquery'));
   public $name = 'Componentes';
-  public $components = array('RequestHandler');
+  public $components = array('RequestHandler','Paginator');
 
   public $paginate = array(
       'limit' => 25,

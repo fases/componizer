@@ -2,7 +2,7 @@
 class EmprestimosController extends AppController{
  public $helpers = array('Html', 'Form','Js' => array('Jquery'));
     public $name = 'Emprestimos';
-    public $components = array('RequestHandler');
+    public $components = array('RequestHandler','Paginator');
 
     public $paginate = array(
         'limit' => 25,
@@ -55,7 +55,7 @@ class EmprestimosController extends AppController{
             $this->Session->setFlash(__('A Solicitação não foi salva!'));
             return $this->redirect(array('action' => 'index'));
          }
-          $this->Session->setFlash(__('A Solicitação não foi salva!'));
+         $this->Session->setFlash(__('A Solicitação não foi salva!'));
       }
     }
 
@@ -71,9 +71,10 @@ class EmprestimosController extends AppController{
 		      $this->request->data = $this->Emprestimo->read();
 		  } else {
 				 if ($this->Emprestimo->save($this->request->data)) {
-					     $this->Session->setFlash('A requisição foi editada!');
+					     $this->Session->setFlash('A Solicitação foi editada!');
 					     return $this->redirect(array('action' => 'index'));
 				 }
+         $this->Session->setFlash('A Solicitação não foi editada!');
 		  }
 	 }
    
@@ -87,9 +88,10 @@ class EmprestimosController extends AppController{
           $this->request->data = $this->Emprestimo->read();
       } else {
          if ($this->Emprestimo->save($this->request->data)) {
-               $this->Session->setFlash('A requisição foi editada!');
+               $this->Session->setFlash('A Solicitação foi alterada!');
                return $this->redirect(array('action' => 'index'));
          }
+         $this->Session->setFlash('A Solicitação não foi alterada!');
       }
    }
 

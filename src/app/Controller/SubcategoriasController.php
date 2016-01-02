@@ -10,7 +10,8 @@ class SubcategoriasController extends AppController {
             'Subcategoria.id' => 'asc'
         )
     );
-
+    public $components = array('Paginator');
+    
     public function beforeFilter() {
         parent::beforeFilter();
         $this->Auth->allow('add', 'view', 'edit', 'delete');

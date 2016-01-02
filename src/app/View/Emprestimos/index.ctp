@@ -9,7 +9,6 @@
                 <th> Data da Aula </th>
                 <th> Estado </th>
                 <th> Status </th>
-                <th> Local </th>
                 <th> Solicitante </th>
                 <th> Ações </th>
             </tr>
@@ -19,18 +18,32 @@
                 <td> <?php echo $valor['Emprestimo']['horario']; ?> </td>
                 <td> <?php echo $valor['Emprestimo']['turno']; ?> </td>
                 <td> <?php echo $valor['Emprestimo']['data_aula'];?></td>
-                <td> <?php echo $valor['Emprestimo']['estado'];?></td>
-                <td> <?php echo $valor['Emprestimo']['notificar'];?></td>
-                <td> <?php echo $this->Html->link($valor['Laboratorio']['nome'],array('controller' => 'Laboratorios','action' => 'view',$valor['Laboratorio']['id'])); ?> </td>
+                <td> <?php echo ($valor['Emprestimo']['estado'] == 0 ?'Aberta':'Finalizada'); ?></td>
+                <td> <?php echo ($valor['Emprestimo']['notificar'] == 1?'Disponível':($valor['Emprestimo']['notificar'] == 2?'Parcialmente Disponível':'Indisponível')); ?> </td>
                 <td> <?php echo $this->Html->link($valor['User']['nome'],array('controller' => 'Users','action' => 'view',$valor['User']['id'])); ?> </td>
                 <td class="actions">
-	<?php echo $this->Html->link('Editar', array('action' => 'edit', $valor['Emprestimo']['id']));?>
+  <?php echo $this->Html->link ('Notificar',array('action' => 'notify',$valor['Emprestimo']['id'])); ?>
+  <?php echo $this->Html->link ('Finalizar',array('action' => 'end',$valor['Emprestimo']['id'])); ?>
+  <?php echo $this->Html->link('Editar', array('action' => 'edit', $valor['Emprestimo']['id']));?>
   <?php echo $this->Html->link('Remover',array('action' => 'delete', $valor['Emprestimo']['id']));?>
                 </td>
             </tr>
 <?php endforeach ?>
         </table>
     </fieldset>
+    <p>
+    <?php
+    echo $this->Paginator->counter(array(
+        'format' => __('Página {:page} de {:pages}, mostrando {:current} registros de um total de {:count}, começando em {:start}, terminando em {:end}')
+    ));
+    ?>  </p>
+    <div class="paging">
+    <?php
+        echo $this->Paginator->prev('< ' . __('previous'), array(), null, array('class' => 'prev disabled'));
+        echo $this->Paginator->numbers(array('separator' => ''));
+        echo $this->Paginator->next(__('next') . ' >', array(), null, array('class' => 'next disabled'));
+    ?>
+    </div>
 </div>
 <div class="actions">
     <h3><?php echo __('Solicitação'); ?></h3>
