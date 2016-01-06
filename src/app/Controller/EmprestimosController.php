@@ -30,39 +30,37 @@ class EmprestimosController extends AppController{
       }else{
           $this->set('user',$this->Emprestimo->User->find('list',array('fields' => array('User.id','User.nome'))));
       }
-
       $this->set('laboratorio',$this->Emprestimo->Laboratorio->find('list',array('fields' => array('Laboratorio.id','Laboratorio.nome'))));
-
       if ($this->request->is('post')) {
         $this->Emprestimo->create();
         $this->request->data['Emprestimo']['estado'] = 0; // seta Requisição com estado Aberta
         $this->request->data['Emprestimo']['notificar'] = 0; // seta Marcador notificar como inexistente
         $this->loadModel('Notification');
-        if (empty($this->request->data['Notification'])) {
-          $this->Session->setFlash(__('O carrinho está vazio!'));
-          return $this->redirect(array('controller' => 'notifications','action' => 'index'));
-        }
-        if ($this->Emprestimo->save($this->request->data['Emprestimo'])) {
-           $this->Notification->create();
-           foreach ($this->request->data['Notification'] as $key => $value) {
+        if (!in_array('Notification',array_keys($this->request->data))) {
+          $this->Session->setFlash(__('Não existem componentes nessa solicitação!'));
+        }else{
+          if ($this->Emprestimo->save($this->request->data['Emprestimo'])) {
+            $this->Notification->create();
+            foreach ($this->request->data['Notification'] as $key => $value) {
               $this->request->data['Notification'][$key]['emprestimo_id'] = $this->Emprestimo->id;
-           }
-           if ($this->Notification->saveMany($this->request->data['Notification'])) {
+            }
+            if ($this->Notification->saveMany($this->request->data['Notification'])) {
               $this->Session->delete('lista');
               $this->Session->setFlash(__('A Solicitação foi salva!'));
               return $this->redirect(array('action' => 'index'));
             }
             $this->Session->setFlash(__('A Solicitação não foi salva!'));
             return $this->redirect(array('action' => 'index'));
-         }
+          }
          $this->Session->setFlash(__('A Solicitação não foi salva!'));
+        }
       }
     }
 
     public function edit($id = null) {
       $this->Emprestimo->id = $id;
       if(!$this->Emprestimo->exists()){
-          $this->Session->setFlash('Emprestimo inexistente!');
+          $this->Session->setFlash('Solicitação inexistente!');
           return $this->redirect(array('action' => 'index'));
       }
       $this->set('user',$this->Emprestimo->User->find('list',array('fields' => array('User.id','User.nome'))));
@@ -81,7 +79,7 @@ class EmprestimosController extends AppController{
    public function notify($id = null){
       $this->Emprestimo->id = $id;
       if(!$this->Emprestimo->exists()){
-          $this->Session->setFlash('Emprestimo inexistente!');
+          $this->Session->setFlash('Solicitação inexistente!');
           return $this->redirect(array('action' => 'index'));
       }
       if ($this->request->is('get')) {
@@ -111,9 +109,11 @@ class EmprestimosController extends AppController{
           ),
         'conditions' => array('Notification.emprestimo_id' => $id),
         'fields' => array('Componente.id','Notification.quantidade','Componente.nome')));
+      //Enviar campos buscador para view
       $this->set('campos',$valor);
       if($this->request->is('post')){
           $this->loadModel('Componente');
+          //Decrementar valores para cada componente
           foreach ($this->request->data['Componente'] as $key => $value) {
               $componente_id = $this->request->data['Componente'][$key]['id'];
               $valor = $this->Componente->find('first',array('conditions' => array(
@@ -122,23 +122,34 @@ class EmprestimosController extends AppController{
               
               $quantidade = $valor['Componente']['quantidade'];
               $valor = $this->request->data['Componente'][$key]['quantidade'];
-              if($valor > 0 && $quantidade > $valor){
+              if($valor > 0 && $quantidade >= $valor){
                   $resultado = $quantidade - $valor;
               }
               $this->Componente->query("UPDATE componentes SET quantidade = '$resultado' WHERE id = '$componente_id'");
           }
           $this->Session->setFlash('Atualização com sucesso!');
-          return $this->redirect(array('action' => 'index'));
+      }
+
+      if ($this->request->is('get')) {
+          $this->request->data = $this->Emprestimo->read();
+      } else {
+         if ($this->Emprestimo->save($this->request->data)) {
+               $this->Session->setFlash('A Solicitação foi alterada!');
+               return $this->redirect(array('action' => 'index'));
+         }
+         $this->Session->setFlash('A Solicitação não foi alterada!');
+         return $this->redirect(array('action' => 'index'));
       }
    }
-   public function delete($id) {
-     if (!$this->request->is('get')) {
-       throw new MethodNotAllowedException();
-     }
-    if ($this->Emprestimo->delete($id)) {
-      $this->Session->setFlash('A requisição de Id: ' . $id . ' foi deletada.');
-      $this->redirect(array('action' => 'index'));
+  
+    public function delete($id) {
+      if (!$this->request->is('get')) {
+        throw new MethodNotAllowedException();
+      }
+      if ($this->Emprestimo->delete($id)) {
+        $this->Session->setFlash('A requisição de Id: ' . $id . ' foi deletada.');
+        $this->redirect(array('action' => 'index'));
+      }
     }
-  }
   }
 ?>

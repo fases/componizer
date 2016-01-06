@@ -4,7 +4,6 @@
 	}
 	echo "<table>";
 	echo "<tr>";
-		echo "<th> Id </th>";
 		echo "<th> Nome </th>";
 		echo "<th> Quantidade </th>";
 		echo "<th> Remover </th>";
@@ -14,9 +13,7 @@
 		$indice = 0;
           foreach ($componentes as $id => $componente) {
             echo "<tr>";
-              echo "<td>";
-                echo $this->Form->input('Notification.'.$indice.'.componente_id',array('type' => 'text'/*,'disabled' => 'disabled'*/,'label' => false,'value' => $id));
-              echo "</td>";
+             echo $this->Form->input('Notification.'.$indice.'.componente_id',array('type' => 'text'/*,'disabled' => 'disabled'*/,'label' => false,'value' => $id,'type' => 'hidden'));
               echo "<td>".$componente[0]."</td>";
               echo "<td>";
                 echo $this->Form->input('Notification.'.$indice.'.quantidade',array('type' => 'text','label' => false,'value' => $componente[1]));

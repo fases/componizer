@@ -16,7 +16,7 @@
   echo $this->Form->input('Emprestimo.observacoes',array('label' => 'Observações','rows' => '5'));
 ?>
 <?php
-  echo $this->Form->input('Componente.campo');
+  echo $this->Form->input('Componente.campo',array('label' => 'Componente'));
   echo $this->Js->submit('Buscar',array('url' => array('controller' => 'componentes','action' => 'lista'),'update' => '#ComponenteResultado'));
   echo $this->Form->input('Componente.resultado',array('type' => 'select'));
   echo $this->Form->input('Componente.quantidade',array('type' => 'text','value' => 0));
@@ -25,7 +25,6 @@
 <div id="car">
     <table>
       <tr>
-          <th>Id</th>
           <th>Nome</th>
           <th>Quantidade</th>
           <th>Remover</th>
@@ -36,9 +35,7 @@
           $indice = 0;
           foreach ($componentes as $id => $componente) {
             echo "<tr>";
-              echo "<td>";
-                echo $this->Form->input('Notification.'.$indice.'.componente_id',array('type' => 'text'/*,'disabled' => 'disabled'*/,'label' => false,'value' => $id));
-              echo "</td>";
+              echo $this->Form->input('Notification.'.$indice.'.componente_id',array('type' => 'text'/*,'disabled' => 'disabled'*/,'label' => false,'value' => $id,'type' => 'hidden'));
               echo "<td>".$componente[0]."</td>";
               echo "<td>";
                 echo $this->Form->input('Notification.'.$indice.'.quantidade',array('type' => 'text','label' => false,'value' => $componente[1]));
@@ -53,7 +50,7 @@
         }
       ?>
     </table>
-    <?php echo $this->Form->end('solicitar'); ?>
+    <?php echo $this->Form->end('Solicitar'); ?>
 </div>
 </div>
 <div class="actions">
