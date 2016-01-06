@@ -8,16 +8,14 @@
             'Categoria.id' => 'asc'
         )
     );
-    public $components = array('Paginator');
 
     public function beforeFilter(){
       parent::beforeFilter();
-      $this->Auth->allow('add','edit','view','delete');
+      $this->Auth->allow('view', 'add','edit','delete');
     }
 
     public function index() {
-      $this->Categoria->recursive = 0;
-      $this->set('categories',$this->Paginate());
+      $this->set('categories',$this->Categoria->find('all'));
     }
 
     public function add() {
@@ -25,7 +23,7 @@
       	  $this->Categoria->create();
 			if ($this->Categoria->save($this->request->data)) {
 			    $this->Session->setFlash('A categoria foi salva!');
-			    return $this->redirect(array('action' => 'index'));
+			    return $this->redirect(array('action' => 'add'));
 			}
           $this->Session->setFlash('A categoria não foi salva!.');
 		  }
@@ -46,7 +44,7 @@
     public function view($id) {
         $this->set('categories', $this->Categoria->findById($id));
     }
-    
+
     function delete($id) {
       if (!$this->request->is('get')) {
             throw new MethodNotAllowedException();

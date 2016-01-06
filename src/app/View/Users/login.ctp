@@ -1,19 +1,43 @@
-<div class="login">
-<?php echo $this->Session->flash('auth'); ?>
-<fieldset>
-        <legend><?php echo ('Login'); ?></legend>
-<?php echo $this->Form->create('User',array('action' => 'login'));
-      echo $this->Form->input('username');
-      echo $this->Form->input('password');
-      echo $this->Form->end("Login"); ?>
-</fieldset>
-</div>
+<body style="background:#F7F7F7;">
 
-<div class="procurar">
-  <h3> Procurar Componentes </h3>
-        <?php
-        echo $this->Form->create('Componente', array('controller' => 'componentes', 'action' => 'search'));
-        echo $this->Form->input('pedaco_nome', array('label' => 'Nome'));
-        echo $this->Form->end('Procurar');
-        ?>
-</div>
+    <div class="">
+        <a class="hiddenanchor" id="toregister"></a>
+        <a class="hiddenanchor" id="tologin"></a>
+        <div id="wrapper">
+            <div id="login" class="animate form">
+                <section class="login_content">
+                    <?php echo $this->Form->create('User',array('action' => 'login'));?>
+                        <h1>Acessar</h1>
+                        <div>
+                             <?php echo $this->Session->flash(); ?>
+                        </div>
+                        <div>
+                            <?php echo $this->Form->input('username',array('class' => 'form-control','placeholder'=> 'Usuário','label' => false)); ?>
+                        </div>
+                        <div>
+                            <?php echo $this->Form->input('password',array('class' => 'form-control','placeholder'=> 'Senha','label' => false)); ?>
+                        </div>
+                        <div>
+                            <a>
+                            <?php
+                                $options = array('label' => 'Entrar', 'class' => 'btn btn-default submit', 'div' => false);
+                                echo $this->Form->end($options); 
+                            ?></a>
+                            <a class="reset_pass" href="#">Esqueceu sua senha?</a>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="separator">
+
+                            <div class="clearfix"></div>
+                            <br />
+                            <div>
+                                <h1><i class="fa fa-paw" style="font-size: 26px;"></i> Componizer!</h1>
+
+                                <p>©2015 All Rights Reserved. Componizer! is a Bootstrap 3 template. Privacy and Terms</p>
+                            </div>
+                        </div>
+                </section>
+                <!-- content -->
+            </div>
+        </div>
+    </div>

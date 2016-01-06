@@ -8,11 +8,10 @@ class UsersController extends AppController{
             'User.id' => 'asc'
         )
     );
-    public $components = array('Paginator');
-    
+
     public function beforeFilter(){
       parent::beforeFilter();
-      $this->Auth->allow('view','add','search');
+      $this->Auth->allow('view', 'add','edit','delete');
     }
 
     public function index() {
@@ -27,12 +26,16 @@ class UsersController extends AppController{
     public function add(){
       if($this->request->is('post')){
         $this->User->create();
+      if($this->request->data['User']['password'] == $this->request->data['User']['confsenha']){
       if($this->User->save($this->request->data)){
           $this->Session->setFlash(__('O usuário foi salvo!'));
-          return $this->redirect(array('action' => 'index'));
+          return $this->redirect(array('action' => 'add'));
         }
         $this->Session->setFlash(__('O usuário não foi salvo!'));
+      }else{
+        $this->Session->setFlash(__('Por favor, digite corretamente as senhas!'));
       }
+    }
     }
 
   public function edit($id = null){
