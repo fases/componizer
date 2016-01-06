@@ -37,7 +37,11 @@ create table componentes(
   descricao varchar(500) not null,
   linha int not null,
   coluna int not null,
+<<<<<<< HEAD
   quantidade int not null, 
+=======
+  quantidade int not null,
+>>>>>>> origin/master
 PRIMARY KEY (id)
 );
 
@@ -79,6 +83,12 @@ alter table `emprestimos` add constraint `fk_e_user` foreign key (`user_id`) ref
 
 alter table `emprestimos` add constraint `fk_e_laboratorio` foreign key (`laboratorio_id`) references `laboratorios` (`id`);
 
+<<<<<<< HEAD
 alter table `notifications` add constraint `fk_n_emprestimo` foreign key (`emprestimo_id`) references `emprestimos` (`id`); 
 
 alter table `notifications` add constraint `fk_n_componente` foreign key (`componente_id`) references `componentes` (`id`);
+=======
+alter table `notifications` add constraint `fk_n_emprestimo` foreign key (`emprestimo_id`) references `emprestimos` (`id`);
+
+alter table `notifications` add constraint `fk_n_componente` foreign key (`componente_id`) references `componentes` (`id`); 
+>>>>>>> origin/master
