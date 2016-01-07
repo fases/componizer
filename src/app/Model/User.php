@@ -8,7 +8,13 @@ App::uses('AuthComponent', 'Controller/Component');
               'rule' => array('notEmpty'),
               'message' => 'O campo matrícula é obrigatório!'
             )
-          ),
+        ),
+        'matricula' => array(
+            'required' => array(
+                'rule' => array('notEmpty'),
+                'message' => 'O campo Matricula é obrigatório'
+            )
+        ),
           'nome' => array(
             'required' => array(
               'rule' => array('notEmpty'),

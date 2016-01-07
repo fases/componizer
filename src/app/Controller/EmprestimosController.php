@@ -34,7 +34,7 @@ class EmprestimosController extends AppController{
       if ($this->request->is('post')) {
         $this->Emprestimo->create();
         $this->request->data['Emprestimo']['estado'] = 0; // seta Requisição com estado Aberta
-        $this->request->data['Emprestimo']['notificar'] = 0; // seta Marcador notificar como inexistente
+        $this->request->data['Emprestimo']['notificar'] = 0; // seta Marcador notificar como 'sem'
         $this->loadModel('Notification');
         if (!in_array('Notification',array_keys($this->request->data))) {
           $this->Session->setFlash(__('Não existem componentes nessa solicitação!'));
@@ -95,6 +95,13 @@ class EmprestimosController extends AppController{
 
    public function end($id = null){
       $this->Emprestimo->id = $id;
+      if(!$this->Emprestimo->exists()){
+          $this->Session->setFlash('Solicitação inexistente!');
+          return $this->redirect(array('action' => 'index'));
+      }
+      if ($this->request->is('get')) {
+          $this->request->data = $this->Emprestimo->read();
+      }else{
       //Buscar nomes dos componentes por inner join
       $valor = $this->Emprestimo->find('all',
         array('joins' => array(
@@ -124,22 +131,17 @@ class EmprestimosController extends AppController{
               $valor = $this->request->data['Componente'][$key]['quantidade'];
               if($valor > 0 && $quantidade >= $valor){
                   $resultado = $quantidade - $valor;
+                  $this->Componente->query("UPDATE componentes SET quantidade = '$resultado' WHERE id = '$componente_id'");
               }
-              $this->Componente->query("UPDATE componentes SET quantidade = '$resultado' WHERE id = '$componente_id'");
           }
-          $this->Session->setFlash('Atualização com sucesso!');
+        if ($this->Emprestimo->save($this->request->data['Emprestimo'])) {
+          $this->Session->setFlash('A Solicitação foi finalizada!');
+          return $this->redirect(array('action' => 'index'));
+        }else{
+          $this->Session->setFlash('A Solicitação não foi finalizada!');
+        }
       }
-
-      if ($this->request->is('get')) {
-          $this->request->data = $this->Emprestimo->read();
-      } else {
-         if ($this->Emprestimo->save($this->request->data)) {
-               $this->Session->setFlash('A Solicitação foi alterada!');
-               return $this->redirect(array('action' => 'index'));
-         }
-         $this->Session->setFlash('A Solicitação não foi alterada!');
-         return $this->redirect(array('action' => 'index'));
-      }
+    }
    }
   
     public function delete($id) {
