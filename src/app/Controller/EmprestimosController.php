@@ -153,5 +153,31 @@ class EmprestimosController extends AppController{
         $this->redirect(array('action' => 'index'));
       }
     }
+
+    public function profile() {
+      $this->set('emprestimos',$this->Emprestimo->find('all',array('conditions' => array('Emprestimo.user_id' => $this->Auth->user('id')))));
+    }
+
+    public function lista($id = null){
+      $this->Emprestimo->id = $id;
+      if(!$this->Emprestimo->exists()){
+          $this->Session->setFlash('Solicitação inexistente!');
+          return $this->redirect(array('action' => 'index'));
+      }
+      $valor = $this->Emprestimo->find('all',
+        array('joins' => array(
+          array('table' => 'notifications',
+                'alias' => 'Notification',
+                'type' => 'INNER',
+                'conditions' => array('Notification.emprestimo_id = Emprestimo.id')),
+          array('table' => 'componentes',
+                'alias' => 'Componente',
+                'type' => 'INNER',
+                'conditions' => array('Notification.componente_id = Componente.id'))
+          ),
+        'conditions' => array('Notification.emprestimo_id' => $id),
+        'fields' => array('Notification.quantidade','Componente.nome','Componente.id')));
+      $this->set('campos',$valor);
+    }
   }
 ?>
