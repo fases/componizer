@@ -54,5 +54,13 @@
 				$this->redirect(array('action' => 'index'));
 			}
 		}
-  }
+   function search(){
+       if ($this->request->is('post')) {
+         $categoria = $this->paginate('Categoria', array('Categoria.nome LIKE' => '%'.$this->request->data['Categoria']['pedaco_nome'].'%'));
+       } else {
+         $categoria = $this->paginate('Categoria');
+       }
+       $this->set('categorias', $categoria);
+     }
+ }
 ?>

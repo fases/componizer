@@ -5,11 +5,11 @@
         <th><?php echo $this->Paginator->sort('nome', 'Nome'); ?></th>
     </tr>
 
-    <?php foreach ($componentes as $componente): ?>
+    <?php foreach ($categorias as $categoria): ?>
         <tr>
 			       <td>
-				           <?php echo $this->Html->link($componente['Componente']['nome'],
-				               array('controller' => 'componentes', 'action' => 'view', $componente['Componente']['id'])); ?>
+				           <?php echo $this->Html->link($categoria['Categoria']['nome'],
+				               array('controller' => 'categorias', 'action' => 'view', $categoria['Categoria']['id'])); ?>
 			      </td>
         </tr>
     <?php endforeach; ?>
