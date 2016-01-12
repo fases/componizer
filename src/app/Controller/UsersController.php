@@ -1,4 +1,5 @@
 <?php
+App::uses('CakeEmail', 'Network/Email');
 class UsersController extends AppController{
     public $helpers = array('Html', 'Form');
     public $name = 'Users';
@@ -11,7 +12,7 @@ class UsersController extends AppController{
 
     public function beforeFilter(){
       parent::beforeFilter();
-      $this->Auth->allow('view', 'add','edit','delete');
+      $this->Auth->allow('view', 'add','edit','delete','recovery');
     }
 
     public function index() {
@@ -29,7 +30,7 @@ class UsersController extends AppController{
       if($this->request->data['User']['password'] == $this->request->data['User']['confsenha']){
       if($this->User->save($this->request->data)){
           $this->Session->setFlash(__('O usuário foi salvo!'));
-          return $this->redirect(array('action' => 'add'));
+          return $this->redirect(array('action' => 'index'));
         }
         $this->Session->setFlash(__('O usuário não foi salvo!'));
       }else{
@@ -81,6 +82,30 @@ class UsersController extends AppController{
 
   public function logout(){
     $this->redirect($this->Auth->logout());
+  }
+
+  public function recovery(){
+    if($this->request->is('post')){
+        $user = $this->User->find('first',array('conditions' => array('User.matricula' => $this->request->data['User']['matricula'],
+          'User.email' => $this->request->data['User']['email'])));
+        if(is_null($user)){
+          $this->Session->setFlash('Dados incorretos, tente novamente!');
+        }else{
+          //Gera senha automática
+          $password = md5($user['User']['username']);
+          $password = substr($password, rand(25,30));
+          $usuario = $user['User']['id'];
+          $this->User->query("UPDATE users SET password = '$password' WHERE id = '$usuario'");
+          //Envia email
+          $Email = new CakeEmail('gmail');
+          $Email->from(array('arthurpdb8@gmail.com' => 'Arthur'));
+          $Email->to($user['User']['email']);          
+          $Email->subject('Recuperação de senha do Componizer');
+          $Email->send('Sua senha nova é: '.$password);
+          $this->Session->setFlash('A senha foi enviada ao seu email!');
+          return $this->redirect(array('action' => 'login'));
+        }
+    }
   }
 }
 ?>

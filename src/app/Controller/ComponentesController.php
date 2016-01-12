@@ -45,6 +45,7 @@ class ComponentesController extends AppController{
       $this->Session->setFlash(__('O Componente não foi salvo!'));
     }
   }
+
   public function edit($id = null) {
     $this->Componente->id = $id;
     $this->set('categorias',$this->Componente->Categoria->find('list',array('fields' => array('Categoria.id','Categoria.nome'))));

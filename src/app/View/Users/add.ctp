@@ -331,7 +331,7 @@
                                                                'aluno' => 'Aluno',
                                                                'bolsista'=>'Bolsista',
                                                                'admin'=>'Administrador'
-                                                    ), 'class' => 'form-control')); ?>
+                                                    ), 'class' => 'form-control','label' => false)); ?>
                                           <!--  <select class="form-control">
                                               <option></option>
                                                 <option>Professor</option>

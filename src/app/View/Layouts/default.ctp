@@ -30,51 +30,75 @@ $cakeDescription = __d('cake_dev', 'Componizer |');
 
 		//echo $this->Html->css('cake.generic');
 		echo $this->Html->css('bootstrap.min.css');
-		echo $this->Html->css('font-awesome.min.css');
+		echo $this->Html->css('../fonts/css/font-awesome.min');;
+		echo $this->Html->css('../fonts/css/font-awesome');
 		echo $this->Html->css('animate.min.css');
 		echo $this->Html->css('custom.css');
-		echo $this->Html->css('jquery-jvectormap-2.0.1.css');
-		echo $this->Html->css('green.css');
+		echo $this->Html->css('maps/jquery-jvectormap-2.0.1.css');
+		echo $this->Html->css('icheck/flat/green.css');
 		echo $this->Html->css('floatexamples.css');
-
-		// //
-		//echo $this->Html->script('Jquery');
+		echo $this->Html->css('normalize.css');
+		echo $this->Html->css('nprogress.css');
+		echo $this->Html->css('ion.rangeSlides.css');
+		echo $this->Html->css('ion.rangeSlides.skinFlat.css');
+		echo $this->Html->css('custom.css');
+		// echo $this->Html->css('calendar/fullcalendar.css');
+		// echo $this->Html->css('calendar/fullcalendar.min.css');
+		// echo $this->Html->css('calendar/fullcalendar.print.css');
+		// script /root
+		echo $this->Html->script('Jquery');
 		echo $this->Html->script('jquery.min.js');
 		echo $this->Html->script('bootstrap.min.js');
 		echo $this->Html->script('custom.js');
 		echo $this->Html->script('moment.min.js');
 		echo $this->Html->script('nprogress.js');
+		// pasta auto complete
+		echo $this->Html->script('autocomplete/countries.js');
+		echo $this->Html->script('autocomplete/jquery.autocomplete.js');
+		// pasta calendar
+		echo $this->Html->script('calendar/fullcalendar.min.js');
 		// pasta js/chartjs
-		echo $this->Html->script('chart.min.js');
+		echo $this->Html->script('chartjs/chart.min.js');
+		// pasta colorpicker
+		echo $this->Html->script('colorpicker/bootstrap-colorpicker.js');
+		echo $this->Html->script('colorpicker/docs.js');
+        // pasta cropping
+		echo $this->Html->script('cropping/cropper.min.js');
+        echo $this->Html->script('cropping/main.js');
+        echo $this->Html->script('cropping/main2.js');
 		// pasta js/datepicker
-		echo $this->Html->script('daterangepicker.js');
+		echo $this->Html->script('datepicker/daterangepicker.js');
 		// pasta js/flot
-		echo $this->Html->script('curvedLines.js');
-		echo $this->Html->script('date.js');
-		echo $this->Html->script('jquery.flot.js');
-		echo $this->Html->script('jquery.flot.orderBars.js');
-		echo $this->Html->script('jquery.flot.pie.js');
-		echo $this->Html->script('jquery.flot.resize.js');
-		echo $this->Html->script('jquery.flot.spline.js');
-		echo $this->Html->script('jquery.flot.stack.js');
-		echo $this->Html->script('jquery.flot.time.min.js');
+		echo $this->Html->script('flot/curvedLines.js');
+		echo $this->Html->script('flot/date.js');
+		echo $this->Html->script('flot/jquery.flot.js');
+		echo $this->Html->script('flot/jquery.flot.orderBars.js');
+		echo $this->Html->script('flot/jquery.flot.pie.js');
+		echo $this->Html->script('flot/jquery.flot.resize.js');
+		echo $this->Html->script('flot/jquery.flot.spline.js');
+		echo $this->Html->script('flot/jquery.flot.stack.js');
+		echo $this->Html->script('flot/jquery.flot.time.min.js');
+		echo $this->Html->script('flot/jquery.flot.tooltip.min.js');
 		//pasta js/guage
-		echo $this->Html->script('guage.min.js');
-		echo $this->Html->script('guage_demo.js');
+		echo $this->Html->script('gauge/gauge.min.js');
+		echo $this->Html->script('gauge/gauge_demo.js');
 		// pasta js/icheck
-		echo $this->Html->script('icheck.min.js');
+		echo $this->Html->script('icheck/icheck.min.js');
 		// pasta js/maps
-		echo $this->Html->script('gdp.data.js');
-		echo $this->Html->script('jquery-jvectormap-2.0.1.min.js');
-		echo $this->Html->script('jquery-jvectormap-us-aea-en.js');
-		echo $this->Html->script('jquery-jvectormap-world-mill-en.js');
+		echo $this->Html->script('maps/gdp-data.js');
+		echo $this->Html->script('maps/jquery-jvectormap-2.0.1.min.js');
+		echo $this->Html->script('maps/jquery-jvectormap-us-aea-en.js');
+		echo $this->Html->script('maps/jquery-jvectormap-world-mill-en.js');
 		// pasta js/nicescroll
-		echo $this->Html->script('jquery.nicescroll.min.js');
+		echo $this->Html->script('nicescroll/jquery.nicescroll.min.js');
 		//pasta js/progressbar
-		echo $this->Html->script('bootstrap-progressbar.min.js');
+		echo $this->Html->script('progressbar/bootstrap-progressbar.min.js');
 		//pasta js/skycons
-		echo $this->Html->script('skycons.js');
-
+		echo $this->Html->script('skycons/skycons.js');
+        // pasta sparkline
+        echo $this->Html->script('sparkline/jquery.sparkline.min.js');
+        // pasta switchery
+        echo $this->Html->script('switchery/switchery.min.js');
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');

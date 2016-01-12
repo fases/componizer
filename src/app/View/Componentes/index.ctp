@@ -110,9 +110,9 @@
                               </li>
                               <li><a><i class="fa fa-users"></i> Gerenciar usuários <span class="fa fa-chevron-down"></span></a>
                                   <ul class="nav child_menu" style="display: none">
-                                      <li><?php echo $this->Html->link(__('Listar usuários'), array('controller' => 'users','action' => 'index')); ?>
+                                      <li><?php echo $this->Html->link('Listar usuários', array('action' => 'index')); ?>
                                       </li>
-                                      <li><?php echo $this->Html->link(__('Cadastrar usuário'), array('controller' => 'users','action' => 'add')); ?>
+                                      <li><?php echo $this->Html->link('Cadastrar usuário', array('action' => 'add')); ?>
                                       </li>
                                   </ul>
                               </li>
@@ -270,10 +270,7 @@
 
                                 <table class="table table-striped responsive-utilities jambo_table bulk_action">
                                     <thead>
-                                          <!--<tr class="headings">
-                                            <th>
-                                              <input type="checkbox" id="check-all" class="flat">
-                                            </th>-->
+                                            <tr class="headings">
                                             <th class="column-title">Nome </th>
                                             <th class="column-title">Posicionamento - linha </th>
                                             <th class="column-title">Posicionamento - coluna </th>
