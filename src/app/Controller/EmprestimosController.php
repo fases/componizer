@@ -1,6 +1,6 @@
 <?php
 class EmprestimosController extends AppController{
- public $helpers = array('Html', 'Form','Js' => array('Jquery'));
+ public $helpers = array('Html', 'Form','Js' => array('jquery'));
     public $name = 'Emprestimos';
     public $components = array('RequestHandler','Paginator');
 
