@@ -107,7 +107,7 @@
                                       <li><?php echo $this->Html->link(__('Cadastrar componente'), array('controller' => 'componentes','action' => 'add')); ?>
                                       </li>
                                   </ul>
-                              </li>
+                              <!-- </li>
                               <li><a><i class="fa fa-users"></i> Gerenciar usuários <span class="fa fa-chevron-down"></span></a>
                                   <ul class="nav child_menu" style="display: none">
                                       <li><?php echo $this->Html->link('Listar usuários', array('action' => 'index')); ?>
@@ -115,7 +115,7 @@
                                       <li><?php echo $this->Html->link('Cadastrar usuário', array('action' => 'add')); ?>
                                       </li>
                                   </ul>
-                              </li>
+                              </li> -->
                               <li><a><i class="fa fa-building-o"></i> Laboratórios <span class="fa fa-chevron-down"></span></a>
                                   <ul class="nav child_menu" style="display: none">
                                       <li><?php echo $this->Html->link(__('Listar laboratórios'), array('controller' => 'laboratorios','action' => 'index')); ?>
@@ -264,50 +264,44 @@
                                 <div class="clearfix"></div>
                             </div>
 
-                            <div class="x_content">
+                    <div class="x_content">
 
                               <!--  <p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p> -->
 
-                                <table class="table table-striped responsive-utilities jambo_table bulk_action">
-                                    <thead>
-                                            <tr class="headings">
-                                            <th class="column-title">Nome </th>
-                                            <th class="column-title">Posicionamento - linha </th>
-                                            <th class="column-title">Posicionamento - coluna </th>
-                                            <th class="column-title no-link last"><span class="nobr">Ações</span>
-                                            <th class="column-title no-link last"><span class="nobr">Ações</span>
-                                            </th>
-                                            <th class="bulk-actions" colspan="7">
-                              <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                                        </th>
-                            </tr>
+                      <table class="table table-striped responsive-utilities jambo_table bulk_action">
+                        <thead>
+                          <tr class="headings">
+                            <th class="column-title">Nome </th>
+                            <th class="column-title">Posicionamento - linha </th>
+                            <th class="column-title">Posicionamento - coluna </th>
+                            <th class="column-title no-link last"><span class="nobr">Ações</span></th>
+                            <th class="column-title no-link last"><span class="nobr">Ações</span></th>
+                          </tr>
                         </thead>
 
                         <tbody>
                           <?php foreach ($componentes as $valor): ?>
-                                        <tr class="even pointer">
-                                          <td> <?php echo $this->Html->link($valor['Componente']['nome'], array('action' => 'view', $valor['Componente']['id'])); ?> </td>
-                                          <td> <?php echo $valor ['Componente']['linha']; ?> </td>
-                                          <td> <?php echo $valor ['Componente']['coluna']; ?> </td>
-                                          <td>   <a>
-                                            <?php
-                                                $options = array('label' => 'Editar', 'class' => 'btn btn-round btn-default', 'div' => false, 'action' => 'edit', $valor['Componente']['id']);
-                                                echo $this->Form->end($options);
-                                            ?></a></td>
-                                          <td>  <a>
-                                            <?php
-                                                $options = array('label' => 'Deletar', 'class' => 'btn btn-round btn-default', 'div' => false, 'action' => 'delete', $valor['Componente']['id']);
-                                                echo $this->Form->end($options);
-                                            ?></a></td>
-                                        </tr>
-                                      <?php endforeach; ?>
-                                        <!--<tr class="odd pointer">-->
-
-                                        </tbody>
-
-                                </table>
-                            </div>
-                        </div>
+                            <tr class="even pointer">
+                            <td> <?php echo $this->Html->link($valor['Componente']['nome'], array('action' => 'view', $valor['Componente']['id'])); ?> </td>
+                            <td> <?php echo $valor ['Componente']['linha']; ?> </td>
+                            <td> <?php echo $valor ['Componente']['coluna']; ?> </td>
+                            <td>   <a>
+                            <?php
+                              $options = array('label' => 'Editar', 'class' => 'btn btn-round btn-default', 'div' => false, 'action' => 'edit', $valor['Componente']['id']);
+                              echo $this->Form->end($options);
+                             ?></a></td>
+                            <td><a>
+                              <?php
+                                $options = array('label' => 'Deletar', 'class' => 'btn btn-round btn-default', 'div' => false, 'action' => 'delete', $valor['Componente']['id']);
+                                echo $this->Form->end($options);
+                              ?></a></td>
+                            </tr>
+                          <?php endforeach; ?>
+                         <!--<tr class="odd pointer">-->
+                        </tbody>
+                      </table>
+                    </div>
+                </div>
                     </div>
 
                 </div>

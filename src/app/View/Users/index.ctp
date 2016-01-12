@@ -1,217 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <!-- Meta, title, CSS, favicons, etc. -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Componizer | </title>
+        <title>Componizer | </title>
 
-    <!-- Bootstrap core CSS -->
+        <!-- Bootstrap core CSS -->
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
 
-    <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
-    <link href="css/animate.min.css" rel="stylesheet">
+        <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
+        <link href="css/animate.min.css" rel="stylesheet">
 
-    <!-- Custom styling plus plugins -->
-    <link href="css/custom.css" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/maps/jquery-jvectormap-2.0.1.css" />
-    <link href="css/icheck/flat/green.css" rel="stylesheet" />
-    <link href="css/floatexamples.css" rel="stylesheet" type="text/css" />
+        <!-- Custom styling plus plugins -->
+        <link href="css/custom.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/maps/jquery-jvectormap-2.0.1.css" />
+        <link href="css/icheck/flat/green.css" rel="stylesheet" />
+        <link href="css/floatexamples.css" rel="stylesheet" type="text/css" />
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/nprogress.js"></script>
-    <script>
-        NProgress.start();
-    </script>
+        <script src="js/jquery.min.js"></script>
+        <script src="js/nprogress.js"></script>
+        <script>
+            NProgress.start();
+        </script>
 
-    <!--[if lt IE 9]>
-        <script src="../assets/js/ie8-responsive-file-warning.js"></script>
-        <![endif]-->
+        <!--[if lt IE 9]>
+            <script src="../assets/js/ie8-responsive-file-warning.js"></script>
+            <![endif]-->
 
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+              <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+              <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+            <![endif]-->
 
-</head>
-
-
-<body class="nav-md">
-
-    <div class="container body">
+    </head>
 
 
-        <div class="main_container">
+    <body class="nav-md">
 
-            <div class="col-md-3 left_col">
-                <div class="left_col scroll-view">
+        <div class="container body">
 
-                    <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Componizer!</span></a>
-                    </div>
-                    <div class="clearfix"></div>
-                    <!-- menu prile quick info -->
-                    <!--<div class="profile">
-                        <div class="profile_pic">
-                            <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+
+            <div class="main_container">
+
+                <div class="col-md-3 left_col">
+                    <div class="left_col scroll-view">
+
+                        <div class="navbar nav_title" style="border: 0;">
+                            <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Componizer!</span></a>
                         </div>
-                        <div class="profile_info">
-                            <span>Welcome,</span>
-                            <h2>Anthony Fernando</h2>
-                        </div>
-                    </div>-->
+                        <div class="clearfix"></div>
+                        <!-- menu prile quick info -->
+                        <!--<div class="profile">
+                            <div class="profile_pic">
+                                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                            </div>
+                            <div class="profile_info">
+                                <span>Welcome,</span>
+                                <h2>Anthony Fernando</h2>
+                            </div>
+                        </div>-->
 
-                    <!-- /menu prile quick info -->
-                    <br />
+                        <!-- /menu prile quick info -->
+                        <br />
 
-                    <!-- sidebar menu -->
-                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <!-- sidebar menu -->
+                        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 
-                      <div class="menu_section">
-                          <h3>General</h3>
-                          <ul class="nav side-menu">
-                              <li><a><i class="fa fa-user"></i> Perfil <span class="fa fa-chevron-down"></span></a>
-                                  <ul class="nav child_menu" style="display: none">
-                                      <li><?php echo $this->Html->link(__('Meus dados'), array('controller' => 'subcategorias','action' => 'index')); ?>
-                                      </li>
-                                      <li><?php echo $this->Html->link(__('Alterar senha'), array('controller' => 'subcategorias','action' => 'index')); ?>
-                                      </li>
-                                  </ul>
-                              </li>
-                              <li><a><i class="fa fa-circle"></i> Categorias <span class="fa fa-chevron-down"></span></a>
-                                  <ul class="nav child_menu" style="display: none">
-                                      <li><?php echo $this->Html->link(__('Listar categorias'), array('controller' => 'categorias','action' => 'index')); ?>
-                                      </li>
-                                      <li><?php echo $this->Html->link(__('Cadastrar categoria'), array('controller' => 'categorias','action' => 'add')); ?>
-                                      </li>
-                                  </ul>
-                              </li>
-                              <li><a><i class="fa fa-circle-o"></i> Subcategorias <span class="fa fa-chevron-down"></span></a>
-                                  <ul class="nav child_menu" style="display: none">
-                                      <li><?php echo $this->Html->link(__('Listar subcategorias'), array('controller' => 'subcategorias','action' => 'index')); ?>
-                                      </li>
-                                      <li><?php echo $this->Html->link(__('Cadastrar subcategoria'), array('controller' => 'subcategorias','action' => 'add')); ?>
-                                      </li>
-                                  </ul>
-                              </li>
-                              <li><a><i class="fa fa-cubes"></i> Componentes <span class="fa fa-chevron-down"></span></a>
-                                  <ul class="nav child_menu" style="display: none">
-                                      <li><?php echo $this->Html->link(__('Listar componentes'), array('controller' => 'componentes','action' => 'index')); ?>
-                                      </li>
-                                      <li><?php echo $this->Html->link(__('Cadastrar componente'), array('controller' => 'componentes','action' => 'add')); ?>
-                                      </li>
-                                  </ul>
-                              </li>
-                              <li><a><i class="fa fa-users"></i> Gerenciar usuários <span class="fa fa-chevron-down"></span></a>
-                                  <ul class="nav child_menu" style="display: none">
-                                      <li><?php echo $this->Html->link(__('Listar usuários'), array('controller' => 'users','action' => 'index')); ?>
-                                      </li>
-                                      <li><?php echo $this->Html->link(__('Cadastrar usuário'), array('controller' => 'users','action' => 'add')); ?>
-                                      </li>
-                                  </ul>
-                              </li>
-                              <li><a><i class="fa fa-building-o"></i> Laboratórios <span class="fa fa-chevron-down"></span></a>
-                                  <ul class="nav child_menu" style="display: none">
-                                      <li><?php echo $this->Html->link(__('Listar laboratórios'), array('controller' => 'laboratorios','action' => 'index')); ?>
-                                      </li>
-                                      <li><?php echo $this->Html->link(__('Cadastrar laboratórios'), array('controller' => 'laboratorios','action' => 'add')); ?>
-                                      </li>
-                                  </ul>
-                              </li>
-                              <li><a><i class="fa fa-archive"></i> Requisições <span class="fa fa-chevron-down"></span></a>
-                                  <ul class="nav child_menu" style="display: none">
-                                      <li><?php echo $this->Html->link(__('Listar requisições'), array('controller' => 'emprestimos','action' => 'index')); ?>
-                                      </li>
-                                      <li><?php echo $this->Html->link(__('Criar requisição'), array('controller' => 'emprestimos','action' => 'add')); ?>
-                                      </li>
-                                      <li><a href="morisjs.html">Minhas requisições</a>
-                                      </li>
-                                  </ul>
-                              </li>
-                              <li><a><i class="fa fa-pie-chart"></i> Relatórios <span class="fa fa-chevron-down"></span></a>
-                                  <ul class="nav child_menu" style="display: none">
-                                      <li><a href="chartjs.html">Chart JS</a>
-                                      </li>
-                                      <li><a href="chartjs2.html">Chart JS2</a>
-                                      </li>
-                                      <li><a href="morisjs.html">Moris JS</a>
-                                      </li>
-                                      <li><a href="echarts.html">ECharts </a>
-                                      </li>
-                                      <li><a href="other_charts.html">Other Charts </a>
-                                      </li>
-                                  </ul>
-                              </li>
-                              <!--<li><a><i class="fa fa-power-off"></i> Logout </a>-->
-                                <!--  <ul class="nav child_menu" style="display: none">-->
+                            <div class="menu_section">
+                                <h3>General</h3>
+                                <ul class="nav side-menu">
+                                    <li><a><i class="fa fa-user"></i> Perfil <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu" style="display: none">
+                                            <li><?php echo $this->Html->link(__('Meus dados'), array('controller' => 'subcategorias','action' => 'index')); ?>
+                                            </li>
+                                            <li><?php echo $this->Html->link(__('Alterar senha'), array('controller' => 'subcategorias','action' => 'index')); ?>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a><i class="fa fa-circle"></i> Categorias <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu" style="display: none">
+                                            <li><?php echo $this->Html->link(__('Listar categorias'), array('controller' => 'categorias','action' => 'index')); ?>
+                                            </li>
+                                            <li><?php echo $this->Html->link(__('Cadastrar categoria'), array('controller' => 'categorias','action' => 'add')); ?>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a><i class="fa fa-circle-o"></i> Subcategorias <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu" style="display: none">
+                                            <li><?php echo $this->Html->link(__('Listar subcategorias'), array('controller' => 'subcategorias','action' => 'index')); ?>
+                                            </li>
+                                            <li><?php echo $this->Html->link(__('Cadastrar subcategoria'), array('controller' => 'subcategorias','action' => 'add')); ?>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a><i class="fa fa-cubes"></i> Componentes <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu" style="display: none">
+                                            <li><?php echo $this->Html->link(__('Listar componentes'), array('controller' => 'componentes','action' => 'index')); ?>
+                                            </li>
+                                            <li><?php echo $this->Html->link(__('Cadastrar componente'), array('controller' => 'componentes','action' => 'add')); ?>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a><i class="fa fa-users"></i> Gerenciar usuários <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu" style="display: none">
+                                            <li><?php echo $this->Html->link('Listar usuários', array('action' => 'index')); ?>
+                                            </li>
+                                            <li><?php echo $this->Html->link('Cadastrar usuário', array('action' => 'add')); ?>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a><i class="fa fa-building-o"></i> Laboratórios <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu" style="display: none">
+                                            <li><?php echo $this->Html->link(__('Listar laboratórios'), array('controller' => 'laboratorios','action' => 'index')); ?>
+                                            </li>
+                                            <li><?php echo $this->Html->link(__('Cadastrar laboratórios'), array('controller' => 'laboratorios','action' => 'add')); ?>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a><i class="fa fa-archive"></i> Requisições <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu" style="display: none">
+                                            <li><?php echo $this->Html->link(__('Listar requisições'), array('controller' => 'emprestimos','action' => 'index')); ?>
+                                            </li>
+                                            <li><?php echo $this->Html->link(__('Criar requisição'), array('controller' => 'emprestimos','action' => 'add')); ?>
+                                            </li>
+                                            <li><a href="morisjs.html">Minhas requisições</a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a><i class="fa fa-pie-chart"></i> Relatórios <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu" style="display: none">
+                                            <li><a href="chartjs.html">Chart JS</a>
+                                            </li>
+                                            <li><a href="chartjs2.html">Chart JS2</a>
+                                            </li>
+                                            <li><a href="morisjs.html">Moris JS</a>
+                                            </li>
+                                            <li><a href="echarts.html">ECharts </a>
+                                            </li>
+                                            <li><a href="other_charts.html">Other Charts </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <!--<li><a><i class="fa fa-power-off"></i> Logout </a>-->
+                                    <!--  <ul class="nav child_menu" style="display: none">-->
                                     <?php if ($this->Session->read('Auth.User')): ?>
                                     <li><a><?php echo $this->Html->link('Logout', array('controller' => 'users','action' => 'logout', 'class' => 'fa fa-power-off'));?> </a></li>
                                     <?php endif; ?>
 
 
-                                  <!--</ul>-->
-                            <!--  </li> -->
-                          </ul>
-                      </div>
-                    </div>
-                    <!-- /sidebar menu -->
-
-                    <!-- /menu footer buttons -->
-                    <!--<div class="sidebar-footer hidden-small">
-                        <a data-toggle="tooltip" data-placement="top" title="Settings">
-                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Lock">
-                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Logout">
-                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                        </a>
-                    </div>-->
-                    <!-- /menu footer buttons -->
-                </div>
-            </div>
-
-            <!-- top navigation -->
-            <div class="top_nav">
-
-                <div class="nav_menu">
-                    <nav class="" role="navigation">
-                        <div class="nav toggle">
-                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                        </div>
-
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="">
-                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <!--<img src="images/img.jpg" alt="">--><i class="fa fa-user"></i> User
-                                    <span class=" fa fa-angle-down"></span>
-                                </a>
-                                <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
-                                    <li><a href="index.html">Meus dados </a>
-                                    </li>
-                                    <li><a href="index.html">Alterar senha </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">Ajuda</a>
-                                    </li>
-                                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
-                                    </li>
+                                    <!--</ul>-->
+                                    <!--  </li> -->
                                 </ul>
-                            </li>
-                          </ul>
-                    </nav>
+                            </div>
+                        </div>
+                        <!-- /sidebar menu -->
+
+                        <!-- /menu footer buttons -->
+                        <!--<div class="sidebar-footer hidden-small">
+                            <a data-toggle="tooltip" data-placement="top" title="Settings">
+                                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                            </a>
+                            <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                            </a>
+                            <a data-toggle="tooltip" data-placement="top" title="Lock">
+                                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                            </a>
+                            <a data-toggle="tooltip" data-placement="top" title="Logout">
+                                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                            </a>
+                        </div>-->
+                        <!-- /menu footer buttons -->
+                    </div>
                 </div>
 
+                <!-- top navigation -->
+                <div class="top_nav">
+
+                    <div class="nav_menu">
+                        <nav class="" role="navigation">
+                            <div class="nav toggle">
+                                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                            </div>
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <li class="">
+                                    <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <!--<img src="images/img.jpg" alt="">--><i class="fa fa-user"></i> User
+                                        <span class=" fa fa-angle-down"></span>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
+                                        <li><a href="index.html">Meus dados </a>
+                                        </li>
+                                        <li><a href="index.html">Alterar senha </a>
+                                        </li>
+                                        <li>
+                                            <a href="javascript:;">Ajuda</a>
+                                        </li>
+                                        <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
             </div>
             <!-- /top navigation -->
 
@@ -224,20 +224,20 @@
 
                     <div class="page-title">
                         <div class="title_left">
-                            <h3>Usuários</h3>
+                            <h3>Componentes</h3>
                         </div>
 
-                  <div class="title_right">
-                      <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                          <div class="input-group">
-                              <input type="text" class="form-control" placeholder="Pesquisar">
-                              <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">OK!</button>
-                  </span>
-                          </div>
-                      </div>
-                  </div>
-                </div>
+                        <div class="title_right">
+                            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Pesquisar">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">OK!</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <br />
 
@@ -245,19 +245,19 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Lista de usuários <small></small></h2>
+                                <h2>Lista de componentes <small></small></h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                     </li>
-                                  <!--  <li class="dropdown">
-                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li><a href="#">Settings 1</a>
-                                            </li>
-                                            <li><a href="#">Settings 2</a>
-                                            </li>
-                                        </ul>
-                                    </li> -->
+                                    <!--  <li class="dropdown">
+                                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                          <ul class="dropdown-menu" role="menu">
+                                              <li><a href="#">Settings 1</a>
+                                              </li>
+                                              <li><a href="#">Settings 2</a>
+                                              </li>
+                                          </ul>
+                                      </li> -->
                                     <li><a class="close-link"><i class="fa fa-close"></i></a>
                                     </li>
                                 </ul>
@@ -270,43 +270,33 @@
 
                                 <table class="table table-striped responsive-utilities jambo_table bulk_action">
                                     <thead>
-                                          <!--<tr class="headings">
-                                            <th>
-                                              <input type="checkbox" id="check-all" class="flat">
-                                            </th>-->
-                                            <th class="column-title">Matrícula </th>
+                                        <tr class="headings">
+                                            <th class="column-title">Matricula </th>
                                             <th class="column-title">Nome </th>
-                                            <th class="column-title">Tipo de usuário </th>
-                                            <th class="column-title no-link last"><span class="nobr">Ações</span>
-                                            <th class="column-title no-link last"><span class="nobr">Ações</span>
-                                            </th>
-                                            <th class="bulk-actions" colspan="7">
-                              <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                                        </th>
-                            </tr>
-                        </thead>
+                                            <th class="column-title">Tipo de Usuário </th>
+                                            <th class="column-title no-link last"><span class="nobr">Ações</span> </th>
+                                            <th class="column-title no-link last"><span class="nobr">Ações</span> </th>          
+                                        </tr>
+                                    </thead>
 
-                        <tbody>
-                                <?php foreach ($users as $valor): ?>
+                                    <tbody>
+                          <?php foreach ($users as $valor): ?>
                                         <tr class="even pointer">
-                                                    <td> <?php echo $valor ['User']['matricula']; ?> </td>
-                                                    <td> <?php echo $this->Html->link($valor['User']['nome'], array('action' => 'view', $valor['User']['id'])); ?> </td>
-                                                    <td> <?php echo $valor['User']['role']; ?> </td>
-                                                    <td>   <a>
+                                            <td> <?php echo $valor ['User']['matricula']; ?> </td>
+                                            <td> <?php echo $this->Html->link($valor['User']['nome'], array('action' => 'view', $valor['User']['id'])); ?> </td>
+                                            <td> <?php echo $valor['User']['role']; ?> </td>
+                                            <td> <div class="btn btn-round btn-default"> 
                                                       <?php
-                                                          $options = array('label' => 'Editar', 'class' => 'btn btn-round btn-default', 'div' => false, 'action' => 'edit', $valor['User']['id']);
-                                                          echo $this->Form->end($options);
-                                                      ?></a></td>
-                                                    <td>  <a>
+                                                        echo $this->Html->link('Editar', array('action' => 'view', $valor['User']['id'])); 
+                                                      ?></div></td>
+                                            <td> <div class="btn btn-round btn-default"> 
                                                       <?php
-                                                          $options = array('label' => 'Deletar', 'class' => 'btn btn-round btn-default', 'div' => false, 'action' => 'delete', $valor['User']['id']);
-                                                          echo $this->Form->end($options);
-                                                      ?></a></td>
-                                                </tr>
-                                          <?php endforeach?>
-                                        <!--<tr class="odd pointer">-->
-                                        </tbody>
-
+                                                        echo $this->Html->link('Deletar', array('action' => 'delete', $valor['User']['id'])); 
+                                                      ?></div></td>
+                                        </tr>
+                           <?php endforeach?>
+                 <!--<tr class="odd pointer">-->
+                                    </tbody>
                                 </table>
                             </div>
                         </div>
@@ -314,26 +304,22 @@
 
                 </div>
 
-        <!-- end of weather widget -->
+                <!-- end of weather widget -->
 
-        <!-- footer content -->
+                <!-- footer content -->
 
-              <!--   <footer>
-                   <div class="">
-                        <p class="pull-right">Gentelella Alela! a Bootstrap 3 template by <a>Kimlabs</a>. |
-                            <span class="lead"> <i class="fa fa-paw"></i> Gentelella Alela!</span>
-                        </p>
-                    </div>
-                    <div class="clearfix"></div>
-                </footer>-->
+                <!--   <footer>
+                     <div class="">
+                          <p class="pull-right">Gentelella Alela! a Bootstrap 3 template by <a>Kimlabs</a>. |
+                              <span class="lead"> <i class="fa fa-paw"></i> Gentelella Alela!</span>
+                          </p>
+                      </div>
+                      <div class="clearfix"></div>
+                  </footer>-->
                 <!-- /footer content -->
-                </div>
             </div>
-            <!-- /page content -->
-
         </div>
-
-    </div>
+        <!-- /page content -->
 
     <div id="custom_notifications" class="custom-notifications dsp_none">
         <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group">
@@ -417,7 +403,7 @@
                     axisLabelFontSizePixels: 12,
                     axisLabelFontFamily: 'Verdana, Arial',
                     axisLabelPadding: 10
-                        //mode: "time", timeformat: "%m/%d/%y", minTickSize: [1, "day"]
+                            //mode: "time", timeformat: "%m/%d/%y", minTickSize: [1, "day"]
                 },
                 yaxis: {
                     ticks: 8,
@@ -445,10 +431,10 @@
                 zoomOnScroll: false,
                 series: {
                     regions: [{
-                        values: gdpData,
-                        scale: ['#E6F2F0', '#149B7E'],
-                        normalizeFunction: 'polynomial'
-                    }]
+                            values: gdpData,
+                            scale: ['#E6F2F0', '#149B7E'],
+                            normalizeFunction: 'polynomial'
+                        }]
                 },
                 onRegionTipShow: function (e, el, code) {
                     el.html(el.html() + ' (GDP - ' + gdpData[code] + ')');
@@ -460,16 +446,16 @@
     <script src="js/skycons/skycons.js"></script>
     <script>
         var icons = new Skycons({
-                "color": "#73879C"
-            }),
-            list = [
-                "clear-day", "clear-night", "partly-cloudy-day",
-                "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
-                "fog"
-            ],
-            i;
+            "color": "#73879C"
+        }),
+                list = [
+                    "clear-day", "clear-night", "partly-cloudy-day",
+                    "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
+                    "fog"
+                ],
+                i;
 
-        for (i = list.length; i--;)
+        for (i = list.length; i--; )
             icons.set(list[i], list[i]);
 
         icons.play();
@@ -498,7 +484,7 @@
                 value: 120,
                 color: "#3498DB"
             }
-    ];
+        ];
         var myDoughnut = new Chart(document.getElementById("canvas1").getContext("2d")).Doughnut(doughnutData);
     </script>
     <!-- /dashbord linegraph -->
