@@ -42,6 +42,7 @@ $cakeDescription = __d('cake_dev', 'Componizer |');
 		echo $this->Html->css('ion.rangeSlides.css');
 		echo $this->Html->css('ion.rangeSlides.skinFlat.css');
 		echo $this->Html->css('custom.css');
+		echo $this->Html->css('pagination.css');
 		// echo $this->Html->css('calendar/fullcalendar.css');
 		// echo $this->Html->css('calendar/fullcalendar.min.css');
 		// echo $this->Html->css('calendar/fullcalendar.print.css');
@@ -52,7 +53,7 @@ $cakeDescription = __d('cake_dev', 'Componizer |');
 		echo $this->Html->script('custom.js');
 		echo $this->Html->script('moment.min.js');
 		echo $this->Html->script('nprogress.js');
-		// pasta auto complete
+		/* pasta auto complete
 		echo $this->Html->script('autocomplete/countries.js');
 		echo $this->Html->script('autocomplete/jquery.autocomplete.js');
 		// pasta calendar
@@ -98,7 +99,7 @@ $cakeDescription = __d('cake_dev', 'Componizer |');
         // pasta sparkline
         echo $this->Html->script('sparkline/jquery.sparkline.min.js');
         // pasta switchery
-        echo $this->Html->script('switchery/switchery.min.js');
+        echo $this->Html->script('switchery/switchery.min.js');*/
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
 		echo $this->fetch('script');

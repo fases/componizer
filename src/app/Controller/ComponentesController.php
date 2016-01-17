@@ -20,6 +20,7 @@ class ComponentesController extends AppController{
   public function view($id){
       $this->set('componentes',$this->Componente->findById($id));
   }
+  
   public function add ($subcategoria_id = null) {
       if(is_null($subcategoria_id)){
         $this->set('categoria',$this->Componente->Categoria->find('list',array('fields' => array('Categoria.id','Categoria.nome'))));
@@ -29,15 +30,18 @@ class ComponentesController extends AppController{
         $this->set('categoria',$this->Componente->Categoria->find('list',array('conditions' => array('Categoria.id' => $categoria['Subcategoria']['categoria_id']),'fields' => array('Categoria.id','Categoria.nome'))));
         $this->set('subcategoria',$this->Componente->Subcategoria->find('list',array('conditions' => array('Subcategoria.id' => $subcategoria_id),'fields' => array('Subcategoria.id','Subcategoria.nome'))));
       }
-    if ($this->request->is('post')) {
-      $this->Componente->create();
-      if ($this->Componente->save($this->request->data)) {
+    if ($this->request->is('post') || $this->request->is('put')) {
+      if ($this->request->is('post')) {           // checks for the post values
+        $this->Componente->create();
+        // $this->Componente->request->data['Componente']['datasheet'] = 'src/files/'.$this->data['Componente']['datasheet']['name'];
+        if ($this->Componente->save($this->request->data)) {
          $this->Session->setFlash(__('O Componente foi salvo!'));
          return $this->redirect(array('action' => 'index'));
-       }
-      $this->Session->setFlash(__('O Componente não foi salvo!'));
+        }
+        $this->Session->setFlash(__('O Componente não foi salvo!'));
+      }
     }
-  }
+}
   public function lista(){
     if ($this->request->is('ajax')) {
       $this->layout = 'ajax';
@@ -136,6 +140,6 @@ class ComponentesController extends AppController{
         $componente = $this->paginate('Componente');
       }
       $this->set('componentes', $componente);
-    }
+}
 }
 ?>

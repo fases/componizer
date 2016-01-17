@@ -325,10 +325,9 @@
                                               $options = array('label' => 'Cadastrar', 'class' => 'btn btn-success');
                                               echo $this->Form->end($options);
                                           ?>
+                                          <a class="btn btn-danger" href="/src/componentes" role="button">Cancelar</a>
                                         </div>
                                     </div>
-                                </form>
-
                             </div>
                         </div>
                     </div>
@@ -353,8 +352,6 @@
             <!-- /page content -->
 
         </div>
-
-    </div>
 
     <div id="custom_notifications" class="custom-notifications dsp_none">
         <ul class="list-unstyled notifications clearfix" data-tabbed_notifications="notif-group">

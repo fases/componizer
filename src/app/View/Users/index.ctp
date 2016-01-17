@@ -11,39 +11,13 @@
         <title>Componizer | </title>
 
         <!-- Bootstrap core CSS -->
-
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-
-        <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/animate.min.css" rel="stylesheet">
-
-        <!-- Custom styling plus plugins -->
-        <link href="css/custom.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="css/maps/jquery-jvectormap-2.0.1.css" />
-        <link href="css/icheck/flat/green.css" rel="stylesheet" />
-        <link href="css/floatexamples.css" rel="stylesheet" type="text/css" />
-
-        <script src="js/jquery.min.js"></script>
-        <script src="js/nprogress.js"></script>
         <script>
             NProgress.start();
         </script>
-
-        <!--[if lt IE 9]>
-            <script src="../assets/js/ie8-responsive-file-warning.js"></script>
-            <![endif]-->
-
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-              <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-              <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-            <![endif]-->
-
     </head>
 
 
     <body class="nav-md">
-
         <div class="container body">
 
 
@@ -56,19 +30,7 @@
                             <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Componizer!</span></a>
                         </div>
                         <div class="clearfix"></div>
-                        <!-- menu prile quick info -->
-                        <!--<div class="profile">
-                            <div class="profile_pic">
-                                <img src="images/img.jpg" alt="..." class="img-circle profile_img">
-                            </div>
-                            <div class="profile_info">
-                                <span>Welcome,</span>
-                                <h2>Anthony Fernando</h2>
-                            </div>
-                        </div>-->
-
-                        <!-- /menu prile quick info -->
-                        <br />
+                         <br />
 
                         <!-- sidebar menu -->
                         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
@@ -81,6 +43,14 @@
                                             <li><?php echo $this->Html->link(__('Meus dados'), array('controller' => 'subcategorias','action' => 'index')); ?>
                                             </li>
                                             <li><?php echo $this->Html->link(__('Alterar senha'), array('controller' => 'subcategorias','action' => 'index')); ?>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li><a><i class="fa fa-users"></i> Gerenciar <span class="fa fa-chevron-down"></span></a>
+                                        <ul class="nav child_menu" style="display: none">
+                                            <li><?php echo $this->Html->link(__('Listar usuários'), array('action' => 'index')); ?>
+                                            </li>
+                                            <li><?php echo $this->Html->link(__('Cadastrar usuário'), array('action' => 'add')); ?>
                                             </li>
                                         </ul>
                                     </li>
@@ -105,14 +75,6 @@
                                             <li><?php echo $this->Html->link(__('Listar componentes'), array('controller' => 'componentes','action' => 'index')); ?>
                                             </li>
                                             <li><?php echo $this->Html->link(__('Cadastrar componente'), array('controller' => 'componentes','action' => 'add')); ?>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a><i class="fa fa-users"></i> Gerenciar usuários <span class="fa fa-chevron-down"></span></a>
-                                        <ul class="nav child_menu" style="display: none">
-                                            <li><?php echo $this->Html->link('Listar usuários', array('action' => 'index')); ?>
-                                            </li>
-                                            <li><?php echo $this->Html->link('Cadastrar usuário', array('action' => 'add')); ?>
                                             </li>
                                         </ul>
                                     </li>
@@ -224,7 +186,7 @@
 
                     <div class="page-title">
                         <div class="title_left">
-                            <h3>Componentes</h3>
+                            <h3>Usuários</h3>
                         </div>
 
                         <div class="title_right">
@@ -245,7 +207,7 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Lista de componentes <small></small></h2>
+                                <h2>Lista de usuários <small></small></h2>
                                 <ul class="nav navbar-right panel_toolbox">
                                     <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                                     </li>
@@ -307,7 +269,17 @@
                 <!-- end of weather widget -->
 
                 <!-- footer content -->
-
+                 <footer>
+                     <div class="pagination">
+                        <div class="list">
+                        <?php
+                            echo $this->Paginator->prev('« Anterior', null, null, array('class' => 'prev disabled'));
+                            echo $this->Paginator->numbers(array('separator' => false));
+                            echo $this->Paginator->next('Próximo »', null, null, array('class' => 'prev disabled'));
+                        ?>
+                        </div>
+                    </div>
+                </footer>
                 <!--   <footer>
                      <div class="">
                           <p class="pull-right">Gentelella Alela! a Bootstrap 3 template by <a>Kimlabs</a>. |
@@ -328,35 +300,28 @@
         <div id="notif-group" class="tabbed_notifications"></div>
     </div>
 
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- gauge js -->
-    <script type="text/javascript" src="js/gauge/gauge.min.js"></script>
-    <script type="text/javascript" src="js/gauge/gauge_demo.js"></script>
-    <!-- chart js -->
-    <script src="js/chartjs/chart.min.js"></script>
-    <!-- bootstrap progress js -->
-    <script src="js/progressbar/bootstrap-progressbar.min.js"></script>
-    <script src="js/nicescroll/jquery.nicescroll.min.js"></script>
-    <!-- icheck -->
-    <script src="js/icheck/icheck.min.js"></script>
-    <!-- daterangepicker -->
-    <script type="text/javascript" src="js/moment.min.js"></script>
-    <script type="text/javascript" src="js/datepicker/daterangepicker.js"></script>
-
-    <script src="js/custom.js"></script>
-
+    <?php 
+        echo $this->Html->script('gauge/gauge.min.js');
+        echo $this->Html->script('gauge/gauge_demo.js');
+        echo $this->Html->script('chartjs/chart.min.js');
+        echo $this->Html->script('progressbar/bootstrap-progressbar.min.js');
+        echo $this->Html->script('nicescroll/jquery.nicescroll.min.js');
+        echo $this->Html->script('icheck/icheck.min.js');
+        echo $this->Html->script('moment.min.js');
+        echo $this->Html->script('datepicker/daterangepicker.js');
+        echo $this->Html->script('flot/curvedLines.js');
+        echo $this->Html->script('flot/date.js');
+        echo $this->Html->script('flot/jquery.flot.js');
+        echo $this->Html->script('flot/jquery.flot.orderBars.js');
+        echo $this->Html->script('flot/jquery.flot.pie.js');
+        echo $this->Html->script('flot/jquery.flot.resize.js');
+        echo $this->Html->script('flot/jquery.flot.spline.js');
+        echo $this->Html->script('flot/jquery.flot.stack.js');
+        echo $this->Html->script('flot/jquery.flot.time.min.js');
+        echo $this->Html->script('flot/jquery.flot.tooltip.min.js');
+    ?>
     <!-- flot js -->
     <!--[if lte IE 8]><script type="text/javascript" src="js/excanvas.min.js"></script><![endif]-->
-    <script type="text/javascript" src="js/flot/jquery.flot.js"></script>
-    <script type="text/javascript" src="js/flot/jquery.flot.pie.js"></script>
-    <script type="text/javascript" src="js/flot/jquery.flot.orderBars.js"></script>
-    <script type="text/javascript" src="js/flot/jquery.flot.time.min.js"></script>
-    <script type="text/javascript" src="js/flot/date.js"></script>
-    <script type="text/javascript" src="js/flot/jquery.flot.spline.js"></script>
-    <script type="text/javascript" src="js/flot/jquery.flot.stack.js"></script>
-    <script type="text/javascript" src="js/flot/curvedLines.js"></script>
-    <script type="text/javascript" src="js/flot/jquery.flot.resize.js"></script>
     <script>
         $(document).ready(function () {
             // [17, 74, 6, 39, 20, 85, 7]
@@ -419,10 +384,12 @@
     </script>
 
     <!-- worldmap -->
-    <script type="text/javascript" src="js/maps/jquery-jvectormap-2.0.1.min.js"></script>
-    <script type="text/javascript" src="js/maps/gdp-data.js"></script>
-    <script type="text/javascript" src="js/maps/jquery-jvectormap-world-mill-en.js"></script>
-    <script type="text/javascript" src="js/maps/jquery-jvectormap-us-aea-en.js"></script>
+    <?php
+        echo $this->Html->script('maps/gdp-data.js');
+        echo $this->Html->script('maps/jquery-jvectormap-2.0.1.min.js');
+        echo $this->Html->script('maps/jquery-jvectormap-us-aea-en.js');
+        echo $this->Html->script('maps/jquery-jvectormap-world-mill-en.js');
+    ?>
     <script>
         $(function () {
             $('#world-map-gdp').vectorMap({
@@ -443,7 +410,7 @@
         });
     </script>
     <!-- skycons -->
-    <script src="js/skycons/skycons.js"></script>
+    <?php echo $this->Html->script('skycons/skycons.js'); ?>
     <script>
         var icons = new Skycons({
             "color": "#73879C"

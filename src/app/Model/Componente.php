@@ -39,6 +39,13 @@ class Componente extends AppModel{
         'rule' => 'notEmpty',
         'required' => true,
         'message' => 'O campo localização é obrigatório!'
+      ),
+      'datasheet' => array(
+        'rule1' => array(
+            'rule'    => array(
+            'extension',array('pdf')),
+            'message' => 'Faça upload de um arquivo PDF'
+         )
       ));
 }
 ?>
