@@ -3,11 +3,12 @@
     public $helpers = array('Html','Form');
     public $name = 'Categorias';
     public $paginate = array(
-        'limit' => 25,
-        'order' => array(
-            'Categoria.id' => 'asc'
-        )
-    );
+          'limit' => 25,
+          'order' => array(
+              'Categoria.id' => 'asc'
+          )
+      );
+      public $components = array('Paginator');
 
     public function beforeFilter(){
       parent::beforeFilter();
@@ -15,27 +16,32 @@
     }
 
     public function index() {
-      $this->set('categories',$this->Categoria->find('all'));
+      $this->Categoria->recursive = 0;
+        $this->set('categories', $this->paginate());
     }
 
     public function add() {
 		  if ($this->request->is('post')) {
       	  $this->Categoria->create();
 			if ($this->Categoria->save($this->request->data)) {
-			    $this->Session->setFlash('A categoria foi salva!');
-			    return $this->redirect(array('action' => 'add'));
+			    $this->Session->setFlash('A Categoria foi salva!','success');
+			    return $this->redirect(array('action' => 'index'));
 			}
-          $this->Session->setFlash('A categoria não foi salva!.');
+          $this->Session->setFlash('A Categoria não foi salva!','error');
 		  }
 		}
 
     public function edit($id = null) {
       $this->Categoria->id = $id;
+        if (!$this->Categoria->exists()) {
+            $this->Session->setFlash("A Categoria é inválida!",'error');
+            $this->redirect(array('action' => 'index'));
+        }
 			if ($this->request->is('get')) {
 				$this->request->data = $this->Categoria->read();
 			} else {
 				if ($this->Categoria->save($this->request->data)) {
-					$this->Session->setFlash('A categoria foi editada!');
+					$this->Session->setFlash('A Categoria foi editada!','success');
 					$this->redirect(array('action' => 'index'));
 				}
 			}
@@ -46,11 +52,16 @@
     }
 
     function delete($id) {
+      $this->Categoria->id = $id;
+        if (!$this->Categoria->exists()) {
+            $this->Session->setFlash("A Categoria escolhido é inválido!",'error');
+            $this->redirect(array('action' => 'index'));
+        }
       if (!$this->request->is('get')) {
             throw new MethodNotAllowedException();
       }
 			if ($this->Categoria->delete($id)) {
-				$this->Session->setFlash('A categoria foi deletada.');
+				$this->Session->setFlash('A categoria foi deletada!','success');
 				$this->redirect(array('action' => 'index'));
 			}
 		}

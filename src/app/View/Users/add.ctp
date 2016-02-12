@@ -36,164 +36,169 @@
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
 
-                    <div class="navbar nav_title" style="border: 0;">
-                        <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Componizer!</span></a>
-                    </div>
-                    <div class="clearfix"></div>
-                    <!-- menu prile quick info -->
-                    <!--<div class="profile">
-                        <div class="profile_pic">
-                            <img src="images/img.jpg" alt="..." class="img-circle profile_img">
-                        </div>
-                        <div class="profile_info">
-                            <span>Welcome,</span>
-                            <h2>Anthony Fernando</h2>
-                        </div>
-                    </div>-->
+                  <div class="navbar nav_title" style="border: 0;">
+                        <?php echo $this->Html->link($this->Html->image("componizer.png",
+                        array("alt" => "Logo", 'class' => 'img_logo_img')),
+                        array('controller' => 'users','action' => 'index'),
+                        array('escape' => false)); ?>
 
-                    <!-- /menu prile quick info -->
-                    <br />
+                          <!--  <a class="site_title"><span>Componizer</span></a>-->
 
-                    <!-- sidebar menu -->
-                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
-
-                      <div class="menu_section">
-                          <h3>General</h3>
-                          <ul class="nav side-menu">
-                              <li><a><i class="fa fa-user"></i> Perfil <span class="fa fa-chevron-down"></span></a>
-                                  <ul class="nav child_menu" style="display: none">
-                                      <li><?php echo $this->Html->link(__('Meus dados'), array('controller' => 'subcategorias','action' => 'index')); ?>
-                                      </li>
-                                      <li><?php echo $this->Html->link(__('Alterar senha'), array('controller' => 'subcategorias','action' => 'index')); ?>
-                                      </li>
-                                  </ul>
-                              </li>
-                              <li><a><i class="fa fa-circle"></i> Categorias <span class="fa fa-chevron-down"></span></a>
-                                  <ul class="nav child_menu" style="display: none">
-                                      <li><?php echo $this->Html->link(__('Listar categorias'), array('controller' => 'categorias','action' => 'index')); ?>
-                                      </li>
-                                      <li><?php echo $this->Html->link(__('Cadastrar categoria'), array('controller' => 'categorias','action' => 'add')); ?>
-                                      </li>
-                                  </ul>
-                              </li>
-                              <li><a><i class="fa fa-circle-o"></i> Subcategorias <span class="fa fa-chevron-down"></span></a>
-                                  <ul class="nav child_menu" style="display: none">
-                                      <li><?php echo $this->Html->link(__('Listar subcategorias'), array('controller' => 'subcategorias','action' => 'index')); ?>
-                                      </li>
-                                      <li><?php echo $this->Html->link(__('Cadastrar subcategoria'), array('controller' => 'subcategorias','action' => 'add')); ?>
-                                      </li>
-                                  </ul>
-                              </li>
-                              <li><a><i class="fa fa-cubes"></i> Componentes <span class="fa fa-chevron-down"></span></a>
-                                  <ul class="nav child_menu" style="display: none">
-                                      <li><?php echo $this->Html->link(__('Listar componentes'), array('controller' => 'componentes','action' => 'index')); ?>
-                                      </li>
-                                      <li><?php echo $this->Html->link(__('Cadastrar componente'), array('controller' => 'componentes','action' => 'add')); ?>
-                                      </li>
-                                  </ul>
-                              </li>
-                              <li><a><i class="fa fa-users"></i> Gerenciar usuários <span class="fa fa-chevron-down"></span></a>
-                                  <ul class="nav child_menu" style="display: none">
-                                      <li><?php echo $this->Html->link(__('Listar usuários'), array('controller' => 'users','action' => 'index')); ?>
-                                      </li>
-                                      <li><?php echo $this->Html->link(__('Cadastrar usuário'), array('controller' => 'users','action' => 'add')); ?>
-                                      </li>
-                                  </ul>
-                              </li>
-                              <li><a><i class="fa fa-building-o"></i> Laboratórios <span class="fa fa-chevron-down"></span></a>
-                                  <ul class="nav child_menu" style="display: none">
-                                      <li><?php echo $this->Html->link(__('Listar laboratórios'), array('controller' => 'laboratorios','action' => 'index')); ?>
-                                      </li>
-                                      <li><?php echo $this->Html->link(__('Cadastrar laboratórios'), array('controller' => 'laboratorios','action' => 'add')); ?>
-                                      </li>
-                                  </ul>
-                              </li>
-                              <li><a><i class="fa fa-archive"></i> Requisições <span class="fa fa-chevron-down"></span></a>
-                                  <ul class="nav child_menu" style="display: none">
-                                      <li><?php echo $this->Html->link(__('Listar requisições'), array('controller' => 'emprestimos','action' => 'index')); ?>
-                                      </li>
-                                      <li><?php echo $this->Html->link(__('Criar requisição'), array('controller' => 'emprestimos','action' => 'add')); ?>
-                                      </li>
-                                      <li><a href="morisjs.html">Minhas requisições</a>
-                                      </li>
-                                  </ul>
-                              </li>
-                              <li><a><i class="fa fa-pie-chart"></i> Relatórios <span class="fa fa-chevron-down"></span></a>
-                                  <ul class="nav child_menu" style="display: none">
-                                      <li><a href="chartjs.html">Chart JS</a>
-                                      </li>
-                                      <li><a href="chartjs2.html">Chart JS2</a>
-                                      </li>
-                                      <li><a href="morisjs.html">Moris JS</a>
-                                      </li>
-                                      <li><a href="echarts.html">ECharts </a>
-                                      </li>
-                                      <li><a href="other_charts.html">Other Charts </a>
-                                      </li>
-                                  </ul>
-                              </li>
-                              <!--<li><a><i class="fa fa-power-off"></i> Logout </a>-->
-                                <!--  <ul class="nav child_menu" style="display: none">-->
-                                    <?php if ($this->Session->read('Auth.User')): ?>
-                                    <li><a><?php echo $this->Html->link('Logout', array('controller' => 'users','action' => 'logout', 'class' => 'fa fa-power-off'));?> </a></li>
-                                    <?php endif; ?>
-
-
-                                  <!--</ul>-->
-                            <!--  </li> -->
-                          </ul>
+                  </div>
+                  <div class="clearfix"></div>
+                  <!-- menu prile quick info -->
+                  <!--<div class="profile">
+                      <div class="profile_pic">
+                          <img src="images/img.jpg" alt="..." class="img-circle profile_img">
                       </div>
-                    </div>
-                    <!-- /sidebar menu -->
+                      <div class="profile_info">
+                          <span>Welcome,</span>
+                          <h2>Anthony Fernando</h2>
+                      </div>
+                  </div>-->
 
-                    <!-- /menu footer buttons -->
-                    <!--<div class="sidebar-footer hidden-small">
-                        <a data-toggle="tooltip" data-placement="top" title="Settings">
-                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Lock">
-                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
-                        </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Logout">
-                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                        </a>
-                    </div>-->
-                    <!-- /menu footer buttons -->
-                </div>
-            </div>
+                  <!-- /menu prile quick info -->
+                  <br />
 
-            <!-- top navigation -->
-            <div class="top_nav">
+                  <!-- sidebar menu -->
+                  <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 
-                <div class="nav_menu">
-                    <nav class="" role="navigation">
-                        <div class="nav toggle">
-                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
-                        </div>
-
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="">
-                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    <!--<img src="images/img.jpg" alt="">--><i class="fa fa-user"></i> User
-                                    <span class=" fa fa-angle-down"></span>
-                                </a>
-                                <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
-                                    <li><a href="index.html">Meus dados </a>
+                    <div class="menu_section">
+                        <!--<h3>General</h3>-->
+                        <ul class="nav side-menu">
+                            <li><a><i class="fa fa-user"></i> Perfil <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu" style="display: none">
+                                  <li><?php echo $this->Html->link(__('Meus dados'), array('controller' => 'users','action' => 'profile')); ?>
                                     </li>
-                                    <li><a href="index.html">Alterar senha </a>
-                                    </li>
-                                    <li>
-                                        <a href="javascript:;">Ajuda</a>
-                                    </li>
-                                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a>
+                                    <li><?php echo $this->Html->link(__('Alterar senha'), array('controller' => 'users','action' => 'password')); ?>
                                     </li>
                                 </ul>
                             </li>
+                            <li><a><i class="fa fa-circle"></i> Categorias <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu" style="display: none">
+                                    <li><?php echo $this->Html->link(__('Listar categorias'), array('controller' => 'categorias','action' => 'index')); ?>
+                                    </li>
+                                    <li><?php echo $this->Html->link(__('Cadastrar categoria'), array('controller' => 'categorias','action' => 'add')); ?>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-circle-o"></i> Subcategorias <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu" style="display: none">
+                                    <li><?php echo $this->Html->link(__('Listar subcategorias'), array('controller' => 'subcategorias','action' => 'index')); ?>
+                                    </li>
+                                    <li><?php echo $this->Html->link(__('Cadastrar subcategoria'), array('controller' => 'subcategorias','action' => 'add')); ?>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-cubes"></i> Componentes <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu" style="display: none">
+                                    <li><?php echo $this->Html->link(__('Listar componentes'), array('controller' => 'componentes','action' => 'index')); ?>
+                                    </li>
+                                    <li><?php echo $this->Html->link(__('Cadastrar componente'), array('controller' => 'componentes','action' => 'add')); ?>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-users"></i> Gerenciar usuários <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu" style="display: none">
+                                    <li><?php echo $this->Html->link(__('Listar usuários'), array('controller' => 'users','action' => 'index')); ?>
+                                    </li>
+                                    <li><?php echo $this->Html->link(__('Cadastrar usuário'), array('controller' => 'users','action' => 'add')); ?>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-building-o"></i> Laboratórios <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu" style="display: none">
+                                    <li><?php echo $this->Html->link(__('Listar laboratórios'), array('controller' => 'laboratorios','action' => 'index')); ?>
+                                    </li>
+                                    <li><?php echo $this->Html->link(__('Cadastrar laboratórios'), array('controller' => 'laboratorios','action' => 'add')); ?>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-archive"></i> Requisições <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu" style="display: none">
+                                    <li><?php echo $this->Html->link(__('Listar requisições'), array('controller' => 'emprestimos','action' => 'index')); ?>
+                                    </li>
+                                    <li><?php echo $this->Html->link(__('Criar requisição'), array('controller' => 'emprestimos','action' => 'add')); ?>
+                                    </li>
+                                    <li><?php echo $this->Html->link(__('Minhas requisições'), array('controller' => 'emprestimos','action' => 'profile')); ?>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-pie-chart"></i> Relatórios <span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu" style="display: none">
+                                    <li><a href="chartjs.html">Chart JS</a>
+                                    </li>
+                                    <li><a href="chartjs2.html">Chart JS2</a>
+                                    </li>
+                                    <li><a href="morisjs.html">Moris JS</a>
+                                    </li>
+                                    <li><a href="echarts.html">ECharts </a>
+                                    </li>
+                                    <li><a href="other_charts.html">Other Charts </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <!--<li><a><i class="fa fa-power-off"></i> Logout </a>-->
+                              <!--  <ul class="nav child_menu" style="display: none">-->
+
+                            <!--<li><?php //echo $this->Html->link('<i class="fa fa-power-off"></i>',
+                            //array('controller' => 'users','action' => 'logout',),
+                            //array('escape' => false));?>
+                          </li>-->
+
+                                <!--</ul>-->
+                          <!--  </li> -->
+                        </ul>
+                    </div>
+                  </div>
+                  <!-- /sidebar menu -->
+
+                  <!-- /menu footer buttons -->
+                  <div class="sidebar-footer hidden-small">
+                      <!--<a data-toggle="tooltip" data-placement="top" title="Settings">
+                          <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                      </a>
+                      <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                          <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                      </a>
+                      <a data-toggle="tooltip" data-placement="top" title="Lock">
+                          <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                      </a>-->
+                          <?php echo $this->Html->link('<i class="fa fa-power-off"></i>',
+                          array('controller' => 'users','action' => 'logout', 'title' => 'Logout'),
+                          array('escape' => false));?>
+                  </div>
+                  <!-- /menu footer buttons -->
+              </div>
+          </div>
+
+          <!-- top navigation -->
+          <div class="top_nav">
+
+              <div class="nav_menu">
+                  <nav class="" role="navigation">
+                      <div class="nav toggle">
+                          <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+
+                      </div>
+                      <ul class="nav navbar-nav navbar-right">
+                          <li class="">
+                              <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                  <!--<img src="images/img.jpg" alt="">--><i class="fa fa-user"></i>
+                                  <?php echo $this->Session->read('Auth.User.nome'); ?>
+                                  <span class=" fa fa-angle-down"></span>
+                              </a>
+                              <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
+                                <li><?php echo $this->Html->link(__('Meus dados'), array('controller' => 'users','action' => 'profile')); ?>
+                                  </li>
+                                  <li><?php echo $this->Html->link(__('Alterar senha'), array('controller' => 'users','action' => 'password')); ?>
+                                  </li>
+                                  <li><?php echo $this->Html->link('Logout', array('controller' => 'users','action' => 'logout'));?><!--<i class="fa fa-sign-out pull-right"></i>-->
+                                  </li>
+                              </ul>
+                            </li>
                           </ul>
                     </nav>
+
                 </div>
 
             </div>
@@ -210,7 +215,6 @@
                         <div class="title_left">
                             <h3>Usuários</h3>
                         </div>
-
                 <!--  <div class="title_right">
                       <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
                           <div class="input-group">
@@ -224,7 +228,6 @@
                 </div>
                 </div>
                 <br />
-
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
@@ -247,6 +250,7 @@
                                 </ul>
                                 <div class="clearfix"></div>
                             </div>
+                            <?php echo $this->Session->flash(); ?>
                             <div class="x_content">
 
                               <?php echo $this->Form->create('User',array('action' => 'add', 'class' => 'form-horizontal form-label-left', 'novalidate'));?>
@@ -300,7 +304,7 @@
                                         </div>
                                     </div>
                                     <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telefone">Telefone <span class="required">*</span>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telefone">Telefone
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                           <?php echo $this->Form->input('telefone',array('class' => 'form-control col-md-7 col-xs-12','type' => 'tel','data-validate-minmax'=> '10,20','label' => false)); ?>
@@ -311,18 +315,7 @@
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Tipo de usuário<span class="required">*</span></label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                           <?php echo $this->Form->input('role', array(
-                                            'options' => array('professor'=>'Professor',
-                                                               'aluno' => 'Aluno',
-                                                               'bolsista'=>'Bolsista',
-                                                               'admin'=>'Administrador'
-                                                    ), 'class' => 'form-control','label' => false)); ?>
-                                          <!--  <select class="form-control">
-                                              <option></option>
-                                                <option>Professor</option>
-                                                <option>Bolsista</option>
-                                                <option>Aluno</option>
-                                                <option>Administrador</option>
-                                            </select> -->
+                                            'options' => array('Aluno','Professor','Bolsista','Administrador'), 'class' => 'form-control','label' => false)); ?>
                                         </div>
                                     </div>
                                     <div class="ln_solid"></div>
@@ -332,7 +325,7 @@
                                               $options = array('label' => 'Cadastrar', 'class' => 'btn btn-success');
                                               echo $this->Form->end($options);
                                           ?>
-                                          <a class="btn btn-danger" href="/src/users" role="button">Cancelar</a>
+                                          <?php echo $this->Html->link('Cancelar',array('controller' => 'users','action' => 'index'),array('class' => 'btn btn-danger')); ?>
                                         </div>
                                     </div>
                                 </form>
@@ -371,7 +364,7 @@
         <div id="notif-group" class="tabbed_notifications"></div>
     </div>
 
-    <?php 
+    <?php
         echo $this->Html->script('gauge/gauge.min.js');
         echo $this->Html->script('gauge/gauge_demo.js');
         echo $this->Html->script('chartjs/chart.min.js');

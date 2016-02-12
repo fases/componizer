@@ -5,14 +5,8 @@ App::uses('AuthComponent', 'Controller/Component');
         public $validate = array(
           'matricula' => array(
             'required' => array(
-              'rule' => array('notEmpty'),
+              'rule' => 'numeric',
               'message' => 'O campo matrícula é obrigatório!'
-            )
-        ),
-        'matricula' => array(
-            'required' => array(
-                'rule' => array('notEmpty'),
-                'message' => 'O campo Matricula é obrigatório'
             )
         ),
           'nome' => array(
@@ -34,12 +28,17 @@ App::uses('AuthComponent', 'Controller/Component');
             )
           ),
           'role' => array(
-            'valid' => array(
-              'rule' => array('inList', array('admin', 'bolsista', 'professor', 'aluno')),
-              'message' => 'Escolha um tipo de usuário válido',
-              'allowEmpty' => false
-            )
-          )
+            'required' => array(
+              'rule' => array('notEmpty'),
+              'message' => 'Insira uma tipo válido!'
+           )
+          ),
+          'email' => array(
+ 			'email' => array(
+ 				'rule' => array('email'),
+ 				'message' => 'Insira um email válido',
+ 			)
+ 		)
         );
     public function beforeSave($options = array()){
       if(isset($this->data[$this->alias]['password'])){

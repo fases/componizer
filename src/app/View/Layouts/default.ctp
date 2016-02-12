@@ -26,8 +26,9 @@ $cakeDescription = __d('cake_dev', 'Componizer |');
 		<?php // $this->fetch('title'); ?>
 	</title>
 	<?php
-		echo $this->Html->meta('icon');
-
+		//echo $this->Html->meta('icon');
+		 echo $this->Html->meta('componizer_icone.ico','/componizer_icone.ico',array('type' => 'icon'));
+		 
 		//echo $this->Html->css('cake.generic');
 		echo $this->Html->css('bootstrap.min.css');
 		echo $this->Html->css('../fonts/css/font-awesome.min');;
@@ -112,7 +113,7 @@ $cakeDescription = __d('cake_dev', 'Componizer |');
 		</div> -->
 		<div id="content">
 
-			<?php echo $this->Session->flash(); ?>
+			<?php //echo $this->Session->flash(); ?>
 
 			<?php echo $this->fetch('content'); ?>
 		</div>

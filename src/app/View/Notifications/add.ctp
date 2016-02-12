@@ -1,23 +1,27 @@
-<div class="notifications form">
-<?php echo $this->Form->create('Notification'); ?>
-	<fieldset>
-		<legend><?php echo __('Criar Notificação'); ?></legend>
-	<?php
-		echo $this->Form->input('emprestimo_id');
-		echo $this->Form->input('componente_id');
-		echo $this->Form->input('quantidade');
-	?>
-	</fieldset>
-<?php echo $this->Form->end(__('Submit')); ?>
-</div>
-<div class="actions">
-	<h3><?php echo __('Actions'); ?></h3>
-	<ul>
+  <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Componente <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                          <?php echo $this->Form->input('Componente.campo',array('label' => false, 'class' => 'form-control')); ?>
+                                        </div>
+                                    </div>
+                                  <!--  <div class="form-group">
+                                        <div class="col-md-6 col-sm-6 col-xs-3">
 
-		<li><?php echo $this->Html->link(__('Listar Notificação'), array('action' => 'index')); ?></li>
-		<li><?php echo $this->Html->link(__('Listar Emprestimos'), array('controller' => 'emprestimos', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Novo Emprestimo'), array('controller' => 'emprestimos', 'action' => 'add')); ?> </li>
-		<li><?php echo $this->Html->link(__('Listar Componentes'), array('controller' => 'componentes', 'action' => 'index')); ?> </li>
-		<li><?php echo $this->Html->link(__('Novo Componente'), array('controller' => 'componentes', 'action' => 'add')); ?> </li>
-	</ul>
-</div>
+                                            $options = array('label' => 'Buscar', 'class' => 'btn btn-round btn-default', 'url' => array('controller' => 'componentes','action' => 'lista'),'update' => '#ComponenteResultado');
+                                            echo $this->Form->end($options);
+                                         </div>
+                                    </div>-->
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Resultado</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                          <?php echo $this->Form->input('Componente.resultado',array('type' => 'select', 'class' => 'form-control', 'label' => false));?>
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Quantidade <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                          <?php echo $this->Form->input('Componente.quantidade',array('class' => 'form-control','label' =>false,'type' => 'number','placeholder' => 0));?>
+                                        </div>
+                                    </div>

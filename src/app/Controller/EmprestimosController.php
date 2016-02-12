@@ -37,7 +37,7 @@ class EmprestimosController extends AppController{
         $this->request->data['Emprestimo']['notificar'] = 0; // seta Marcador notificar como 'sem'
         $this->loadModel('Notification');
         if (!in_array('Notification',array_keys($this->request->data))) {
-          $this->Session->setFlash(__('Não existem componentes nessa solicitação!'));
+          $this->Session->setFlash('Não existem componentes nessa solicitação!','error');
         }else{
           if ($this->Emprestimo->save($this->request->data['Emprestimo'])) {
             $this->Notification->create();
@@ -46,13 +46,13 @@ class EmprestimosController extends AppController{
             }
             if ($this->Notification->saveMany($this->request->data['Notification'])) {
               $this->Session->delete('lista');
-              $this->Session->setFlash(__('A Solicitação foi salva!'));
+              $this->Session->setFlash('A Solicitação foi salva!','success');
               return $this->redirect(array('action' => 'index'));
             }
-            $this->Session->setFlash(__('A Solicitação não foi salva!'));
+            $this->Session->setFlash('A Solicitação não foi salva!','success');
             return $this->redirect(array('action' => 'index'));
           }
-         $this->Session->setFlash(__('A Solicitação não foi salva!'));
+         $this->Session->setFlash('A Solicitação não foi salva!','error');
         }
       }
     }
@@ -72,31 +72,31 @@ class EmprestimosController extends AppController{
 					     $this->Session->setFlash('A Solicitação foi editada!');
 					     return $this->redirect(array('action' => 'index'));
 				 }
-         $this->Session->setFlash('A Solicitação não foi editada!');
+         $this->Session->setFlash('A Solicitação não foi editada!','success');
 		  }
 	 }
-   
+
    public function notify($id = null){
       $this->Emprestimo->id = $id;
       if(!$this->Emprestimo->exists()){
-          $this->Session->setFlash('Solicitação inexistente!');
+          $this->Session->setFlash('Solicitação inexistente!','error');
           return $this->redirect(array('action' => 'index'));
       }
       if ($this->request->is('get')) {
           $this->request->data = $this->Emprestimo->read();
       } else {
          if ($this->Emprestimo->save($this->request->data)) {
-               $this->Session->setFlash('A Solicitação foi alterada!');
+               $this->Session->setFlash('A Solicitação foi alterada!','success');
                return $this->redirect(array('action' => 'index'));
          }
-         $this->Session->setFlash('A Solicitação não foi alterada!');
+         $this->Session->setFlash('A Solicitação não foi alterada!','error');
       }
    }
 
    public function end($id = null){
       $this->Emprestimo->id = $id;
       if(!$this->Emprestimo->exists()){
-          $this->Session->setFlash('Solicitação inexistente!');
+          $this->Session->setFlash('Solicitação inexistente!','error');
           return $this->redirect(array('action' => 'index'));
       }
       if ($this->request->is('get')) {
@@ -126,7 +126,7 @@ class EmprestimosController extends AppController{
               $valor = $this->Componente->find('first',array('conditions' => array(
                                                             'Componente.id' => $componente_id)
                                                             ,'fields' => array('Componente.quantidade')));
-              
+
               $quantidade = $valor['Componente']['quantidade'];
               $valor = $this->request->data['Componente'][$key]['quantidade'];
               if($valor > 0 && $quantidade >= $valor){
@@ -135,33 +135,35 @@ class EmprestimosController extends AppController{
               }
           }
         if ($this->Emprestimo->save($this->request->data['Emprestimo'])) {
-          $this->Session->setFlash('A Solicitação foi finalizada!');
+          $this->Session->setFlash('A Solicitação foi finalizada!','success');
           return $this->redirect(array('action' => 'index'));
         }else{
-          $this->Session->setFlash('A Solicitação não foi finalizada!');
+          $this->Session->setFlash('A Solicitação não foi finalizada!','error');
         }
       }
     }
    }
-  
+
     public function delete($id) {
       if (!$this->request->is('get')) {
         throw new MethodNotAllowedException();
       }
       if ($this->Emprestimo->delete($id)) {
-        $this->Session->setFlash('A requisição de Id: ' . $id . ' foi deletada.');
+        $this->Session->setFlash('A requisição de Id: ' . $id . ' foi deletada.','success');
         $this->redirect(array('action' => 'index'));
       }
     }
 
     public function profile() {
+      $this->Emprestimo->recursive = 0;
+      $this->set('emprestimos', $this->paginate());
       $this->set('emprestimos',$this->Emprestimo->find('all',array('conditions' => array('Emprestimo.user_id' => $this->Auth->user('id')))));
     }
 
     public function lista($id = null){
       $this->Emprestimo->id = $id;
       if(!$this->Emprestimo->exists()){
-          $this->Session->setFlash('Solicitação inexistente!');
+          $this->Session->setFlash('Solicitação inexistente!','error');
           return $this->redirect(array('action' => 'index'));
       }
       $valor = $this->Emprestimo->find('all',

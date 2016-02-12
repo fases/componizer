@@ -21,7 +21,7 @@
                             <a>
                             <?php
                                 $options = array('label' => 'Entrar', 'class' => 'btn btn-default submit', 'div' => false);
-                                echo $this->Form->end($options); 
+                                echo $this->Form->end($options);
                             ?></a>
                             <a class="reset_pass" href="#">Esqueceu sua senha?</a>
                         </div>

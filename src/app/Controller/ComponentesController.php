@@ -2,7 +2,7 @@
 class ComponentesController extends AppController{
   public $helpers = array('Html', 'Form','Js' => array('Jquery'));
   public $name = 'Componentes';
-  public $components = array('RequestHandler','Paginator');
+  public $components = array('RequestHandler','Paginator','Upload');
   public $paginate = array(
       'limit' => 25,
       'order' => array(
@@ -35,10 +35,10 @@ class ComponentesController extends AppController{
         $this->Componente->create();
         // $this->Componente->request->data['Componente']['datasheet'] = 'src/files/'.$this->data['Componente']['datasheet']['name'];
         if ($this->Componente->save($this->request->data)) {
-         $this->Session->setFlash(__('O Componente foi salvo!'));
+         $this->Session->setFlash('O Componente foi salvo!','success');
          return $this->redirect(array('action' => 'index'));
         }
-        $this->Session->setFlash(__('O Componente não foi salvo!'));
+        $this->Session->setFlash('O Componente não foi salvo!','error');
       }
     }
 }
@@ -46,12 +46,13 @@ class ComponentesController extends AppController{
     if ($this->request->is('ajax')) {
       $this->layout = 'ajax';
       // $this->Session->delete('lista');
-      $this->set('options',$this->Componente->find('list',array('conditions' => array('Componente.nome LIKE' => '%'.$this->request->data['Componente']['campo'].'%'),
+      $this->set('options',$this->Componente->find('list',array('conditions' => array('Componente.nome LIKE' => '%'.$this->request->data['campo'].'%'),
             'fields' => array('Componente.id','Componente.nome'))));
     }else{
       return $this->redirect(array('controller' => 'notifications','action' => 'index'));
     }      
   }
+
   public function add_list(){
     if($this->request->is('ajax')){
         $this->layout = 'ajax';
@@ -72,7 +73,21 @@ class ComponentesController extends AppController{
           if($existe_componente == false){ //Adiciona campos se o id não existe
             $lista_componentes[$id] = array($nome,$quantidade);
             $this->Session->write('lista',$lista_componentes);
-            $this->set('componentes',$lista_componentes);  
+            $this->set('componentes',$lista_componentes); 
+            //Verifica se existem o componente no estoque
+            $quant = $this->Componente->find('all',array('conditions' => array('Componente.id' => $id),'fields' => 'Componente.quantidade'));
+            if($quant < $quantidade){
+              //talvez não exista componentes 
+              //td class danger
+              /* $indicador = 0
+              $lista_componentes[$id] = array($nome,$quantidade,$indicador); */
+            }else{
+              //Existe componentes
+              //td class success
+              /* $indicador = 1
+              $lista_componentes[$id] = array($nome,$quantidade,$indicador); */
+              /*Na view <td class="<?php if($componente[2]==0?'danger':'success'); ?>"> */
+            }
           }else{
             $this->set('componentes',$lista_componentes);
             $this->set('aviso','O Componente solicitado está incluso na lista!');
@@ -119,7 +134,7 @@ class ComponentesController extends AppController{
         $this->request->data = $this->Componente->read();
     } else {
        if ($this->Componente->save($this->request->data)) {
-             $this->Session->setFlash('O Componente foi editado!');
+             $this->Session->setFlash('O Componente foi editado!','success');
              $this->redirect(array('action' => 'index'));
        }
     }
@@ -129,7 +144,7 @@ class ComponentesController extends AppController{
      throw new MethodNotAllowedException();
    }
    if ($this->Componente->delete($id)) {
-     $this->Session->setFlash('O Componente de Id: ' . $id . ' foi deletado.');
+     $this->Session->setFlash('O Componente de Id: ' . $id . ' foi deletado.','success');
      $this->redirect(array('action' => 'index'));
    }
  }
@@ -140,6 +155,42 @@ class ComponentesController extends AppController{
         $componente = $this->paginate('Componente');
       }
       $this->set('componentes', $componente);
+}
+
+public function upload($id = null){
+  $this->Componente->id = $id;
+  if(!$this->Componente->exists()){
+    $this->Session->setFlash('Componente inexistente!','error');
+    return $this->redirect(array('action' => 'index'));
+  }
+  $this->set('componente',$this->Componente->find('first',array('conditions' => array('Componente.id' => $id),'fields' => 'Componente.nome')));
+  if(!empty($this->request->data)){
+    $this->Upload->upload($this->request->data['Componente']['datasheet']);
+    if(is_null($this->request->data['Componente']['datasheet'])){
+      $this->Session->setFlash('Não foi anexado nenhum arquivo!','error');
+      return $this->redirect(array('action' => 'index'));
+    }
+    $arquivo = '/src/files/datasheet/'.$this->request->data['Componente']['datasheet']['name'];
+    if($this->Componente->saveField('datasheet',$arquivo)){
+      $this->Session->setFlash('Anexo adicionado com sucesso!','success');
+      return $this->redirect(array('action' => 'index'));
+    }
+  }
+}
+
+public function datasheets(){
+  $this->set('componentes',$this->Componente->find('all',array('conditions' => array('Componente.datasheet is not null'),
+    'fields' => array('Componente.nome','Componente.datasheet'))));
+}
+
+public function download($id = null){
+      $resultado = $this->Componente->find('first',array('conditions' => array('Componente.id' => $id),
+        'fields' => 'Componente.datasheet'));
+      $this->response->file(
+        $resultado['Componente']['datasheet'],
+        array('download' => true, 'name' => $resultado['Componente']['nome'])
+    );
+    $this->render(false);
 }
 }
 ?>
