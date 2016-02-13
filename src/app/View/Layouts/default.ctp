@@ -28,8 +28,45 @@ $cakeDescription = __d('cake_dev', 'Componizer |');
 	<?php
 		//echo $this->Html->meta('icon');
 		 echo $this->Html->meta('componizer_icone.ico','/componizer_icone.ico',array('type' => 'icon'));
-		 
+
 		//echo $this->Html->css('cake.generic');
+		//echo $this->Html->css('../home/css');
+		echo $this->Html->css('../home/css/animate.css');
+		echo $this->Html->css('../home/css/bootstrap.css');
+		echo $this->Html->css('../home/css/bootstrap.css.map');
+		echo $this->Html->css('../home/css/bootstrap.min.css');
+		echo $this->Html->css('../home/css/custom.css');
+		echo $this->Html->css('../home/css/font-awesome.css');
+		echo $this->Html->css('../home/css/jquery.fancybox.css');
+		echo $this->Html->css('../home/css/owl.carousel.css');
+		echo $this->Html->css('../home/css/owl.theme.css');
+		echo $this->Html->css('../home/css/style.blue.css');
+		echo $this->Html->css('../home/css/style.default.css');
+		echo $this->Html->css('../home/css/style.green.css');
+		echo $this->Html->css('../home/css/style.pink.css');
+		echo $this->Html->css('../home/css/style.red.css');
+		echo $this->Html->css('../home/css/style.violet.css');
+		echo $this->Html->css('../home/css/fonts/fontawesome-webfont.eot');
+		echo $this->Html->css('../home/css/fonts/fontawesome-webfont.svg');
+		echo $this->Html->css('../home/css/fonts/fontawesome-webfont.ttf');
+		echo $this->Html->css('../home/css/fonts/fontawesome-webfont.woff');
+		echo $this->Html->css('../home/css/fonts/FontAwesome.ott');
+		//
+		echo $this->Html->script('../home/js/bootstrap.min.js');
+		echo $this->Html->script('../home/js/front.js');
+		echo $this->Html->script('../home/js/gmaps.js');
+		echo $this->Html->script('../home/js/jquery-1.11.0.min.js');
+		echo $this->Html->script('../home/js/jquery.cookie.js');
+		echo $this->Html->script('../home/js/jquery.counterup.min.js');
+		echo $this->Html->script('../home/js/jquery.parallax-1.1.3.js');
+		echo $this->Html->script('../home/js/jquery.scrollTo.min.js');
+		echo $this->Html->script('../home/js/main.js');
+		echo $this->Html->script('../home/js/mansonry.pkgd.min.js');
+		echo $this->Html->script('../home/js/modernizr-2.6.2.min.js');
+		echo $this->Html->script('../home/js/owl.carousel.min.js');
+		echo $this->Html->script('../home/js/respond.min.js');
+		echo $this->Html->script('../home/js/waypoints.min.js');
+		//
 		echo $this->Html->css('bootstrap.min.css');
 		echo $this->Html->css('../fonts/css/font-awesome.min');;
 		echo $this->Html->css('../fonts/css/font-awesome');
@@ -54,6 +91,8 @@ $cakeDescription = __d('cake_dev', 'Componizer |');
 		echo $this->Html->script('custom.js');
 		echo $this->Html->script('moment.min.js');
 		echo $this->Html->script('nprogress.js');
+		echo $this->Html->script('flot/jquery.flot.orderBars.js');
+
 		/* pasta auto complete
 		echo $this->Html->script('autocomplete/countries.js');
 		echo $this->Html->script('autocomplete/jquery.autocomplete.js');
