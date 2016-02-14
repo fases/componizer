@@ -126,11 +126,13 @@ class UsersController extends AppController {
     }
 
     public function login() {
+        $this->layout = 'home';
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
                 $this->redirect($this->Auth->redirect());
             } else {
-                $this->Session->setFlash('Usuário ou senha inválido. Tente novamente.','error');
+                $this->Session->setFlash('Usuário ou senha inválida(o). Tente novamente.','home_error');
+                return $this->redirect(array('action' => 'login#login'));
             }
         }
     }
