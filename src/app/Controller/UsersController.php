@@ -131,8 +131,8 @@ class UsersController extends AppController {
             if ($this->Auth->login()) {
                 $this->redirect($this->Auth->redirect());
             } else {
-                $this->Session->setFlash('Usuário ou senha inválida(o). Tente novamente.','home_error');
-                return $this->redirect(array('action' => 'login#login'));
+                $this->Session->setFlash('Usuário ou senha inválido. Tente novamente.','home_error');
+                $this->redirect(array('action' => 'login#contact'));
             }
         }
     }

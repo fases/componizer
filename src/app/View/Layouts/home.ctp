@@ -50,7 +50,7 @@ $cakeDescription = __d('cake_dev', 'Componizer |');
 		echo $this->Html->css('../fonts/css/font-awesome');
 		//
 		echo $this->Html->script('../home/js/bootstrap.min.js');
-		// echo $this->Html->script('../home/js/front.js');
+		echo $this->Html->script('../home/js/front.js');
 		echo $this->Html->script('../home/js/gmaps.js');
 		echo $this->Html->script('../home/js/jquery-1.11.0.min.js');
 		echo $this->Html->script('../home/js/jquery.cookie.js');

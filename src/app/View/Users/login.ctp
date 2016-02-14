@@ -86,7 +86,7 @@ _________________________________________________________ -->
                     </li>
                     <li><a href="#customers">Clients</a>-->
                     </li>
-                    <li><a href="#login">Login</a>
+                    <li><a href="#contact">Login</a>
                     </li>
                 </ul>
             </div>
@@ -693,7 +693,7 @@ _________________________________________________________ -->
         <!-- *** CONTACT ***
 _________________________________________________________ -->
 
-<div class="section contact" id="login" data-animate="bounceIn">
+<div class="section contact" id="contact" data-animate="bounceIn">
     <div class="container">
         <div class="col-md-12">
 
@@ -723,10 +723,11 @@ _________________________________________________________ -->
                                   <?php echo $this->Form->input('password',array('class' => 'form-control','placeholder'=> 'Senha','label' => false)); ?>
                                 </div>
                                 <div class="col-md-12 text-center">
+                                  <a>
                                   <?php
                                       $options = array('label' => 'Entrar', 'class' => 'btn btn-info btn-lg', 'div' => false);
                                       echo $this->Form->end($options);
-                                  ?>
+                                  ?></a>
                                 </div>
                                 <div class="pull-right">
                                   <?php echo $this->Html->link(__('Esqueceu sua senha?'), array('controller' => 'users','action' => 'recovery'));?>
@@ -801,6 +802,43 @@ _________________________________________________________ -->
     <!-- #### JAVASCRIPT FILES ### -->
 
     <!-- js base -->
+    <script src="../home/js/jquery-1.11.0.min.js"></script>
+    <script src="../home/js/bootstrap.min.js"></script>
+
+    <!-- for demo purpose -->
+    <script src="../home/js/jquery.cookie.js"></script>
+
+    <!-- waypoints for scroll spy -->
+    <script src="../home/js/waypoints.min.js"></script>
+
+    <!-- maps -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+    <script src="../home/js/gmaps.js"></script>
+
+    <!-- masonry layout -->
+    <script src="../home/js/masonry.pkgd.min.js"></script>
+
+    <!-- owl carousel -->
+    <script src="../home/js/owl.carousel.min.js"></script>
+
+
+    <!-- jQuery scroll to -->
+    <script src="../home/js/jquery.scrollTo.min.js"></script>
+
+    <!-- jQuery counter -->
+    <script src="../home/js/jquery.counterup.min.js"></script>
+
+    <!-- jQuery parallax -->
+    <script src="../home/js/jquery.parallax-1.1.3.js"></script>
+
+    <!-- main js file -->
+
+    <script src="../home/js/front.js"></script>
+
+
+
+
+
 </body>
 
 </html>
