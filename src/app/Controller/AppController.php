@@ -35,13 +35,13 @@ class AppController extends Controller {
     public $components = array(
         'Session',
         'Auth' => array(
-            'loginRedirect' => array('controller' => 'users', 'action' => 'index'),
+            'loginRedirect' => array('controller' => 'emprestimos', 'action' => 'profile'),
             'logoutRedirect' => array('controller' => 'users', 'action' => 'login')
         )
     );
 
     function beforeFilter() {
-        $this->Auth->allow('index', 'add', 'view', 'edit', 'search');
+        $this->Auth->allow('login', 'recovery');
     }
 
     function beforeRender() {

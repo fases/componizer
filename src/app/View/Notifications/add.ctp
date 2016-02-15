@@ -226,6 +226,7 @@
                           </div>
                       </div>
                   </div> -->
+                      <?php echo $this->Session->flash(); ?>
                 </div>
                 </div>
                 <div class="row">
@@ -233,12 +234,11 @@
                     <div class="col-md-6 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                    <?php echo $this->Session->read('Emprestimo_id'); ?>
                                     <h2>Buscar Componentes</h2>
                                     <div class="clearfix"></div>
                                 </div>
                             <div class="x_content">
-                                    <?php echo $this->Form->create('Notification',array('action' => 'add')); ?>
+                                    <?php echo $this->Form->create('Componente',array('action' => 'lista')); ?>
                                     <!--<p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a>
                                     </p> -->
                                     <!--<span class="section">Personal Info</span>-->
@@ -249,12 +249,17 @@
                                                     array('class' => 'form-control','placeholder' => 'buscar componentes','label' => false)); ?>
                                                     <span class="input-group-btn">
                                             <!-- <button type="button" class="btn btn-primary">Go!</button> -->
-                                            <?php echo $this->Js->submit('Buscar',array('url' => array('controller' => 'componentes','action' => 'lista'),'update' => '#itens','class' => 'btn btn-primary','div' => false)); ?>
+                                            <?php echo $this->Js->submit('Buscar',array('url' => array('controller' => 'componentes','action' => 'lista'),'update' => '#itens','class' => 'btn btn-primary','div' => false)); 
+                                            //     $options = array('label' => 'fechar');
+                                            // echo $this->Form->end($options);
+                                            ?>
+
                                         </span>
                                     </div>
                                     <div id="itens">
                                     </div>
                                     </div>
+                                  </form>
                                     </div>
                             </div>
                         </div>
@@ -268,6 +273,7 @@
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
+                              <?php echo $this->Form->create('Notification',array('action' => 'add')); ?>
                               <div id="car">
                               <table class="table table-hover">
                                         <thead>
@@ -301,7 +307,9 @@
                                               <?php 
                                               
                                               $options = array('label' => 'Concluir', 'class' => 'btn btn-success','div' => false);
-                                              echo $this->Form->end($options);
+                                              echo $this->Form->end($options); 
+                  echo $this->Html->script('jquery');
+                  echo $this->Js->writeBuffer();
                                               echo $this->Html->link('Cancelar',array('controller' => 'emprestimos','action' => 'profile'),array('class' => 'btn btn-danger'));
                                             //} ?>
                                             </div>

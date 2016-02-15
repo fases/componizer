@@ -47,6 +47,11 @@ class Emprestimo extends AppModel {
             'rule' => 'notEmpty',
             'required' => true,
             'message' => 'É necessário associar a um usuário!'
+        ),
+        'data_emprestimo' => array(
+            'rule' => 'notEmpty',
+            'required' => true,
+            'message' => 'Insira uma data válida!'
         )
     );
 
