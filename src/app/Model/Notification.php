@@ -7,7 +7,6 @@ class Notification extends AppModel {
             'className' => 'Emprestimo',
             'foreignKey' => 'emprestimo_id',
             'conditions' => '',
-            'dependent' => true,
             'fields' => ''
         ),
         'Componente' => array(

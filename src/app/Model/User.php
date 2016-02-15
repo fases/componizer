@@ -2,6 +2,14 @@
 App::uses('AuthComponent', 'Controller/Component');
     class User extends AppModel{
         public $name = 'User';
+        public $hasMany = array('Emprestimo' => array(
+            'className' => 'Emprestimo',
+            'foreignKey' => 'user_id',
+            'conditions' => '',
+            'dependent' => true,
+            'fields' => ''
+        ));
+
         public $validate = array(
           'matricula' => array(
             'required' => array(

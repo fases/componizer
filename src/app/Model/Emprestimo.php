@@ -7,14 +7,13 @@ class Emprestimo extends AppModel {
             'className' => 'Notification',
             'foreignKey' => 'emprestimo_id',
             'conditions' => '',
-            'dependent' => false,
+            'dependent' => true,
             'fields' => ''
         ));
     public $belongsTo = array('User' => array(
             'className' => 'User',
             'foreignKey' => 'user_id',
             'conditions' => '',
-            'dependent' => true,
             'fields' => array('id', 'nome')
         ),
         'Laboratorio' => array(

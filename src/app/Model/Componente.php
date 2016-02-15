@@ -14,6 +14,13 @@ class Componente extends AppModel{
              'conditions' => '',
              'fields' => array('id','nome')
       ));
+      public $hasMany = array('Notification' => array(
+            'className' => 'Notification',
+            'foreignKey' => 'componente_id',
+            'conditions' => '',
+            'dependent' => true,
+            'fields' => ''
+        ));
       public $validate = array(
       'nome' => array(
         'rule' => 'notEmpty',
