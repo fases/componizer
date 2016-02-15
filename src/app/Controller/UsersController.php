@@ -131,8 +131,8 @@ class UsersController extends AppController {
             if ($this->Auth->login()) {
                 $this->redirect($this->Auth->redirect());
             } else {
-                $this->Session->setFlash('Usuário ou senha inválido. Tente novamente.','home_error');
-                $this->redirect(array('action' => 'login#contact'));
+                $this->Session->setFlash('Usuário ou senha inválida(o). Tente novamente.','home_error');
+                return $this->redirect(array('action' => 'login#login'));
             }
         }
     }
@@ -142,6 +142,7 @@ class UsersController extends AppController {
     }
 
     public function recovery() {
+        $this->layout = 'home';
         if ($this->request->is('post')) {
             $user = $this->User->find('first', array('conditions' => array('User.matricula' => $this->request->data['User']['matricula'],
                     'User.email' => $this->request->data['User']['email'])));
@@ -155,11 +156,11 @@ class UsersController extends AppController {
                 $this->User->query("UPDATE users SET password = '$password' WHERE id = '$usuario'");
                 //Envia email
                 $Email = new CakeEmail('gmail');
-                $Email->from(array('arthurpdb8@gmail.com' => 'Arthur'));
+                $Email->from(array('componizer.gerenciamento@gmail.com' => 'Componizer - Sistema de gerenciamento online para componentes eletrônicos'));
                 $Email->to($user['User']['email']);
                 $Email->subject('Recuperação de senha do Componizer');
                 $Email->send('Sua senha nova é: ' . $password);
-                $this->Session->setFlash('A senha foi enviada ao seu email!');
+                $this->Session->setFlash('A senha foi enviada para o seu email!');
                 return $this->redirect(array('action' => 'login'));
             }
         }

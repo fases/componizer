@@ -51,6 +51,10 @@
 
     <!-- *** NAVBAR ***
 _________________________________________________________ -->
+    <div>
+    <br>
+    <br>
+    </div>
 
     <div class="navbar navbar-default navbar-fixed-top" role="navigation" id="navbar">
         <div class="container">
@@ -67,14 +71,14 @@ _________________________________________________________ -->
                 <div class="col-md-8">
                 <a class="navbar-brand scrollTo" href="#intro" style="color: #094377;">
                 Componizer</a>
-              </div>
-            </div>
+                </div>
+                </div>
             </div>
 
             <div class="navbar-collapse collapse" id="navigation">
 
-                <!--<ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="#intro">Inicial</a>
+                <ul class="nav navbar-nav navbar-right">
+                    <!--<li class="active"><a href="#intro">Inicial</a>
                     </li>
                     <li><a href="#about">Sobre</a>
                     </li>
@@ -87,8 +91,8 @@ _________________________________________________________ -->
                     <li><a href="#customers">Clients</a>
                     </li>
                     <li><a href="#contact">Login</a>
-                    </li>
-                </ul>-->
+                    </li>-->
+                </ul>
             </div>
             <!--/.nav-collapse -->
 
@@ -104,7 +108,6 @@ _________________________________________________________ -->
 
         <!-- *** INTRO IMAGE ***
 _________________________________________________________ -->
-
 <!--_________________________________________________________ -->
 
 <div class="section contact" id="contact" data-animate="bounceIn">
@@ -115,14 +118,12 @@ _________________________________________________________ -->
             <h2 class="title">RECUPERAR SENHA</h2>
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
-            <div class="alert alert-info" role="alert">Usuário/Senha inválida</div>
+            <?php echo $this->Session->flash(); ?>
             </div>
-          </div>
+            </div>
             <div class="row">
 
                 <div class="col-md-8 col-md-offset-2">
-                    <form id="contact-form" method="post" action="contact.php">
-
                         <div class="messages">
 
                         </div>
@@ -131,7 +132,6 @@ _________________________________________________________ -->
                           <?php echo $this->Form->create('User',array('action' => 'recovery'));?>
                             <div class="row">
                               <div>
-                                <?php echo $this->Session->flash(); ?>
                               </div>
                                 <div class="col-md-12">
                                   <?php echo $this->Form->input('matricula',array('class' => 'form-control','placeholder'=> 'Matricula','label' => false)); ?>
@@ -142,7 +142,7 @@ _________________________________________________________ -->
                                 <div class="col-md-12 text-center">
                                   <a>
                                   <?php
-                                      $options = array('label' => 'Entrar', 'class' => 'btn btn-info btn-lg', 'div' => false);
+                                      $options = array('label' => 'Enviar', 'class' => 'btn btn-info btn-lg', 'div' => false);
                                       echo $this->Form->end($options);
                                   ?></a>
                                 </div>
@@ -151,8 +151,6 @@ _________________________________________________________ -->
                                 </div>-->
                             </div>
                         </div>
-
-                    </form>
                 </div>
 
             </div>

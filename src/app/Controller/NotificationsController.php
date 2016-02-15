@@ -1,6 +1,6 @@
 <?php
 class NotificationsController extends AppController{
-    public $helpers = array('Html','Form','Js' => array('Jquery'));
+    public $helpers = array('Html','Form','Js' => array('jquery'));
     public $name = 'Notifications';
     public $components = array('RequestHandler','Paginator');
     public $paginate = array(
@@ -23,18 +23,25 @@ class NotificationsController extends AppController{
     }
 
     public function add(){
+        // debug($this->Session->read('Emprestimo_id'));
+        // debug($this->request->data['Notification']);
+        if(!$this->Session->check('Emprestimo_id')){
+          return $this->redirect(array('action' => 'index'));
+        }
         if ($this->request->is('post')) {
           $this->Notification->create();
-        if ($this->Notification->save($this->request->data)) {
-          $this->Session->setFlash(__('The notification has been saved.'));
-          return $this->redirect(array('action' => 'index'));
-        } else {
-          $this->Session->setFlash(__('The notification could not be saved. Please, try again.'));
+            foreach ($this->request->data['Notification'] as $key => $value) {
+              $this->request->data['Notification'][$key]['emprestimo_id'] = $this->Session->read('Emprestimo_id');
+              $this->Session->delete('Emprestimo_id');
+            }
+            if ($this->Notification->saveMany($this->request->data['Notification'])) {
+              $this->Session->delete('lista');
+              $this->Session->setFlash(__('A Solicitação foi salva!'));
+              return $this->redirect(array('action' => 'index'));
+            }
+            $this->Session->setFlash(__('A Solicitação não foi salva!'));
+            return $this->redirect(array('action' => 'index'));
         }
-      }
-      $emprestimos = $this->Notification->Emprestimo->find('list');
-      $componentes = $this->Notification->Componente->find('list');
-      $this->set(compact('emprestimos', 'componentes'));
     }
 
     public function edit($id = null) {

@@ -35,27 +35,26 @@ class EmprestimosController extends AppController{
         $this->Emprestimo->create();
         $this->request->data['Emprestimo']['estado'] = 0; // seta Requisição com estado Aberta
         $this->request->data['Emprestimo']['notificar'] = 0; // seta Marcador notificar como 'sem'
-        $this->loadModel('Notification');
-        if (!in_array('Notification',array_keys($this->request->data))) {
-          $this->Session->setFlash('Não existem componentes nessa solicitação!','error');
-        }else{
+        // if (!in_array('Notification',array_keys($this->request->data))) {
+        //   $this->Session->setFlash('Não existem componentes nessa solicitação!','error');
+        // }else{
           if ($this->Emprestimo->save($this->request->data['Emprestimo'])) {
-            $this->Notification->create();
-            foreach ($this->request->data['Notification'] as $key => $value) {
-              $this->request->data['Notification'][$key]['emprestimo_id'] = $this->Emprestimo->id;
-            }
-            if ($this->Notification->saveMany($this->request->data['Notification'])) {
-              $this->Session->delete('lista');
-              $this->Session->setFlash('A Solicitação foi salva!','success');
-              return $this->redirect(array('action' => 'index'));
-            }
-            $this->Session->setFlash('A Solicitação não foi salva!','success');
-            return $this->redirect(array('action' => 'index'));
+            $this->Session->write('Emprestimo_id',$this->Emprestimo->id);
+            // $this->Notification->create();
+            // foreach ($this->request->data['Notification'] as $key => $value) {
+            //   $this->request->data['Notification'][$key]['emprestimo_id'] = $this->Emprestimo->id;
+            // }
+            // if ($this->Notification->saveMany($this->request->data['Notification'])) {
+            //   $this->Session->delete('lista');
+            //   $this->Session->setFlash('A Solicitação foi salva!','success');
+            //   return $this->redirect(array('action' => 'index'));
+            // }
+            $this->Session->setFlash('A Solicitação foi salva! Agora insira os componentes desejados','success');
+            return $this->redirect(array('controller' => 'notifications','action' => 'add'));
           }
-         $this->Session->setFlash('A Solicitação não foi salva!','error');
+          $this->Session->setFlash('A Solicitação não foi salva!','error');
         }
       }
-    }
 
     public function edit($id = null) {
       $this->Emprestimo->id = $id;

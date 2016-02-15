@@ -1,6 +1,6 @@
 <?php
 class ComponentesController extends AppController{
-  public $helpers = array('Html', 'Form','Js' => array('Jquery'));
+  public $helpers = array('Html', 'Form','Js' => array('jquery'));
   public $name = 'Componentes';
   public $components = array('RequestHandler','Paginator','Upload');
   public $paginate = array(
@@ -46,55 +46,39 @@ class ComponentesController extends AppController{
     if ($this->request->is('ajax')) {
       $this->layout = 'ajax';
       // $this->Session->delete('lista');
-      $this->set('options',$this->Componente->find('list',array('conditions' => array('Componente.nome LIKE' => '%'.$this->request->data['campo'].'%'),
-            'fields' => array('Componente.id','Componente.nome'))));
+      $this->set('componentes',$this->Componente->find('all',array('conditions' => array('Componente.nome LIKE' => '%'.$this->request->data['Componente']['campo'].'%'))));
     }else{
-      return $this->redirect(array('controller' => 'notifications','action' => 'index'));
+      return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
     }      
   }
 
-  public function add_list(){
+  public function add_list($componente_id = null){
     if($this->request->is('ajax')){
         $this->layout = 'ajax';
-        $id = $this->request->data['Componente']['resultado'];
-        $query = $this->Componente->find('first',array('conditions' => array('Componente.id' => $this->request->data['Componente']['resultado']),
+        $query = $this->Componente->find('first',array('conditions' => array('Componente.id' => $componente_id),
                                   'fields' => 'Componente.nome'));
         $nome = $query['Componente']['nome'];
-        $quantidade = $this->request->data['Componente']['quantidade'];
-        
         $existe_componente = false;
         if($this->Session->check('lista')){ //Verifica se sessão existe
           $lista_componentes = $this->Session->read('lista');
           foreach ($lista_componentes as $key => $value) {
-            if($key == $this->request->data['Componente']['resultado']){
+            if($key == $componente_id){
               $existe_componente = true; //Verifica se já existe o id 
             }
           }
           if($existe_componente == false){ //Adiciona campos se o id não existe
-            $lista_componentes[$id] = array($nome,$quantidade);
+            $quantidade = 0;
+            $lista_componentes[$componente_id] = array($nome,$quantidade);
             $this->Session->write('lista',$lista_componentes);
             $this->set('componentes',$lista_componentes); 
             //Verifica se existem o componente no estoque
-            $quant = $this->Componente->find('all',array('conditions' => array('Componente.id' => $id),'fields' => 'Componente.quantidade'));
-            if($quant < $quantidade){
-              //talvez não exista componentes 
-              //td class danger
-              /* $indicador = 0
-              $lista_componentes[$id] = array($nome,$quantidade,$indicador); */
-            }else{
-              //Existe componentes
-              //td class success
-              /* $indicador = 1
-              $lista_componentes[$id] = array($nome,$quantidade,$indicador); */
-              /*Na view <td class="<?php if($componente[2]==0?'danger':'success'); ?>"> */
-            }
           }else{
             $this->set('componentes',$lista_componentes);
             $this->set('aviso','O Componente solicitado está incluso na lista!');
           }
         }else{ // Adiciona $campos do form na array para depois incluir na session
           $lista_componentes = array();
-          $lista_componentes[$id] = array($nome,$quantidade);
+          $lista_componentes[$componente_id] = array($nome,0);
           $this->Session->write('lista',$lista_componentes);
           $this->set('componentes',$lista_componentes);
         }
