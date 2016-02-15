@@ -74,7 +74,7 @@ _________________________________________________________ -->
             <div class="navbar-collapse collapse" id="navigation">
 
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="#introd">Inicial</a>
+                    <li class="active"><a href="#intro">Inicial</a>
                     </li>
                     <li><a href="#about">Sobre</a>
                     </li>
@@ -104,19 +104,19 @@ _________________________________________________________ -->
 
         <!-- *** INTRO IMAGE ***
 _________________________________________________________ -->
-        <div id="introd" class="clearfix">
+        <!-- <div id="intro" class="clearfix">
             <div class="item">
                 <div class="container">
                     <div class="row">
-                        <div class="carousel-caption"><!-- s -->
-                            <h1 data-animate="fadeInDown">Componizer!</h1>
-                            <h2 data-animate="slideInUp">Gerenciamento online para componentes eletrônicos.</h2>
+                        <div class="carousel-caption"> -->
+                        <div id="intro">
+                             <?php echo $this->Html->image('../home/img/home2.jpg',array('class' => 'img img-responsive')); ?>
                         </div>
+                        <!-- </div>
                     </div>
                 </div>
             </div>
-        </div>
-
+        </div> -->
         <!-- *** INTRO IMAGE END *** -->
 
         <!-- *** ABOUT ***
@@ -210,7 +210,7 @@ _________________________________________________________ -->
                     </div>
 
                     <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 mt-big" data-animate="bounceIn">
-                        <img src="../home/img/logo.jpg" class="image img-responsive" alt="This is me - IT worker">
+                        <?php echo $this->Html->image('../home/img/logo.jpg',array('class' => 'img img-responsive')); ?>
                     </div>
                 </div>
             </div>
