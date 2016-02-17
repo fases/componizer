@@ -80,13 +80,23 @@ _________________________________________________________ -->
                     </li>
                     <li><a href="#services">Serviços</a>
                     </li>
-                    <!--<li><a href="#testimonials">Login</a>
-                    </li>
-                    <li><a href="#references">My work</a>
-                    </li>
-                    <li><a href="#customers">Clients</a>-->
-                    </li>
                     <li><a href="#login">Login</a>
+                    </li>
+                    <li>
+                      <div class="navbar-collapse collapse" id="navigation">
+                        <?php echo $this->Form->create('User',array('action' => 'login'));?>
+                              <ul class="nav navbar-nav navbar-right">
+                                <li><?php echo $this->Form->input('username',array('class' => 'formulario','placeholder'=> 'Usuário','label' => false));?></li>
+                                <li> <?php echo $this->Form->input('password',array('class' => 'formulario','placeholder'=> 'Senha','label' => false)); ?></li>
+                                <li><?php
+                                    $options = array('label' => 'Entrar', 'class' => 'botao', 'div' => false);
+                                    echo $this->Form->end($options);
+                                ?></li>
+                              <div>
+                                <?php echo $this->Html->link(__('Esqueceu sua senha?'), array('controller' => 'users','action' => 'recovery'));?>
+                              </div>
+                              </ul>
+                      </div>
                     </li>
                 </ul>
             </div>
