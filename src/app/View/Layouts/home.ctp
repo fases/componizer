@@ -42,10 +42,10 @@ $cakeDescription = __d('cake_dev', 'Componizer |');
 		echo $this->Html->css('../home/css/owl.theme.css');
 		echo $this->Html->css('../home/css/style.blue.css');
 		echo $this->Html->css('../home/css/style.default.css');
-		echo $this->Html->css('../home/css/style.green.css');
-		echo $this->Html->css('../home/css/style.pink.css');
-		echo $this->Html->css('../home/css/style.red.css');
-		echo $this->Html->css('../home/css/style.violet.css');
+		// echo $this->Html->css('../home/css/style.green.css');
+		// echo $this->Html->css('../home/css/style.pink.css');
+		// echo $this->Html->css('../home/css/style.red.css');
+		// echo $this->Html->css('../home/css/style.violet.css');
 		echo $this->Html->css('../fonts/css/font-awesome.min');;
 		echo $this->Html->css('../fonts/css/font-awesome');
 		//

@@ -32,6 +32,10 @@ class UsersController extends AppController {
     }
 
     public function add() {
+        if($this->Auth->user('role') < 1){
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
+            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        }
         if ($this->request->is('post')) {
             $this->User->create();
             if ($this->request->data['User']['password'] == $this->request->data['User']['confsenha']) {
@@ -63,6 +67,10 @@ class UsersController extends AppController {
     }
 
     public function edit_profile($id = null) {
+        if($this->Auth->user('id') != $id && $this->Auth->user('role') < 3){
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
+            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        }
         $this->User->id = $id;
         if (!$this->User->exists()) {
             $this->Session->setFlash("Usuário escolhido é inválido!", 'error');
@@ -102,7 +110,7 @@ class UsersController extends AppController {
                 $this->request->data['User']['password'] = $this->request->data['User']['novasenha'];
                 if ($this->User->save($this->request->data)) {
                     $this->Session->setFlash('Senha alterada com sucesso!', 'success');
-                    $this->redirect(array('controller' => 'emprestimo', 'action' => 'profile'));
+                    $this->redirect(array('controller' => 'emprestimos', 'action' => 'profile'));
                 }
             } else {
                 $this->Session->setFlash('Por favor, digite corretamente as senhas!', 'error');

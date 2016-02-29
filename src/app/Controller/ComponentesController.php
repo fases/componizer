@@ -18,15 +18,27 @@ class ComponentesController extends AppController {
     }
 
     public function index() {
+        if($this->Auth->user('role') < 1){
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
+            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        }
         $this->Componente->recursive = 0;
         $this->set('componentes', $this->paginate());
     }
 
     public function view($id) {
+        if($this->Auth->user('role') < 1){
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
+            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        }
         $this->set('componentes', $this->Componente->findById($id));
     }
 
     public function add($subcategoria_id = null) {
+        if($this->Auth->user('role') < 1){
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
+            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        }
         if (is_null($subcategoria_id)) {
             $this->set('categoria', $this->Componente->Categoria->find('list', array('fields' => array('Categoria.id', 'Categoria.nome'))));
             $this->set('subcategoria', $this->Componente->Subcategoria->find('list', array('fields' => array('Subcategoria.id', 'Subcategoria.nome'))));
@@ -115,6 +127,10 @@ class ComponentesController extends AppController {
     }
 
     public function edit($id = null) {
+        if($this->Auth->user('role') < 1){
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
+            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        }
         $this->Componente->id = $id;
         if (!$this->Componente->exists()) {
             $this->Session->setFlash('Componente inexistente!');
@@ -152,6 +168,10 @@ class ComponentesController extends AppController {
     }
 
     public function upload($id = null) {
+        if($this->Auth->user('role') < 1){
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
+            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        }
         $this->Componente->id = $id;
         if (!$this->Componente->exists()) {
             $this->Session->setFlash('Componente inexistente!', 'error');

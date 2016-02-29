@@ -24,7 +24,7 @@
                   </li>
               </ul>
           </li>
-          <li><a><i class="fa fa-circle"></i> Cadastrar <span class="fa fa-chevron-down"></span></a>
+          <li><a><i class="fa fa-plus-square"></i> Cadastrar <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu" style="display: none">
                   <li><?php echo $this->Html->link(__('Categorias'), array('controller' => 'categorias','action' => 'add')); ?>
                   </li>
@@ -38,7 +38,7 @@
                   </li>
               </ul>
           </li>
-          <li><a><i class="fa fa-circle-o"></i> Listar <span class="fa fa-chevron-down"></span></a>
+          <li><a><i class="fa fa-list"></i> Listar <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu" style="display: none">
                 <li><?php echo $this->Html->link(__('Categorias'), array('controller' => 'categorias','action' => 'index')); ?>
                 </li>

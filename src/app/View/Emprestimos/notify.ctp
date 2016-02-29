@@ -107,23 +107,23 @@
                                 <div class="x_content">
 
                                     <!--<form class="form-horizontal form-label-left" novalidate> -->
-                                <?php echo $this->Form->create('Emprestimo',array('action' => 'edit', 'class' => 'form-horizontal form-label-left', 'novalidate'));?>
+                                <?php echo $this->Form->create('Emprestimo',array('action' => 'notify', 'class' => 'form-horizontal form-label-left', 'novalidate'));?>
 
                                     <!--<p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a>
                                     </p> -->
                                     <!--<span class="section">Personal Info</span>-->
                                     <?php
-    echo $this->Form->create('Emprestimo', array('action' => 'notify'));
     echo $this->Form->input('horario',array('type' => 'hidden'));
     echo $this->Form->input('turno',array('type' => 'hidden'));
     echo $this->Form->input('data_aula',array('type' => 'hidden'));
     echo $this->Form->input('user_id',array('type' => 'hidden'));
     echo $this->Form->input('laboratorio_id',array('type' => 'hidden'));
-    echo $this->Form->input('estado',array('type' => 'hidden')); ?>
+    echo $this->Form->input('estado',array('type' => 'hidden'));
+    echo $this->Form->input('data_emprestimo',array('type' => 'hidden')); ?>
                                     <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="matricula">Observações </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                          <?php echo $this->Form->textarea('Emprestimo.observacoes',array('label' => 'Observações','rows' => '3', 'class' => 'form-control')); ?>
+                                          <?php echo $this->Form->textarea('observacoes',array('label' => 'Observações','rows' => '3', 'class' => 'form-control')); ?>
                                         </div>
                                     </div>
                                     <div class="item form-group">

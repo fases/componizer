@@ -107,10 +107,6 @@
                                                 <th> Usuário: </th>
                                                 <td> <?php echo $usuario['User']['username']; ?> </td>
                                             </tr>
-                                            <tr class="even pointer">
-                                                <th> Senha: </th>
-                                                <td> <?php echo $usuario['User']['password']; ?> </td>
-                                            </tr>
                                             <tr class="odd pointer">
                                                 <th> E-mail: </th>
                                                 <td> <?php echo $usuario['User']['email']; ?> </td>

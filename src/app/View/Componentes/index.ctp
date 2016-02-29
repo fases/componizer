@@ -115,6 +115,8 @@
                                         <tr class="headings">
                                             <th class="column-title">Nome </th>
                                             <th class="column-title">Quantidade </th>
+                                            <th class="column-title">Categoria</th>
+                                            <th class="column-title">Subcategoria </th>
                                             <th class="column-title no-link last"><span class="nobr">Ações</span></th>
                                         </tr>
                                     </thead>
@@ -123,7 +125,9 @@
                           <?php foreach ($componentes as $valor): ?>
                                         <tr class="even pointer">
                                             <td> <?php echo $this->Html->link($valor['Componente']['nome'], array('action' => 'view', $valor['Componente']['id'])); ?> </td>
-                                            <td> <?php echo $valor ['Componente']['quantidade']; ?> </td>
+                                            <td> <?php echo $valor['Componente']['quantidade']; ?> </td>
+                                            <td> <?php echo $this->Html->link($valor['Categoria']['nome'],array('controller' => 'categorias','action' => 'view',$valor['Categoria']['id'])); ?> </td>
+                                            <td> <?php echo $this->Html->link($valor['Subcategoria']['nome'],array('controller' => 'subcategorias','action' => 'view',$valor['Subcategoria']['id'])); ?> </td>
                                             <td> <?php
                                                   if($this->Session->read('Auth.User.role') != 0){
                                                     echo $this->Html->link('Datasheet', array('action' => 'upload',

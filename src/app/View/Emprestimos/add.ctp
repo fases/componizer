@@ -129,7 +129,7 @@
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Data da aula<span class="required">*</span></label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                          <?php echo $this->Form->input('Emprestimo.data_aula', array( 'label' => false,'type' => 'date', 'class' => '',
+                                          <?php echo $this->Form->input('Emprestimo.data_aula', array('label' => false,'type' => 'date',
                                            'dateFormat' => 'DMY',
                                            'minYear' => date('Y') - 0,
                                            'maxYear' => date('Y') + 5 ));?>
@@ -147,12 +147,12 @@
                                           <?php echo $this->Form->input('Emprestimo.laboratorio_id', array('type' => 'select', 'options' => $laboratorio, 'label' => false, 'class' => 'form-control'));?>
                                         </div>
                                     </div>
-                                    <div class="item form-group">
+                                    <!-- <div class="item form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="matricula">Observações </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                           <?php echo $this->Form->textarea('Emprestimo.observacoes',array('label' => 'Observações','rows' => '3', 'class' => 'form-control')); ?>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="ln_solid"></div>
                                     <div class="form-group">
                                         <div class="col-md-6 col-md-offset-3">

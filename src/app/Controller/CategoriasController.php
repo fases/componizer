@@ -18,11 +18,19 @@ class CategoriasController extends AppController {
     }
 
     public function index() {
+        if($this->Auth->user('role') <= 2){
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
+            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        }
         $this->Categoria->recursive = 0;
         $this->set('categories', $this->paginate());
     }
 
     public function add() {
+        if($this->Auth->user('role') < 1){
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
+            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        }
         if ($this->request->is('post')) {
             $this->Categoria->create();
             if ($this->Categoria->save($this->request->data)) {
@@ -34,6 +42,10 @@ class CategoriasController extends AppController {
     }
 
     public function edit($id = null) {
+        if($this->Auth->user('role') < 1){
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
+            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        }
         $this->Categoria->id = $id;
         if (!$this->Categoria->exists()) {
             $this->Session->setFlash("A Categoria é inválida!", 'error');
@@ -50,6 +62,10 @@ class CategoriasController extends AppController {
     }
 
     public function view($id) {
+        if($this->Auth->user('role') < 1){
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
+            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        }
         $this->set('categories', $this->Categoria->findById($id));
     }
 

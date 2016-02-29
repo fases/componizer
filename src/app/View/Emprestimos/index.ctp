@@ -12,6 +12,11 @@
         <script>
             NProgress.start();
         </script>
+        <script type="text/javascript">
+            setTimeout(function(){
+                location.reload();
+            }, 180000);
+        </script>
 
         <!--[if lt IE 9]>
             <script src="../assets/js/ie8-responsive-file-warning.js"></script>
@@ -110,8 +115,8 @@
                                         <thead>
                                             <tr class="headings">
                                                 <th class="column-title">Solicitante</th>
-                                                <th class="column-title">Horário - Turno </th>
-                                                <th class="column-title">Data da aula </th>
+                                                <th class="column-title">Horário </th>
+                                                <th class="column-title">Data da Aula </th>
                                                 <th class="column-title">Estado </th>
                                                 <th class="column-title">Notificação</th>
                                                 <th class="column-title no-link last"><span class="nobr">Ações</span></th>
@@ -125,11 +130,11 @@
                                                 <td> <?php echo $valor['Emprestimo']['horario']; ?>º 
                                                  <?php echo $valor['Emprestimo']['turno']; ?> </td>
                                                 <td> <?php echo $valor['Emprestimo']['data_aula'];?></td>
-                                                <td> <?php echo ($valor['Emprestimo']['estado'] == 0 ?'Aberta':'Finalizada'); ?></td>
-                                                <td> <?php echo ($valor['Emprestimo']['notificar'] == 0?'Sem status':($valor['Emprestimo']['notificar'] == 1?'Disponível':($valor['Emprestimo']['notificar'] == 2?'Parcialmente disponível':'Indisponível'))); ?> </td>
+                                                <td> <?php echo ($valor['Emprestimo']['estado'] == 0?'<span class="label label-danger">Aberta</span>':'<span class="label label-success">Finalizada</span>'); ?></td>
+                                                <td> <?php echo ($valor['Emprestimo']['notificar'] == 0?'<span class="label label-warning">Sem status</span>':($valor['Emprestimo']['notificar'] == 1?'<span class="label label-success">Disponível</span>':($valor['Emprestimo']['notificar'] == 2?'<span class="label label-primary">Parcialmente disponível</span>':'<span class="label label-danger">Indisponível</span>'))); ?> </td>
                                                 <td>
                                                   <?php
-                                                    echo $this->Html->link('Ver componentes', array('action' => 'listar', $valor['Emprestimo']['id']),array('class' => 'btn btn-round btn-default'));
+                                                    echo $this->Html->link('Ver componentes', array('action' => 'lista', $valor['Emprestimo']['id']),array('class' => 'btn btn-round btn-default'));
                                                   ?>
                                                   <?php
                                                     echo $this->Html->link('Finalizar', array('action' => 'end', $valor['Emprestimo']['id']),array('class' => 'btn btn-round btn-success'));

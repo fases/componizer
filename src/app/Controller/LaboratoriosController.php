@@ -18,6 +18,10 @@ class LaboratoriosController extends AppController {
     }
 
     public function index() {
+        if($this->Auth->user('role') < 1){
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
+            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        }
         $this->Laboratorio->recursive = 0;
         $this->set('laboratorios', $this->Paginate());
     }
@@ -27,6 +31,10 @@ class LaboratoriosController extends AppController {
     }
 
     public function add() {
+        if($this->Auth->user('role') < 1){
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
+            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        }
         if ($this->request->is('post')) {
             $this->Laboratorio->create();
             if ($this->Laboratorio->save($this->request->data)) {

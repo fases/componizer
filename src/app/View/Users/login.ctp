@@ -76,32 +76,44 @@ _________________________________________________________ -->
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active"><a href="#intro">Inicial</a>
                     </li>
+                    <li><a href="#pesquisa">Pesquisa</a>
+                    </li>
                     <li><a href="#about">Sobre</a>
                     </li>
                     <li><a href="#services">Serviços</a>
                     </li>
-                    <li><a href="#login">Login</a>
-                    </li>
-                    <li>
-                      <div class="navbar-collapse collapse" id="navigation">
-                        <?php echo $this->Form->create('User',array('action' => 'login'));?>
-                              <ul class="nav navbar-nav navbar-right">
-                                <li><?php echo $this->Form->input('username',array('class' => 'formulario','placeholder'=> 'Usuário','label' => false));?></li>
-                                <li> <?php echo $this->Form->input('password',array('class' => 'formulario','placeholder'=> 'Senha','label' => false)); ?></li>
-                                <li><?php
-                                    $options = array('label' => 'Entrar', 'class' => 'botao', 'div' => false);
-                                    echo $this->Form->end($options);
-                                ?></li>
-                              <div>
-                                <?php echo $this->Html->link(__('Esqueceu sua senha?'), array('controller' => 'users','action' => 'recovery'));?>
-                              </div>
-                              </ul>
-                      </div>
-                    </li>
+                   <!--  <li>
+                      <!-- <div class="navbar-collapse collapse" id="navigation"> -->
+                        <?php //echo $this->Form->create('User',array('action' => 'login'));?>
+                              <!-- <ul class="nav navbar-nav navbar-right"> -->
+                                
+                              <!-- <div> -->
+                                <?php //echo $this->Html->link(__('Esqueceu sua senha?'), array('controller' => 'users','action' => 'recovery'));?>
+                              <!-- </div> -->
+                              <!-- </ul> -->
+                      <!-- </div>
+                    </li> -->
                 </ul>
             </div>
+            <div class="navbar-collapse collapse" id="navigation">
+                <div class="container">
+                <div class="col-md-8 col-md-offset-6" id="navigation">
+            <?php echo $this->Form->create('User',array('action' => 'login','class' => 'form-inline')); ?>
+  <div class="form-group">
+    <?php echo $this->Form->input('username',array('class' => 'form-control input-sm','placeholder'=> 'usuário','label' => false,'div' => false)); ?>
+  </div>
+  <div class="form-group">
+    <?php echo $this->Form->input('password',array('class' => 'form-control input-sm','placeholder'=> 'senha','label' => false,'div' => false)); ?>
+  </div>
+  <?php
+                                      $options = array('label' => 'Entrar', 'class' => 'btn btn-primary', 'div' => false);
+                                      echo $this->Form->end($options);
+                                  ?>
+</form>
+            </div>
+        </div>
             <!--/.nav-collapse -->
-
+        </div>
         </div>
     </div>
     <!-- /#navbar -->
@@ -368,6 +380,56 @@ _________________________________________________________ -->
             <div class="dark-mask"></div>
 
         </div>
+
+        <div class="section contact" id="login" data-animate="bounceIn">
+    <div class="container">
+        <div class="col-md-12">
+
+
+            <h2 class="title">LOGIN</h2>
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+            <?php echo $this->Session->flash(); ?>
+            </div>
+            </div>
+            <div class="row">
+
+                <div class="col-md-8 col-md-offset-2">
+                        <div class="messages">
+
+                        </div>
+
+                        <div class="controls">
+                          <?php echo $this->Form->create('User',array('action' => 'login'));?>
+                            <div class="row">
+                              <div>
+                              </div>
+                                <div class="col-md-12">
+                                  <?php echo $this->Form->input('username',array('class' => 'form-control','placeholder'=> 'Usuário','label' => false)); ?>
+                                </div>
+                                <div class="col-md-12">
+                                  <?php echo $this->Form->input('password',array('class' => 'form-control','placeholder'=> 'Senha','label' => false)); ?>
+                                </div>
+                                <div class="col-md-12 text-center">
+                                  <?php
+                                      $options = array('label' => 'Entrar', 'class' => 'btn btn-info btn-lg', 'div' => false);
+                                      echo $this->Form->end($options);
+                                  ?>
+                                </div>
+                                <div class="pull-right">
+                                  <?php echo $this->Html->link(__('Esqueceu sua senha?'), array('controller' => 'users','action' => 'recovery'));?>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+
+            </div>
+
+        </div>
+        <!-- /.12 -->
+    </div>
+    <!-- /.container -->
+</div>
         <!-- /.section -->
 
         <!-- *** REFERENCES IMAGE ***
@@ -703,12 +765,12 @@ _________________________________________________________ -->
         <!-- *** CONTACT ***
 _________________________________________________________ -->
 
-<div class="section contact" id="login" data-animate="bounceIn">
+<div class="section contact" id="pesquisa" data-animate="bounceIn">
     <div class="container">
         <div class="col-md-12">
 
 
-            <h2 class="title">LOGIN</h2>
+            <h2 class="title">PESQUISA</h2>
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
             <?php echo $this->Session->flash(); ?>

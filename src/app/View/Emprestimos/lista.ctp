@@ -11,20 +11,6 @@
         <title>Componizer | </title>
 
         <!-- Bootstrap core CSS -->
-
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-
-        <link href="fonts/css/font-awesome.min.css" rel="stylesheet">
-        <link href="css/animate.min.css" rel="stylesheet">
-
-        <!-- Custom styling plus plugins -->
-        <link href="css/custom.css" rel="stylesheet">
-        <link rel="stylesheet" type="text/css" href="css/maps/jquery-jvectormap-2.0.1.css" />
-        <link href="css/icheck/flat/green.css" rel="stylesheet" />
-        <link href="css/floatexamples.css" rel="stylesheet" type="text/css" />
-
-        <script src="js/jquery.min.js"></script>
-        <script src="js/nprogress.js"></script>
         <script>
             NProgress.start();
         </script>
@@ -92,7 +78,7 @@
 
                         <div class="page-title">
                             <div class="title_left">
-                                <h3>Requisições</h3>
+                                <h3>Requisição <small><?php echo '#'.$emprestimo;?></small></h3>
                             </div>
 
                             <div class="title_right">
@@ -110,7 +96,7 @@
                     <br />
 
                     <div class="row">
-                        <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="col-md-8 col-sm-12 col-xs-12 col-md-offset-2">
                             <div class="x_panel">
                                 <div class="x_title">
                                     <h2>Componentes solicitados <small></small></h2>
@@ -139,33 +125,22 @@
                                     <table class="table table-striped responsive-utilities jambo_table bulk_action">
                                         <thead>
                                             <tr class="headings">
-                                                <th class="column-title">Componentes </th>
+                                                <th class="column-title">Componente </th>
                                                 <th class="column-title">Quantidade </th>
-                                                <th class="column-title no-link last"><span class="nobr">Ações</span></th>
                                             </tr>
                                         </thead>
 
                                         <tbody>
                                     <?php foreach ($campos as $valor): ?>
                                             <tr class="even pointer">
-                                                <td> <?php echo $this->Html->link($valor['Componente']['nome'],array('action' => 'view',$valor['Componente']['id'])); ?> </td>                                        <td> <?php echo $valor['Emprestimo']['turno']; ?> </td>
+                                                <td> <?php echo $this->Html->link($valor['Componente']['nome'],array('controller' => 'componentes','action' => 'view',$valor['Componente']['id'])); ?> </td>                                        
                                                 <td> <?php echo $valor['Notification']['quantidade']; ?> </td>
                                             </tr>
-                                              <?php endforeach ?>
+                                              <?php endforeach; ?>
                                            <!--<tr class="odd pointer">-->
                                         </tbody>
 
                                     </table>
-                                    <div class="pagination">
-                                        <div class="list">
-                                   <?php
-                                       echo $this->Paginator->prev('« Anterior', null, null, array('class' => 'prev disabled'));
-                                       echo $this->Paginator->numbers(array('separator' => false));
-                                       echo $this->Paginator->next('Próximo »', null, null, array('class' => 'prev disabled'));
-                                   ?>
-                                        </div>
-                                    </div>
-
                                 </div>
 
                             </div>
@@ -176,16 +151,6 @@
                     <!-- end of weather widget -->
 
                     <!-- footer content -->
-
-
-                    <footer>
-                        <div class="">
-                            <p class="pull-right">Sistema de gerenciamento online para componentes eletrônicos. |
-                                <span class="lead"> <i class="fa fa-paw"></i> Componizer!</span>
-                            </p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </footer>
                     <!-- /footer content -->
                 </div>
             </div>
@@ -202,35 +167,28 @@
         <div id="notif-group" class="tabbed_notifications"></div>
     </div>
 
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- gauge js -->
-    <script type="text/javascript" src="js/gauge/gauge.min.js"></script>
-    <script type="text/javascript" src="js/gauge/gauge_demo.js"></script>
-    <!-- chart js -->
-    <script src="js/chartjs/chart.min.js"></script>
-    <!-- bootstrap progress js -->
-    <script src="js/progressbar/bootstrap-progressbar.min.js"></script>
-    <script src="js/nicescroll/jquery.nicescroll.min.js"></script>
-    <!-- icheck -->
-    <script src="js/icheck/icheck.min.js"></script>
-    <!-- daterangepicker -->
-    <script type="text/javascript" src="js/moment.min.js"></script>
-    <script type="text/javascript" src="js/datepicker/daterangepicker.js"></script>
-
-    <script src="js/custom.js"></script>
-
+    <?php
+        echo $this->Html->script('gauge/gauge.min.js');
+        echo $this->Html->script('gauge/gauge_demo.js');
+        echo $this->Html->script('chartjs/chart.min.js');
+        echo $this->Html->script('progressbar/bootstrap-progressbar.min.js');
+        echo $this->Html->script('nicescroll/jquery.nicescroll.min.js');
+        echo $this->Html->script('icheck/icheck.min.js');
+        echo $this->Html->script('moment.min.js');
+        echo $this->Html->script('datepicker/daterangepicker.js');
+        echo $this->Html->script('flot/curvedLines.js');
+        echo $this->Html->script('flot/date.js');
+        echo $this->Html->script('flot/jquery.flot.js');
+        echo $this->Html->script('flot/jquery.flot.orderBars.js');
+        echo $this->Html->script('flot/jquery.flot.pie.js');
+        echo $this->Html->script('flot/jquery.flot.resize.js');
+        echo $this->Html->script('flot/jquery.flot.spline.js');
+        echo $this->Html->script('flot/jquery.flot.stack.js');
+        echo $this->Html->script('flot/jquery.flot.time.min.js');
+        echo $this->Html->script('flot/jquery.flot.tooltip.min.js');
+    ?>
     <!-- flot js -->
     <!--[if lte IE 8]><script type="text/javascript" src="js/excanvas.min.js"></script><![endif]-->
-    <script type="text/javascript" src="js/flot/jquery.flot.js"></script>
-    <script type="text/javascript" src="js/flot/jquery.flot.pie.js"></script>
-    <script type="text/javascript" src="js/flot/jquery.flot.orderBars.js"></script>
-    <script type="text/javascript" src="js/flot/jquery.flot.time.min.js"></script>
-    <script type="text/javascript" src="js/flot/date.js"></script>
-    <script type="text/javascript" src="js/flot/jquery.flot.spline.js"></script>
-    <script type="text/javascript" src="js/flot/jquery.flot.stack.js"></script>
-    <script type="text/javascript" src="js/flot/curvedLines.js"></script>
-    <script type="text/javascript" src="js/flot/jquery.flot.resize.js"></script>
     <script>
         $(document).ready(function () {
             // [17, 74, 6, 39, 20, 85, 7]
@@ -293,10 +251,12 @@
     </script>
 
     <!-- worldmap -->
-    <script type="text/javascript" src="js/maps/jquery-jvectormap-2.0.1.min.js"></script>
-    <script type="text/javascript" src="js/maps/gdp-data.js"></script>
-    <script type="text/javascript" src="js/maps/jquery-jvectormap-world-mill-en.js"></script>
-    <script type="text/javascript" src="js/maps/jquery-jvectormap-us-aea-en.js"></script>
+    <?php
+            echo $this->Html->script('maps/gdp-data.js');
+            echo $this->Html->script('maps/jquery-jvectormap-2.0.1.min.js');
+            echo $this->Html->script('maps/jquery-jvectormap-us-aea-en.js');
+            echo $this->Html->script('maps/jquery-jvectormap-world-mill-en.js');
+    ?>
     <script>
         $(function () {
             $('#world-map-gdp').vectorMap({

@@ -18,8 +18,9 @@ class EmprestimosController extends AppController {
     }
 
     public function index() {
-        if ($this->Auth->user('role') == 0) {
-            return $this->redirect(array('controller' => 'emprestimos', 'action' => 'profile'));
+        if($this->Auth->user('role') < 1){
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
+            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
         }
         $this->Emprestimo->recursive = 0;
         $this->set('emprestimos', $this->paginate());
@@ -89,6 +90,10 @@ class EmprestimosController extends AppController {
     }
 
     public function notify($id = null) {
+        if($this->Auth->user('role') < 1){
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
+            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        }
         $this->Emprestimo->id = $id;
         if (!$this->Emprestimo->exists()) {
             $this->Session->setFlash('Solicitação inexistente!', 'error');
@@ -104,7 +109,7 @@ class EmprestimosController extends AppController {
             $this->Session->setFlash('A Solicitação não foi alterada!', 'error');
         }
     }
-
+    //SELECT c.nome,sum(n.quantidade) FROM notifications as n inner join componentes as c on (n.componente_id = c.id) group by emprestimo_id
     public function end($id = null) {
         $this->Emprestimo->id = $id;
         if (!$this->Emprestimo->exists()) {
@@ -192,6 +197,7 @@ class EmprestimosController extends AppController {
             'conditions' => array('Notification.emprestimo_id' => $id),
             'fields' => array('Notification.quantidade', 'Componente.nome', 'Componente.id')));
         $this->set('campos', $valor);
+        $this->set('emprestimo', $id);
     }
 
 }

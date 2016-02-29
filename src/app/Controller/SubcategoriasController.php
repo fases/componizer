@@ -18,6 +18,10 @@ class SubcategoriasController extends AppController {
     }
 
     public function index() {
+        if($this->Auth->user('role') < 1){
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
+            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        }
         $this->Subcategoria->recursive = 0;
         $this->set('subcategories', $this->paginate());
     }
@@ -27,6 +31,10 @@ class SubcategoriasController extends AppController {
     }
 
     public function add($categoria_id = null) {
+        if($this->Auth->user('role') < 1){
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
+            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        }
         if (is_null($categoria_id)) {
             $this->set('categories', $this->Subcategoria->Categoria->find('list', array('fields' => array('Categoria.id', 'Categoria.nome'))));
         } else {
@@ -43,6 +51,10 @@ class SubcategoriasController extends AppController {
     }
 
     public function edit($id = null) {
+        if($this->Auth->user('role') < 1){
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
+            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        }
         $this->Subcategoria->id = $id;
         if (!$this->Subcategoria->exists()) {
             $this->Session->setFlash("A Subcategoria escolhida é inválida!", 'error');

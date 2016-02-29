@@ -110,12 +110,12 @@
                                                 <td> <?php echo $componentes['Componente']['descricao']; ?> </td>
                                             </tr>
                                             <tr class="odd pointer">
-                                                <th> Categoria associada: </th>
-                                                <td> <?php echo $componentes['Categoria']['nome']; ?> </td>
+                                                <th> Categoria: </th>
+                                                <td> <?php echo $this->Html->link($componentes['Categoria']['nome'],array('controller' => 'categorias','action' => 'view',$componentes['Categoria']['id'])); ?> </td>
                                             </tr>
                                             <tr class="odd pointer">
-                                                <th> Subcategoria associada: </th>
-                                                <td> <?php echo $componentes['Subcategoria']['nome']; ?> </td>
+                                                <th> Subcategoria: </th>
+                                                <td> <?php echo $this->Html->link($componentes['Subcategoria']['nome'],array('controller' => 'subcategorias','action' => 'view',$componentes['Subcategoria']['id'])); ?> </td>
                                             </tr>
                                             <tr class="odd pointer">
                                                 <th> Posicionamento - linha: </th>
