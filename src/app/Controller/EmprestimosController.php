@@ -200,6 +200,13 @@ class EmprestimosController extends AppController {
         $this->set('emprestimo', $id);
     }
 
+    public function viewpdf() {
+         $this->loadModel('User');
+         $this->set('users',$this->User->find('all'));
+         $this->layout = 'pdf';
+         $this->render();
+    }
+
 }
 
 ?>
