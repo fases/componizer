@@ -8,7 +8,8 @@ class EmprestimosController extends AppController {
     public $paginate = array(
         'limit' => 25,
         'order' => array(
-            'Emprestimo.id' => 'asc'
+            'Emprestimo.data_emprestimo' => 'asc',
+            'Emprestimo.data_aula' => 'asc'
         )
     );
 
@@ -18,12 +19,34 @@ class EmprestimosController extends AppController {
     }
 
     public function index() {
-        if($this->Auth->user('role') < 1){
+        if($this->Auth->user('role') < 3){
             $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
             return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
         }
+        if($this->request->is('requested')){
+            $abertos = $this->Emprestimo->find('count',array('conditions' => array('Emprestimo.estado' => '0')));
+            return $abertos;
+        }
         $this->Emprestimo->recursive = 0;
-        $this->set('emprestimos', $this->paginate());
+        $this->set('emprestimos',$this->Paginator->paginate(
+            'Emprestimo',array('Emprestimo.estado' => '0')
+        ));
+        //$this->set('requisicoes',$this->Requisicao->find());
+    }
+
+    public function completed() {
+        if($this->Auth->user('role') < 3){
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
+            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        }
+        if($this->request->is('requested')){
+            $finalizados = $this->Emprestimo->find('count',array('conditions' => array('Emprestimo.estado' => '1')));
+            return $abertos;
+        }
+        $this->Emprestimo->recursive = 0;
+        $this->set('emprestimos',$this->Paginator->paginate(
+            'Emprestimo',array('Emprestimo.estado' => '1')
+        ));
         //$this->set('requisicoes',$this->Requisicao->find());
     }
 
@@ -174,6 +197,10 @@ class EmprestimosController extends AppController {
 
     public function profile() {
         $this->Emprestimo->recursive = 0;
+        if($this->request->is('requested')){
+            $proprios = $this->Emprestimo->find('count',array('conditions' => array('Emprestimo.user_id' => $this->Auth->user('id'))));
+            return $proprios;
+        }
         $this->set('emprestimos', $this->paginate());
         $this->set('emprestimos', $this->Emprestimo->find('all', array('conditions' => array('Emprestimo.user_id' => $this->Auth->user('id')))));
     }

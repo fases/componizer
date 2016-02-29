@@ -159,23 +159,23 @@ class UsersController extends AppController {
                 $this->Session->setFlash('Dados incorretos, tente novamente!');
             } else {
                 //Gera senha automática
-                $password = md5($user['User']['username']);
-                $password = substr($password, rand(25, 30));
-                $usuario = $user['User']['id'];
-                $this->User->query("UPDATE users SET password = '$password' WHERE id = '$usuario'");
-                //Envia email
+                $password = AuthComponent::password($this->data['User']['matricula']);
+                $this->User->id = $user['User']['id'];
+                $this->User->saveField('password',$password); 
+
+                /*Envia email
                 $Email = new CakeEmail('gmail');
                 $Email->from(array('componizer.gerenciamento@gmail.com' => 'Componizer - Sistema de gerenciamento online para componentes eletrônicos'));
                 $Email->to($user['User']['email']);
                 $Email->subject('Recuperação de senha do Componizer');
-                $Email->send('Sua senha nova é: ' . $password);
-                $this->Session->setFlash('A senha foi enviada para o seu email!');
-                return $this->redirect(array('action' => 'login'));
+                $Email->send('Sua senha nova é: ' . $password);*/
+                $this->Session->setFlash('Sua nova senha é '.$user['User']['matricula'].'!','home_error');
+                $this->Auth->login(); 
             }
         }
     }
 
-    function search() {
+    public function search() {
         if ($this->request->is('post')) {
             $valor = $this->paginate('User', array('User.nome LIKE' => '%' . $this->request->data['User']['pedaco_nome'] . '%'));
         } else {

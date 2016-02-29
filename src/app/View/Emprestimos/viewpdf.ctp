@@ -1,24 +1,28 @@
 <?php
-	App::import('Vendor','tcpdf/tcpdf'); 
-
+App::import('Vendor','tcpdf/tcpdf'); 
 //carrega o construtor do pdf
-$Pdf = new TCPDF();
+$pdf = new TCPDF();
+$pdf->setPrintHeader(false);
 
-$Pdf->setPrintHeader(false);
+$pdf->setPrintFooter(false);
 
-$Pdf->setPrintFooter(false);
-
-$Pdf->SetMargins(10, 20, 0);
-
-$Pdf->AddPage('P','A4');
-
+$pdf->SetMargins(20, 20, 0);
+	$pdf->AddPage('P','A4');
+	$pdf->SetCreator(PDF_CREATOR);
+	$pdf->SetAuthor('Componizer');
+	$pdf->SetTitle('Relatório pdf');
 $html = '
- <h1> Relatorio de Estoque - Componizer</h1>';
+<h1> Relatorio de Estoque - Componizer</h1>';
+$html .= '<table class="table"> ';
+$i = 0;
 foreach ($users as $user) {
-	$html .= '<p>'.$user['User']['username'].'</p>';
+	$html .= '<tr> ';
+	$html .= '<td>'.$user['User']['username'].'</td>';
+	$i++;
+	$html .= '</tr> ';
 }
+$html .= '</table> ';
+$pdf->writeHTML($html);
 
-$Pdf->writeHTML($html);
-
-echo $Pdf->Output('etiqueta.pdf','I'); 
+echo $pdf->Output('Relatorio.pdf','I'); 
 ?>

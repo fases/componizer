@@ -24,6 +24,7 @@
                   </li>
               </ul>
           </li>
+          <?php if($this->Session->read('Auth.User.role') == 1 || $this->Session->read('Auth.User.role') == 3){ ?>
           <li><a><i class="fa fa-plus-square"></i> Cadastrar <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu" style="display: none">
                   <li><?php echo $this->Html->link(__('Categorias'), array('controller' => 'categorias','action' => 'add')); ?>
@@ -38,6 +39,8 @@
                   </li>
               </ul>
           </li>
+          <?php } ?>
+          <?php if($this->Session->read('Auth.User.role') == 1 || $this->Session->read('Auth.User.role') == 3){ ?>
           <li><a><i class="fa fa-list"></i> Listar <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu" style="display: none">
                 <li><?php echo $this->Html->link(__('Categorias'), array('controller' => 'categorias','action' => 'index')); ?>
@@ -52,28 +55,32 @@
                   </li>
               </ul>
           </li>
-          <li><a><i class="fa fa-archive"></i> Requisições <span class="fa fa-chevron-down"></span></a>
+          <?php } ?>
+          <li><a><i class="fa fa-exchange"></i> Requisições <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu" style="display: none">
-                  <li><?php echo $this->Html->link(__('Listar requisições'), array('controller' => 'emprestimos','action' => 'index')); ?>
+                  <?php if($this->Session->read('Auth.User.role') == 1 || $this->Session->read('Auth.User.role') == 3){ ?>
+                  <li><?php echo $this->Html->link(__('Listar abertas'), array('controller' => 'emprestimos','action' => 'index')); ?>
                   </li>
+                  <li>
+                  <?php echo $this->Html->link(__('Listar finalizadas'), array('controller' => 'emprestimos','action' => 'completed')); ?>
+                  </li>
+                  <?php } ?>
                   <li><?php echo $this->Html->link(__('Criar requisição'), array('controller' => 'emprestimos','action' => 'add')); ?>
                   </li>
                   <li><?php echo $this->Html->link(__('Minhas requisições'), array('controller' => 'emprestimos','action' => 'profile')); ?>
               </ul>
           </li>
-          <?php if($this->Session->read('Auth.User.role' == 3)){ ?>
-          <li><a><i class="fa fa-pie-chart"></i> Relatórios <span class="fa fa-chevron-down"></span></a>
+          <?php if($this->Session->read('Auth.User.role') == 3){ ?>
+          <li><a><i class="fa fa-bar-chart"></i> Relatórios <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu" style="display: none">
-                  <li><a href="chartjs.html">Chart JS</a>
+                  <li><?php echo $this->Html->link(__('Gerar Relatório de estoque'), array('controller' => '','action' => 'index')); ?>
                   </li>
-                  <li><a href="chartjs2.html">Chart JS2</a>
-                  </li>
-                  <li><a href="morisjs.html">Moris JS</a>
+                  <li><?php echo $this->Html->link(__('Gerar Relatório de movimentação'), array('controller' => '','action' => 'index')); ?>
                   </li>
               </ul>
           </li>
           <?php } ?>
-          <li><a><i class="fa fa-pie-chart"></i> Suporte <span class="fa fa-chevron-down"></span></a>
+          <li><a><i class="fa fa-cogs"></i> Suporte <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu" style="display: none">
                   <li><a href="chartjs.html">Faltou algum componente?</a>
                   </li>

@@ -14,6 +14,12 @@
             'conditions' => '',
             'dependent' => true,
             'fields' => ''
+        ),'Equipamento' => array(
+            'className' => 'Equipamento',
+            'foreignKey' => 'laboratorio_id',
+            'conditions' => '',
+            'dependent' => true,
+            'fields' => ''
         ));
       }
 ?>

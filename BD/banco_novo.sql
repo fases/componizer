@@ -70,12 +70,23 @@ quantidade int not null,
 PRIMARY KEY (id)
 );
 
-create table equipamentos(
+/* create table equipamentos(
 id int auto_increment,
-laboratorio_id int,
-nome varchar(255),
+laboratorio_id int not null,
+nome varchar(255) int not null,
+descricao varchar(500) not null,
+situacao int not null,
 PRIMARY KEY (id)
-)
+); */
+
+/* create table pedidos(
+id int auto_increment,
+nome varchar(255) not null,
+descricao varchar(500),
+PRIMARY KEY (id)
+); */
+
+-- alter table `equipamentos` add constraint 'fk_eq_laboratorio' foreign key (`laboratorio_id`) references `laboratorios` (`id`);
 
 alter table `subcategorias` add constraint `fk_s_categoria` foreign key (`categoria_id`) references `categorias`(`id`);
 
