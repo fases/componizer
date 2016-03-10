@@ -39,6 +39,7 @@ create table componentes(
   linha int not null,
   coluna int not null,
   quantidade int not null,
+  datasheet varchar(500) DEFAULT NULL,
 PRIMARY KEY (id)
 );
 
@@ -54,6 +55,7 @@ id int auto_increment,
 horario int not null,
 turno varchar(255) not null,
 data_aula date not null,
+data_emprestimo date not null,
 user_id int not null,
 laboratorio_id int not null,
 observacoes varchar(500),
@@ -70,23 +72,24 @@ quantidade int not null,
 PRIMARY KEY (id)
 );
 
-/* create table equipamentos(
+create table equipamentos(
 id int auto_increment,
 laboratorio_id int not null,
-nome varchar(255) int not null,
-descricao varchar(500) not null,
+nome varchar(255) not null,
+localizacao varchar(255) not null,
+descricao_defeito varchar(500) not null,
 situacao int not null,
 PRIMARY KEY (id)
-); */
+);
 
-/* create table pedidos(
+create table pedidos(
 id int auto_increment,
 nome varchar(255) not null,
 descricao varchar(500),
 PRIMARY KEY (id)
-); */
+);
 
--- alter table `equipamentos` add constraint 'fk_eq_laboratorio' foreign key (`laboratorio_id`) references `laboratorios` (`id`);
+alter table `equipamentos` add constraint `fk_eq_laboratorio` foreign key (`laboratorio_id`) references `laboratorios`(`id`);
 
 alter table `subcategorias` add constraint `fk_s_categoria` foreign key (`categoria_id`) references `categorias`(`id`);
 

@@ -15,10 +15,10 @@ class Equipamento extends AppModel {
             'rule' => 'notEmpty',
             'message' => 'Insira o nome do equipamento!'
         ),
-        'descricao' => array(
+        'descricao_defeito' => array(
             'rule' => 'notEmpty',
             'required' => true,
-            'message' => 'Insira alguma descrição!'
+            'message' => 'Digite o defeito que o equipamento apresentou!'
         ),
         'laboratorio_id' => array(
             'rule' => 'notEmpty',
@@ -29,6 +29,11 @@ class Equipamento extends AppModel {
             'rule' => 'notEmpty',
             'required' => true,
             'message' => 'É necessário atribuir um status!'
+        ),
+        'localizacao' => array(
+            'rule' => 'notEmpty',
+            'required' => true,
+            'message' => 'É necessário informar a localizacao do equipamento!'
         )
     );
 

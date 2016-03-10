@@ -1,13 +1,13 @@
 <?php
 
-class CategoriasController extends AppController {
+class PedidosController extends AppController {
 
     public $helpers = array('Html', 'Form');
-    public $name = 'Categorias';
+    public $name = 'Pedidos';
     public $paginate = array(
         'limit' => 25,
         'order' => array(
-            'Categoria.id' => 'asc'
+            'Pedido.id' => 'asc'
         )
     );
     public $components = array('Paginator');
@@ -22,8 +22,8 @@ class CategoriasController extends AppController {
             $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
             return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
         }
-        $this->Categoria->recursive = 0;
-        $this->set('categories', $this->paginate());
+        $this->Pedido->recursive = 0;
+        $this->set('pedidos', $this->paginate());
     }
 
     public function add() {
@@ -32,12 +32,12 @@ class CategoriasController extends AppController {
             return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
         }
         if ($this->request->is('post')) {
-            $this->Categoria->create();
-            if ($this->Categoria->save($this->request->data)) {
-                $this->Session->setFlash('A Categoria foi salva!', 'success');
+            $this->Pedido->create();
+            if ($this->Pedido->save($this->request->data)) {
+                $this->Session->setFlash('A sugestão foi salva!', 'success');
                 return $this->redirect(array('action' => 'index'));
             }
-            $this->Session->setFlash('A Categoria não foi salva!', 'error');
+            $this->Session->setFlash('A sugestão não foi salva!', 'error');
         }
     }
 
@@ -46,16 +46,16 @@ class CategoriasController extends AppController {
             $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
             return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
         }
-        $this->Categoria->id = $id;
-        if (!$this->Categoria->exists()) {
-            $this->Session->setFlash("A Categoria é inválida!", 'error');
+        $this->Pedido->id = $id;
+        if (!$this->Pedido->exists()) {
+            $this->Session->setFlash("A sugestão é inválida!", 'error');
             $this->redirect(array('action' => 'index'));
         }
         if ($this->request->is('get')) {
-            $this->request->data = $this->Categoria->read();
+            $this->request->data = $this->Pedido->read();
         } else {
-            if ($this->Categoria->save($this->request->data)) {
-                $this->Session->setFlash('A Categoria foi editada!', 'success');
+            if ($this->Pedido->save($this->request->data)) {
+                $this->Session->setFlash('A sugestão foi editada!', 'success');
                 $this->redirect(array('action' => 'index'));
             }
         }
@@ -66,31 +66,45 @@ class CategoriasController extends AppController {
             $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
             return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
         }
-        $this->set('categories', $this->Categoria->findById($id));
+        $this->set('pedidos', $this->Pedido->findById($id));
     }
 
-    function delete($id) {
-        $this->Categoria->id = $id;
-        if (!$this->Categoria->exists()) {
-            $this->Session->setFlash("A Categoria escolhido é inválido!", 'error');
+    public function consert(){
+        $this->Pedido->id = $id;
+        if (!$this->Pedido->exists()) {
+            $this->Session->setFlash("A sugestão escolhida é inválido!", 'error');
             $this->redirect(array('action' => 'index'));
         }
         if (!$this->request->is('get')) {
             throw new MethodNotAllowedException();
         }
-        if ($this->Categoria->delete($id)) {
-            $this->Session->setFlash('A categoria foi deletada!', 'success');
+        if ($this->Pedido->delete($id)) {
+            $this->Session->setFlash('A sugestão foi deletada!', 'success');
+            $this->redirect(array('action' => 'index'));
+        }
+    }
+    function delete($id) {
+        $this->Pedido->id = $id;
+        if (!$this->Pedido->exists()) {
+            $this->Session->setFlash("A sugestão escolhida é inválido!", 'error');
+            $this->redirect(array('action' => 'index'));
+        }
+        if (!$this->request->is('get')) {
+            throw new MethodNotAllowedException();
+        }
+        if ($this->Pedido->delete($id)) {
+            $this->Session->setFlash('A sugestão foi deletada!', 'success');
             $this->redirect(array('action' => 'index'));
         }
     }
 
     function search() {
         if ($this->request->is('post')) {
-            $categoria = $this->paginate('Categoria', array('Categoria.nome LIKE' => '%' . $this->request->data['Categoria']['pedaco_nome'] . '%'));
+            $pedido = $this->paginate('Pedido', array('Pedido.nome LIKE' => '%' . $this->request->data['Pedido']['pedaco_nome'] . '%'));
         } else {
-            $categoria = $this->paginate('Categoria');
+            $pedido = $this->paginate('Pedido');
         }
-        $this->set('categorias', $categoria);
+        $this->set('pedidos', $pedido);
     }
 
 }

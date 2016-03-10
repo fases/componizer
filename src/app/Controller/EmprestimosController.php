@@ -227,6 +227,13 @@ class EmprestimosController extends AppController {
         $this->set('emprestimo', $id);
     }
 
+    public function reportstock(){
+        
+    }
+    public function reportmovement(){
+        
+    }
+    
     public function viewpdf() {
          $this->loadModel('User');
          $this->set('users',$this->User->find('all'));

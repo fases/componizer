@@ -23,7 +23,7 @@ class EquipamentosController extends AppController {
             return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
         }
         $this->Equipamento->recursive = 0;
-        $this->set('categories', $this->paginate());
+        $this->set('equipamentos', $this->paginate());
     }
 
     public function add() {
