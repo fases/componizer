@@ -19,7 +19,8 @@
 
     <!-- Bootstrap and Font Awesome css -->
     <link href="../home/css/font-awesome.css" rel="stylesheet">
-    <link href="../home/css/bootstrap.min.css" rel="stylesheet">
+    <!-- <link href="../home/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link href="../home/css/bts/css/bootstrap.css" rel="stylesheet">
 
     <!-- Theme stylesheet -->
     <link href="../home/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
@@ -40,7 +41,21 @@
 
     <!-- Mordernizr -->
     <script src="../home/js/modernizr-2.6.2.min.js"></script>
-
+    <style type="text/css">
+        /*body{padding-top:40px;}*/
+        #intro{
+            padding-top: 100px;
+        }
+            body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
+    </style>
     <!-- Responsivity for older IE -->
     <!--[if lt IE 9]>
     <script src="js/respond.min.js"></script>
@@ -82,22 +97,12 @@ _________________________________________________________ -->
                     </li>
                     <li><a href="#services">Serviços</a>
                     </li>
-                   <!--  <li>
-                      <!-- <div class="navbar-collapse collapse" id="navigation"> -->
-                        <?php //echo $this->Form->create('User',array('action' => 'login'));?>
-                              <!-- <ul class="nav navbar-nav navbar-right"> -->
-                                
-                              <!-- <div> -->
-                                <?php //echo $this->Html->link(__('Esqueceu sua senha?'), array('controller' => 'users','action' => 'recovery'));?>
-                              <!-- </div> -->
-                              <!-- </ul> -->
-                      <!-- </div>
-                    </li> -->
                 </ul>
             </div>
             <div class="navbar-collapse collapse" id="navigation">
                 <div class="container">
-                <div class="col-md-8 col-md-offset-6" id="navigation">
+                <div class="row">
+                <div class="col-md-8 col-md-offset-6 col-sm-6" id="navigation">
             <?php echo $this->Form->create('User',array('action' => 'login','class' => 'form-inline')); ?>
   <div class="form-group">
     <?php echo $this->Form->input('username',array('class' => 'form-control input-sm','placeholder'=> 'usuário','label' => false,'div' => false)); ?>
@@ -112,10 +117,10 @@ _________________________________________________________ -->
 </form>
             </div>
         </div>
-            <!--/.nav-collapse -->
-        </div>
         </div>
     </div>
+    </div>
+</div>
     <!-- /#navbar -->
 
     <!-- *** NAVBAR END *** -->
@@ -126,20 +131,26 @@ _________________________________________________________ -->
 
         <!-- *** INTRO IMAGE ***
 _________________________________________________________ -->
-        <!-- <div id="intro" class="clearfix">
+        <!-- <div id="introd" class="clearfix">
             <div class="item">
                 <div class="container">
                     <div class="row">
                         <div class="carousel-caption"> -->
-                        <div id="intro">
-                             <?php echo $this->Html->image('../home/img/home2.jpg',array('class' => 'img img-responsive')); ?>
-                        </div>
+    <div id="intro">
+    <div class="container">
+    <div class="row">
+        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset- mt-big" data-animate="bounceIn">
+                        <?php echo $this->Html->image('../home/img/logo.jpg',array('class' => 'img img-responsive')); ?>
+        </div>
+    </div>
+    </div>
+    </div>
                         <!-- </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div> -->
-        <!-- *** INTRO IMAGE END *** -->
+        </div>    -->     <!-- *** INTRO IMAGE END *** -->
 
         <!-- *** ABOUT ***
 _________________________________________________________ -->
@@ -243,7 +254,8 @@ _________________________________________________________ -->
 
         <!-- *** SERVICES ***
 _________________________________________________________ -->
-        <div class="section text-gradient" id="services" style="background: #13836C linear-gradient(to bottom, #094377 0%, #000000 100%) repeat-x scroll 0% 0%;">
+        <div id="services" style="height: 50px;"></div>
+        <div class="section text-gradient" style="background: #13836C linear-gradient(to bottom, #094377 0%, #000000 100%) repeat-x scroll 0% 0%;">
             <div class="container">
                 <div class="col-md-12">
                     <h2 class="title" data-animate="fadeInDown">Serviços</h2>
@@ -381,7 +393,7 @@ _________________________________________________________ -->
 
         </div>
 
-        <div class="section contact" id="login" data-animate="bounceIn">
+<!--         <div class="section contact" id="login" data-animate="bounceIn">
     <div class="container">
         <div class="col-md-12">
 
@@ -429,7 +441,7 @@ _________________________________________________________ -->
         <!-- /.12 -->
     </div>
     <!-- /.container -->
-</div>
+</div> -->
         <!-- /.section -->
 
         <!-- *** REFERENCES IMAGE ***
@@ -764,7 +776,6 @@ _________________________________________________________ -->
 
         <!-- *** CONTACT ***
 _________________________________________________________ -->
-
 <div class="section contact" id="pesquisa" data-animate="bounceIn">
     <div class="container">
         <div class="col-md-12">
@@ -789,12 +800,19 @@ _________________________________________________________ -->
                               <div>
                               </div>
                                 <div class="col-md-12">
-                                  <?php echo $this->Form->input('username',array('class' => 'form-control','placeholder'=> 'Usuário','label' => false)); ?>
+                                  <?php echo $this->Form->input('username',array('class' => 'form-control','placeholder'=> 'Nome do Componente','label' => false)); ?>
                                 </div>
                                 <div class="col-md-12">
                                   <?php echo $this->Form->input('password',array('class' => 'form-control','placeholder'=> 'Senha','label' => false)); ?>
                                 </div>
-                                <div class="col-md-12 text-center">
+                                <div class="col-md-12">
+                                  <br>  
+                                  <?php echo $this->Form->input('role', array(
+                                           'options' => array('Aluno de Pesquisa/Extensão','Aluno TAL/Bolsista','Professor','Administrador'), 'class' => 'form-control','label' => false,'div' => false)); 
+
+                                  ?>
+                                </div>
+                                <div class="col-md-12 text-center" style="">
                                   <?php
                                       $options = array('label' => 'Entrar', 'class' => 'btn btn-info btn-lg', 'div' => false);
                                       echo $this->Form->end($options);

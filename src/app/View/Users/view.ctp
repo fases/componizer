@@ -134,14 +134,7 @@
 
                     <!-- footer content -->
 
-                    <footer>
-                        <div class="">
-                            <p class="pull-right">Sistema de gerenciamento online para componentes eletrônicos. |
-                                <span class="lead"> <i class="fa fa-paw"></i> Componizer!</span>
-                            </p>
-                        </div>
-                        <div class="clearfix"></div>
-                    </footer>
+                    <?php echo $this->element('footer'); ?>
                     <!-- /footer content -->
                 </div>
             </div>
