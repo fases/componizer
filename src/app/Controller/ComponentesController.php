@@ -50,6 +50,9 @@ class ComponentesController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->request->is('post')) {           // checks for the post values
                 $this->Componente->create();
+                if($this->request->data['Componente']['subcategoria_id'] == 0){
+                    $this->request->data['Componente']['subcategoria_id'] = null;
+                }
                 // $this->Componente->request->data['Componente']['datasheet'] = 'src/files/'.$this->data['Componente']['datasheet']['name'];
                 if ($this->Componente->save($this->request->data)) {
                     $this->Session->setFlash('O Componente foi salvo!', 'success');

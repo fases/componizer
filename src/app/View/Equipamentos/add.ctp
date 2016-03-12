@@ -135,10 +135,23 @@
                                         </div>
                                     </div>
                                     <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="matricula">Descrição <span class="required">*</span>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="matricula">Descrição do defeito<span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                          <?php echo $this->Form->textarea('descricao',array('label' => 'Observações','rows' => '4', 'class' => 'form-control')); ?>
+                                          <?php echo $this->Form->textarea('descricao_defeito',array('label' => 'Observações','rows' => '4', 'class' => 'form-control')); ?>
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Localização <span class="required">*</span>
+                                        </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                          <?php echo $this->Form->input('localizacao',array('class' => 'form-control col-md-7 col-xs-12','placeholder'=> '','label' => false)); ?>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Local<span class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                          <?php echo $this->Form->input('laboratorio_id', array('type' => 'select', 'options' => $laboratorio, 'label' => false, 'class' => 'form-control'));?>
                                         </div>
                                     </div>
                                     <?php echo $this->Form->input('status',array('label' => false,'value' => 0,'type' => 'hidden')); ?>

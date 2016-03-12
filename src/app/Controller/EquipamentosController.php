@@ -27,6 +27,7 @@ class EquipamentosController extends AppController {
     }
 
     public function add() {
+        $this->set('laboratorio', $this->Equipamento->Laboratorio->find('list', array('fields' => array('Laboratorio.id', 'Laboratorio.nome'))));
         if($this->Auth->user('role') < 1){
             $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
             return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));

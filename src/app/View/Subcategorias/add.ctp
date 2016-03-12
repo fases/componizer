@@ -133,6 +133,7 @@
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Categoria<span class="required">*</span></label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                           <?php echo $this->Form->input('categoria_id',array('type' => 'select','class' => 'form-control','options' => $categories,'label' => false));?>
+                                          <?php echo $this->Html->link('Nova categoria',array('controller' => 'categorias','action' => 'add')); ?>
                                         </div>
                                     </div>
 
@@ -183,35 +184,26 @@
         <div id="notif-group" class="tabbed_notifications"></div>
     </div>
 
-    <script src="js/bootstrap.min.js"></script>
-
-    <!-- gauge js -->
-    <script type="text/javascript" src="js/gauge/gauge.min.js"></script>
-    <script type="text/javascript" src="js/gauge/gauge_demo.js"></script>
-    <!-- chart js -->
-    <script src="js/chartjs/chart.min.js"></script>
-    <!-- bootstrap progress js -->
-    <script src="js/progressbar/bootstrap-progressbar.min.js"></script>
-    <script src="js/nicescroll/jquery.nicescroll.min.js"></script>
-    <!-- icheck -->
-    <script src="js/icheck/icheck.min.js"></script>
-    <!-- daterangepicker -->
-    <script type="text/javascript" src="js/moment.min.js"></script>
-    <script type="text/javascript" src="js/datepicker/daterangepicker.js"></script>
-
-    <script src="js/custom.js"></script>
-
-    <!-- flot js -->
-    <!--[if lte IE 8]><script type="text/javascript" src="js/excanvas.min.js"></script><![endif]-->
-    <script type="text/javascript" src="js/flot/jquery.flot.js"></script>
-    <script type="text/javascript" src="js/flot/jquery.flot.pie.js"></script>
-    <script type="text/javascript" src="js/flot/jquery.flot.orderBars.js"></script>
-    <script type="text/javascript" src="js/flot/jquery.flot.time.min.js"></script>
-    <script type="text/javascript" src="js/flot/date.js"></script>
-    <script type="text/javascript" src="js/flot/jquery.flot.spline.js"></script>
-    <script type="text/javascript" src="js/flot/jquery.flot.stack.js"></script>
-    <script type="text/javascript" src="js/flot/curvedLines.js"></script>
-    <script type="text/javascript" src="js/flot/jquery.flot.resize.js"></script>
+    <?php
+        echo $this->Html->script('gauge/gauge.min.js');
+        echo $this->Html->script('gauge/gauge_demo.js');
+        echo $this->Html->script('chartjs/chart.min.js');
+        echo $this->Html->script('progressbar/bootstrap-progressbar.min.js');
+        echo $this->Html->script('nicescroll/jquery.nicescroll.min.js');
+        echo $this->Html->script('icheck/icheck.min.js');
+        echo $this->Html->script('moment.min.js');
+        echo $this->Html->script('datepicker/daterangepicker.js');
+        echo $this->Html->script('flot/curvedLines.js');
+        echo $this->Html->script('flot/date.js');
+        echo $this->Html->script('flot/jquery.flot.js');
+        echo $this->Html->script('flot/jquery.flot.orderBars.js');
+        echo $this->Html->script('flot/jquery.flot.pie.js');
+        echo $this->Html->script('flot/jquery.flot.resize.js');
+        echo $this->Html->script('flot/jquery.flot.spline.js');
+        echo $this->Html->script('flot/jquery.flot.stack.js');
+        echo $this->Html->script('flot/jquery.flot.time.min.js');
+        echo $this->Html->script('flot/jquery.flot.tooltip.min.js');
+    ?>
     <script>
         $(document).ready(function () {
             // [17, 74, 6, 39, 20, 85, 7]
@@ -274,10 +266,12 @@
     </script>
 
     <!-- worldmap -->
-    <script type="text/javascript" src="js/maps/jquery-jvectormap-2.0.1.min.js"></script>
-    <script type="text/javascript" src="js/maps/gdp-data.js"></script>
-    <script type="text/javascript" src="js/maps/jquery-jvectormap-world-mill-en.js"></script>
-    <script type="text/javascript" src="js/maps/jquery-jvectormap-us-aea-en.js"></script>
+        <?php
+            echo $this->Html->script('maps/gdp-data.js');
+            echo $this->Html->script('maps/jquery-jvectormap-2.0.1.min.js');
+            echo $this->Html->script('maps/jquery-jvectormap-us-aea-en.js');
+            echo $this->Html->script('maps/jquery-jvectormap-world-mill-en.js');
+        ?>
     <script>
         $(function () {
             $('#world-map-gdp').vectorMap({

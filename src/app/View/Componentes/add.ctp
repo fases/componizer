@@ -151,13 +151,18 @@
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Categoria<span class="required">*</span></label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                           <?php echo $this->Form->input('categoria_id',array('type' => 'select','class' => 'form-control','options' => $categoria,'label' => false));?>
-
+                                          <?php echo $this->Html->link('Nova categoria',array('controller' => 'categorias','action' => 'add')); ?>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Subcategoria<span class="required">*</span></label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                          <?php echo $this->Form->input('subcategoria_id',array('type' => 'select','class' => 'form-control','options' => $subcategoria,'label' => false));?>
+                                          <?php 
+                                          $subcategoria[0] = 'Sem subcategoria';
+                                          echo $this->Form->input('subcategoria_id',array('type' => 'select','class' => 'form-control','options' => $subcategoria,'label' => false,'default' => '0'));
+                                          ?>
+
+                                          <?php echo $this->Html->link('Nova Subcategoria',array('controller' => 'subcategorias','action' => 'add')); ?>
                                         </div>
                                     </div>
                                     <div class="item form-group">

@@ -80,10 +80,9 @@
                             <div class="x_panel">
                                 <div class="x_title">
                                     <h2>Lista de requisições finalizadas<small></small></h2>
-                                <?php echo $this->Session->flash(); ?>
                                     <div class="clearfix"></div>
                                 </div>
-
+                                <?php echo $this->Session->flash(); ?>
                                 <div class="x_content">
 
                               <!--  <p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p> -->
@@ -114,11 +113,8 @@
                                                     echo $this->Html->link('Ver componentes', array('action' => 'lista', $valor['Emprestimo']['id']),array('class' => 'btn btn-round btn-default'));
                                                   ?>
                                                   <?php
-                                                    echo $this->Html->link('Finalizar', array('action' => 'end', $valor['Emprestimo']['id']),array('class' => 'btn btn-round btn-success'));
+                                                    echo $this->Html->link('Excluir', array('action' => 'delete', $valor['Emprestimo']['id']),array('class' => 'btn btn-round btn-danger'));
                                                   ?>
-                                                            <?php
-                                                              echo $this->Html->link('Notificar', array('action' => 'notify', $valor['Emprestimo']['id']),array('class' => 'btn btn-round btn-info'));
-                                                            ?>
                                                 </td>
                                             </tr>
                                               <?php endforeach ?>

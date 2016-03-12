@@ -181,7 +181,7 @@ class EmprestimosController extends AppController {
             }
             $this->Emprestimo->saveField('estado', 1);
             $this->Session->setFlash('O Estoque foi Atualizado', 'success');
-            return $this->redirect(array('action' => 'index'));
+            return $this->redirect(array($this->referer()));
         }
     }
 
@@ -191,7 +191,7 @@ class EmprestimosController extends AppController {
         }
         if ($this->Emprestimo->delete($id)) {
             $this->Session->setFlash('A requisição de Id: ' . $id . ' foi deletada.', 'success');
-            $this->redirect(array('action' => 'index'));
+            $this->redirect($this->referer());
         }
     }
 
@@ -227,18 +227,44 @@ class EmprestimosController extends AppController {
         $this->set('emprestimo', $id);
     }
 
-    public function reportstock(){
-        
-    }
-    public function reportmovement(){
-        
+    public function reportmovement($inicio = null,$fim = null){
+        $this->loadModel('Componente');
+        $movimentacao = $this->Componente->query('select c.nome,d.quantidade,d.quant from componentes as c 
+        inner join (select sum(quantidade) as quantidade,count(emprestimo_id) as quant,componente_id,emprestimo_id from notifications group by componente_id)as d on (d.componente_id = c.id) 
+        inner join emprestimos as e on (e.id = d.emprestimo_id)
+        where e.estado = 0  and e.data_emprestimo between "'.$inicio.'" and "'.$fim.'"
+        order by d.quantidade desc');
+        if(empty($movimentacao)){
+            $this->Session->setFlash('Não há requisições no período informado','error');
+            return $this->redirect($this->referer());
+        }else{
+            $this->set('componentes',$movimentacao);
+            $this->layout = 'pdf';
+            $this->render();
+        }
     }
     
-    public function viewpdf() {
-         $this->loadModel('User');
-         $this->set('users',$this->User->find('all'));
+    public function reportstock() {
+         $this->loadModel('Componente');
+         $this->loadModel('Categoria');
+         $this->loadModel('Subcategoria');
+         $this->set('componentes',$this->Componente->find('all'));
+         $this->set('categorias',$this->Categoria->find('all'));
+         $this->set('subcategorias',$this->Subcategoria->find('all'));
          $this->layout = 'pdf';
          $this->render();
+    }
+
+    public function viewpdf() {
+        if($this->request->is('post')){
+            $inicio = $this->request->data['Emprestimo']['inicio']['year'].'-'.$this->request->data['Emprestimo']['inicio']['month'].'-'.
+            $this->request->data['Emprestimo']['inicio']['day'];
+            $fim = $this->request->data['Emprestimo']['fim']['year'].'-'.$this->request->data['Emprestimo']['fim']['month'].'-'.
+            $this->request->data['Emprestimo']['inicio']['day'];
+
+            return $this->redirect(array('action' => 'reportmovement',$inicio,$fim));
+
+        }
     }
 
 }

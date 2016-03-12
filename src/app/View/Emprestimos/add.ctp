@@ -138,7 +138,8 @@
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Solicitante<span class="required">*</span></label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                          <?php echo $this->Form->input('Emprestimo.user_id',array('type' => 'select','class' => 'form-control','options' => $user,'label' => false));?>
+                                          <?php 
+                                          echo $this->Form->input('Emprestimo.user_id',array('type' => 'select','class' => 'form-control','options' => $user,'label' => false));?>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -147,12 +148,6 @@
                                           <?php echo $this->Form->input('Emprestimo.laboratorio_id', array('type' => 'select', 'options' => $laboratorio, 'label' => false, 'class' => 'form-control'));?>
                                         </div>
                                     </div>
-                                    <!-- <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="matricula">Observações </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                          <?php echo $this->Form->textarea('Emprestimo.observacoes',array('label' => 'Observações','rows' => '3', 'class' => 'form-control')); ?>
-                                        </div>
-                                    </div> -->
                                     <div class="ln_solid"></div>
                                     <div class="form-group">
                                         <div class="col-md-6 col-md-offset-3">
