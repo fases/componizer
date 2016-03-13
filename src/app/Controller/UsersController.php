@@ -135,6 +135,10 @@ class UsersController extends AppController {
     }
 
     public function login() {
+        $this->loadModel('Categoria');
+        $this->set('categorias',$this->Categoria->find('list',array('fields' => array('Categoria.id','Categoria.nome'))));
+        $this->loadModel('Subcategoria');
+        $this->set('subcategorias',$this->Subcategoria->find('list',array('fields' => array('Subcategoria.id','Subcategoria.nome'))));
         $this->layout = 'home';
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {

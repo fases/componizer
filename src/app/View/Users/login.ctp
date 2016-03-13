@@ -23,7 +23,7 @@
     <link href="../home/css/bts/css/bootstrap.css" rel="stylesheet">
 
     <!-- Theme stylesheet -->
-    <link href="../home/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+    <link href="../home/css/style.blue.css" rel="stylesheet" id="theme-stylesheet">
 
     <!-- Custom stylesheet - for your changes -->
     <link href="../home/css/custom.css" rel="stylesheet">
@@ -99,7 +99,7 @@ _________________________________________________________ -->
                     </li>
                 </ul>
             </div>
-            <div class="navbar-collapse collapse" id="navigation">
+            <!-- <div class="navbar-collapse collapse" id="navigation">
                 <div class="container">
                 <div class="row">
                 <div class="col-md-8 col-md-offset-6 col-sm-6" id="navigation">
@@ -118,7 +118,7 @@ _________________________________________________________ -->
             </div>
         </div>
         </div>
-    </div>
+    </div> -->
     </div>
 </div>
     <!-- /#navbar -->
@@ -139,9 +139,34 @@ _________________________________________________________ -->
     <div id="intro">
     <div class="container">
     <div class="row">
-        <div class="col-sm-8 col-sm-offset-2 col-md-6 col-md-offset- mt-big" data-animate="bounceIn">
+        <div class="col-sm-6 col-sm-offset-2 col-md-6 col-md-offset-1 mt-big" data-animate="bounceIn">
                         <?php echo $this->Html->image('../home/img/logo.jpg',array('class' => 'img img-responsive')); ?>
         </div>
+        <div class="col-md-4 col-md-offset-1">
+<div class="login-panel panel panel-default" style="padding-top: 25%;">
+                        <h2 class="title">Login</h2>
+                    <div class="panel-body">
+                        <?php echo $this->Form->create(array('action' => 'login'));?>
+                            <fieldset>
+                                <div class="form-group">
+                                    <label> Email </label>
+                                    <?php echo $this->Form->input('username',array('class' => 'form-control','label' => false)); ?>
+                                </div>
+                                <div class="form-group">
+                                    <label> Senha </label>
+                                    <?php echo $this->Form->input('password',array('class' => 'form-control','label' => false)); ?>
+                                </div>
+                                <!-- Change this to a button or input when using this as a form -->
+                                <?php
+                                      $options = array('label' => 'Entrar', 'class' => 'btn btn-primary', 'div' => false);
+                                      echo $this->Form->end($options);
+                                  ?>
+
+                            </fieldset>
+                        </form>
+                    </div>
+                </div>
+</div>
     </div>
     </div>
     </div>
@@ -242,9 +267,7 @@ _________________________________________________________ -->
 
                     </div>
 
-                    <div class="col-sm-6 col-sm-offset-3 col-md-4 col-md-offset-4 mt-big" data-animate="bounceIn">
-                        <?php echo $this->Html->image('../home/img/logo.jpg',array('class' => 'img img-responsive')); ?>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -795,7 +818,7 @@ _________________________________________________________ -->
                         </div>
 
                         <div class="controls">
-                          <?php echo $this->Form->create('User',array('action' => 'login'));?>
+                          <?php echo $this->Form->create('Componente',array('action' => 'datasheets'));?>
                             <div class="row">
                               <div>
                               </div>
@@ -803,23 +826,18 @@ _________________________________________________________ -->
                                   <?php echo $this->Form->input('username',array('class' => 'form-control','placeholder'=> 'Nome do Componente','label' => false)); ?>
                                 </div>
                                 <div class="col-md-12">
-                                  <?php echo $this->Form->input('password',array('class' => 'form-control','placeholder'=> 'Senha','label' => false)); ?>
-                                </div>
-                                <div class="col-md-12">
                                   <br>  
-                                  <?php echo $this->Form->input('role', array(
-                                           'options' => array('Aluno de Pesquisa/Extensão','Aluno TAL/Bolsista','Professor','Administrador'), 'class' => 'form-control','label' => false,'div' => false)); 
+                                  <?php 
+                                  echo $this->Form->input('subcategoria', array(
+                                           'options' => array('Pesquisar por...','Categoria','Subcategoria','Todos'), 'class' => 'form-control','label' => false,'default' => 0,'div' => false)); 
 
                                   ?>
                                 </div>
                                 <div class="col-md-12 text-center" style="">
                                   <?php
-                                      $options = array('label' => 'Entrar', 'class' => 'btn btn-info btn-lg', 'div' => false);
+                                      $options = array('label' => 'Buscar', 'class' => 'btn btn-info btn-lg', 'div' => false);
                                       echo $this->Form->end($options);
                                   ?>
-                                </div>
-                                <div class="pull-right">
-                                  <?php echo $this->Html->link(__('Esqueceu sua senha?'), array('controller' => 'users','action' => 'recovery'));?>
                                 </div>
                             </div>
                         </div>

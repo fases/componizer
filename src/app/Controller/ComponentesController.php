@@ -196,6 +196,13 @@ class ComponentesController extends AppController {
     }
 
     public function datasheets() {
+
+        if($this->request->data['Componente']['categoria'] == 0){
+            if($this->request->data['Componente']['subcategoria'] == 0){
+                $conditions => array('conditions' => array('Componente.datasheet is not null'),
+                    'fields' => array('all', 'Componente.datasheet'));
+            }   
+        }
         $this->set('componentes', $this->Componente->find('all', array('conditions' => array('Componente.datasheet is not null'),
                     'fields' => array('Componente.nome', 'Componente.datasheet'))));
     }
