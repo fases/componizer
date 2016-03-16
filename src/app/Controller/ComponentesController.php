@@ -199,7 +199,7 @@ class ComponentesController extends AppController {
 
         if($this->request->data['Componente']['categoria'] == 0){
             if($this->request->data['Componente']['subcategoria'] == 0){
-                $conditions => array('conditions' => array('Componente.datasheet is not null'),
+                $conditions = array('conditions' => array('Componente.datasheet is not null'),
                     'fields' => array('all', 'Componente.datasheet'));
             }   
         }

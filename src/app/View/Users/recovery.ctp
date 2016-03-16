@@ -22,7 +22,7 @@
     <link href="../home/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Theme stylesheet -->
-    <link href="../home/css/style.default.css" rel="stylesheet" id="theme-stylesheet">
+    <link href="../home/css/style.blue.css" rel="stylesheet" id="theme-stylesheet">
 
     <!-- Custom stylesheet - for your changes -->
     <link href="../home/css/custom.css" rel="stylesheet">
@@ -45,6 +45,11 @@
     <!--[if lt IE 9]>
     <script src="js/respond.min.js"></script>
 <![endif]-->
+<style type="text/css">
+    .blue{
+        color: #094377;
+    }
+</style>
 </head>
 
 <body data-spy="scroll" data-target="#navigation" data-offset="120">
@@ -69,7 +74,7 @@ _________________________________________________________ -->
                 <div class="col-md-4">
                 <img src="../home/img/logo.jpg" class='pull-left image img-responsive' width='70' style="padding-top: 5px;" height='70'></div>
                 <div class="col-md-8">
-                <a class="navbar-brand scrollTo" href="#intro" style="color: #094377;">
+                <a class="navbar-brand scrollTo" href="/componizer/src/users/login" style="color: #094377;">
                 Componizer</a>
                 </div>
                 </div>
@@ -142,7 +147,7 @@ _________________________________________________________ -->
                                 <div class="col-md-12 text-center">
                                   <a>
                                   <?php
-                                      $options = array('label' => 'Enviar', 'class' => 'btn btn-info btn-lg', 'div' => false);
+                                      $options = array('label' => 'Recuperar', 'class' => 'btn btn-info btn-lg', 'div' => false);
                                       echo $this->Form->end($options);
                                   ?></a>
                                 </div>

@@ -144,7 +144,7 @@ class UsersController extends AppController {
             if ($this->Auth->login()) {
                 $this->redirect($this->Auth->redirect());
             } else {
-                $this->Session->setFlash('Usuário ou senha inválida(o). Tente novamente.', 'home_error');
+                $this->Session->setFlash('Usuário ou senha inválido(s)', 'home_error');
                 return $this->redirect(array('action' => 'login#login'));
             }
         }
@@ -159,20 +159,13 @@ class UsersController extends AppController {
         if ($this->request->is('post')) {
             $user = $this->User->find('first', array('conditions' => array('User.matricula' => $this->request->data['User']['matricula'],
                     'User.email' => $this->request->data['User']['email'])));
-            if (is_null($user)) {
+            if (empty($user)) {
                 $this->Session->setFlash('Dados incorretos, tente novamente!');
             } else {
                 //Gera senha automática
                 $password = AuthComponent::password($this->data['User']['matricula']);
                 $this->User->id = $user['User']['id'];
                 $this->User->saveField('password',$password); 
-
-                /*Envia email
-                $Email = new CakeEmail('gmail');
-                $Email->from(array('componizer.gerenciamento@gmail.com' => 'Componizer - Sistema de gerenciamento online para componentes eletrônicos'));
-                $Email->to($user['User']['email']);
-                $Email->subject('Recuperação de senha do Componizer');
-                $Email->send('Sua senha nova é: ' . $password);*/
                 $this->Session->setFlash('Sua nova senha é '.$user['User']['matricula'].'!','home_error');
                 $this->Auth->login(); 
             }

@@ -227,12 +227,12 @@ class EmprestimosController extends AppController {
         $this->set('emprestimo', $id);
     }
 
-    public function reportmovement($inicio = null,$fim = null){
+    public function viewpdf($inicio = null,$fim = null){
         $this->loadModel('Componente');
         $movimentacao = $this->Componente->query('select c.nome,d.quantidade,d.quant from componentes as c 
         inner join (select sum(quantidade) as quantidade,count(emprestimo_id) as quant,componente_id,emprestimo_id from notifications group by componente_id)as d on (d.componente_id = c.id) 
         inner join emprestimos as e on (e.id = d.emprestimo_id)
-        where e.estado = 0  and e.data_emprestimo between "'.$inicio.'" and "'.$fim.'"
+        where e.estado = 0 and e.data_emprestimo between "'.$inicio.'" and "'.$fim.'"
         order by d.quantidade desc');
         if(empty($movimentacao)){
             $this->Session->setFlash('Não há requisições no período informado','error');
@@ -255,14 +255,14 @@ class EmprestimosController extends AppController {
          $this->render();
     }
 
-    public function viewpdf() {
+    public function reportmovement() {
         if($this->request->is('post')){
             $inicio = $this->request->data['Emprestimo']['inicio']['year'].'-'.$this->request->data['Emprestimo']['inicio']['month'].'-'.
             $this->request->data['Emprestimo']['inicio']['day'];
             $fim = $this->request->data['Emprestimo']['fim']['year'].'-'.$this->request->data['Emprestimo']['fim']['month'].'-'.
-            $this->request->data['Emprestimo']['inicio']['day'];
+            $this->request->data['Emprestimo']['fim']['day'];
 
-            return $this->redirect(array('action' => 'reportmovement',$inicio,$fim));
+            return $this->redirect(array('action' => 'viewpdf',$inicio,$fim));
 
         }
     }

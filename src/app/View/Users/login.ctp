@@ -99,26 +99,6 @@ _________________________________________________________ -->
                     </li>
                 </ul>
             </div>
-            <!-- <div class="navbar-collapse collapse" id="navigation">
-                <div class="container">
-                <div class="row">
-                <div class="col-md-8 col-md-offset-6 col-sm-6" id="navigation">
-            <?php echo $this->Form->create('User',array('action' => 'login','class' => 'form-inline')); ?>
-  <div class="form-group">
-    <?php echo $this->Form->input('username',array('class' => 'form-control input-sm','placeholder'=> 'usuário','label' => false,'div' => false)); ?>
-  </div>
-  <div class="form-group">
-    <?php echo $this->Form->input('password',array('class' => 'form-control input-sm','placeholder'=> 'senha','label' => false,'div' => false)); ?>
-  </div>
-  <?php
-                                      $options = array('label' => 'Entrar', 'class' => 'btn btn-primary', 'div' => false);
-                                      echo $this->Form->end($options);
-                                  ?>
-</form>
-            </div>
-        </div>
-        </div>
-    </div> -->
     </div>
 </div>
     <!-- /#navbar -->
@@ -148,6 +128,7 @@ _________________________________________________________ -->
                     <div class="panel-body">
                         <?php echo $this->Form->create(array('action' => 'login'));?>
                             <fieldset>
+                                <?php echo $this->Session->flash(); ?>
                                 <div class="form-group">
                                     <label> Email </label>
                                     <?php echo $this->Form->input('username',array('class' => 'form-control','label' => false)); ?>
@@ -161,7 +142,9 @@ _________________________________________________________ -->
                                       $options = array('label' => 'Entrar', 'class' => 'btn btn-primary', 'div' => false);
                                       echo $this->Form->end($options);
                                   ?>
-
+                                <div class="pull-right">
+                                <?php echo $this->Html->link('Esqueceu sua senha',array('action' => 'recovery')); ?>
+                                </div>
                             </fieldset>
                         </form>
                     </div>
@@ -823,12 +806,12 @@ _________________________________________________________ -->
                               <div>
                               </div>
                                 <div class="col-md-12">
-                                  <?php echo $this->Form->input('username',array('class' => 'form-control','placeholder'=> 'Nome do Componente','label' => false)); ?>
+                                  <?php echo $this->Form->input('name',array('class' => 'form-control','placeholder'=> 'Nome do Componente','label' => false)); ?>
                                 </div>
                                 <div class="col-md-12">
                                   <br>  
                                   <?php 
-                                  echo $this->Form->input('subcategoria', array(
+                                  echo $this->Form->input('tipo', array(
                                            'options' => array('Pesquisar por...','Categoria','Subcategoria','Todos'), 'class' => 'form-control','label' => false,'default' => 0,'div' => false)); 
 
                                   ?>
@@ -842,7 +825,6 @@ _________________________________________________________ -->
                             </div>
                         </div>
                 </div>
-
             </div>
 
         </div>
