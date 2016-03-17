@@ -176,15 +176,7 @@ _________________________________________________________ -->
 
                             <div class="col-sm-6 text-left" data-animate="fadeInUp">
 
-                                <p>An sincerity so extremity he additions. Her yet <strong>there truth merit</strong>. Mrs all projecting favourable now unpleasing. Son law garden chatty temper. Oh children provided to mr elegance marriage strongly. Off can
-                                    admiration prosperous now devonshire diminution law.</p>
-
-                                <p>Received overcame oh sensible so at an. Formed do change merely to county it. <strong>Am separate contempt</strong> domestic to to oh. On relation my so addition branched. Put hearing cottage she norland letters equally prepare
-                                    too. Replied exposed savings he no viewing as up. Soon body add him hill. No father living really people estate if. Mistake do produce beloved demesne if am pursuit.</p>
-
-                                <p>An sincerity so extremity he additions. Her yet <strong>there truth merit</strong>. Mrs all projecting favourable now unpleasing. Son law garden chatty temper. Oh children provided to mr elegance marriage strongly. Off can
-                                    admiration prosperous now devonshire diminution law.</p>
-
+                                <p>O Componizer é um software que visa além da organização do estoque de componentes, facilitar as atividades dos professores e alunos auxiliando tanto no planejamento quanto na execução. Sem esquecer da praticidade para gerar relatórios, emitir alertas de equipamentos danificados e sugerir a compra de novos, assim ajudando no cotidiano das instituições que dele fizerem uso.</p>
                             </div>
 
                             <div class="col-sm-6" data-animate="fadeInUp">
@@ -194,7 +186,7 @@ _________________________________________________________ -->
                                         PHP
                                     </div>
                                     <div class="progress">
-                                        <div class="progress-bar progress-bar-skill1" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                        <div class="progress-bar progress-bar-skill1" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
                                             <span class="sr-only">60</span>
                                         </div>
                                     </div>
@@ -205,7 +197,7 @@ _________________________________________________________ -->
                                         Javascript
                                     </div>
                                     <div class="progress">
-                                        <div class="progress-bar progress-bar-skill2" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
+                                        <div class="progress-bar progress-bar-skill2" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
                                             <span class="sr-only">70</span>
                                         </div>
                                     </div>
@@ -216,7 +208,7 @@ _________________________________________________________ -->
                                         HTML coding
                                     </div>
                                     <div class="progress">
-                                        <div class="progress-bar progress-bar-skill3" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
+                                        <div class="progress-bar progress-bar-skill3" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 5%;">
                                             <span class="sr-only">80</span>
                                         </div>
                                     </div>
@@ -224,27 +216,14 @@ _________________________________________________________ -->
 
                                 <div class="skill-item">
                                     <div class="progress-title">
-                                        SEO
+                                        SQL
                                     </div>
                                     <div class="progress">
-                                        <div class="progress-bar progress-bar-skill4" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
+                                        <div class="progress-bar progress-bar-skill4" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 5%;">
                                             <span class="sr-only">90</span>
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="skill-item">
-                                    <div class="progress-title">
-                                        SEM
-                                    </div>
-                                    <div class="progress">
-                                        <div class="progress-bar progress-bar-skill5" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
-                                            <span class="sr-only">70</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-
                             </div>
                         </div>
 
@@ -272,23 +251,21 @@ _________________________________________________________ -->
                             <div class="icon"><i class="fa fa-exchange"></i>
                             </div>
                             <h3 class="heading">Requisições</h3>
-                            <p>On on produce colonel pointed. Just four sold need over how any. In to september suspicion determine he prevailed admitting. On adapted an as affixed limited on. Giving cousin warmly things no spring mr be abroad. Relation
-                                breeding be as repeated strictly followed margaret. One gravity son brought shyness waiting regular led ham.</p>
+                            <p>Através de requisições, o usuário poderá escolher os materiais desejados para a realização das suas atividades cotidianas no ambiente acadêmico.</p>
                         </div>
 
                         <div class="col-md-4" data-animate="fadeInUp">
                             <div class="icon"><i class="fa fa-file-pdf-o"></i>
                             </div>
                             <h3 class="heading">Datasheets</h3>
-                            <p>Manor we shall merit by chief wound no or would. Oh towards between subject passage sending mention or it. Sight happy do burst fruit to woody begin at. Assurance perpetual he in oh determine as.</p>
+                            <p>Para facilitar consultas relacionadas aos dados dos componentes, o sistema conta com uma disponibilidade de anexo dos datasheets dos componentes em PDF.</p>
                         </div>
 
                         <div class="col-md-4" data-animate="fadeInUp">
                             <div class="icon"><i class="fa fa-bar-chart"></i>
                             </div>
                             <h3 class="heading">Relatórios</h3>
-                            <p>Rooms oh fully taken by worse do. Points afraid but may end law lasted. Was out laughter raptures returned outweigh. Luckily cheered colonel me do we attacks on highest enabled. Tried law yet style child. Bore of true of no
-                                be deal.</p>
+                            <p>Com a elaboração de relatórios de estoque ou movimentações, o software permite um controle mais aprofundado dos materiais e seus usos.</p>
                         </div>
 
                     </div>
@@ -371,7 +348,7 @@ _________________________________________________________ -->
 
 			Satisfied Clients</h4>
                         </div>
-                    </div>
+                    </div>  
                     <div class="col-md-3 col-sm-6" data-animate="fadeInUp">
                         <div class="item">
                             <div class="icon"><i class="fa fa-copy"></i>
@@ -444,7 +421,7 @@ _________________________________________________________ -->
             </div>
 
         </div>
-        <!-- /.12 -->
+        /.12 -->
     </div>
     <!-- /.container -->
 </div> -->
