@@ -98,7 +98,7 @@
                                 <table class="table table-striped responsive-utilities jambo_table bulk_action">
                                     <thead>
                                         <tr class="headings">
-                                            <th class="column-title">Matricula </th>
+                                            <th class="column-title">Matrícula </th>
                                             <th class="column-title">Nome </th>
                                             <th class="column-title">Tipo de Usuário </th>
                                             <th class="column-title no-link last"><span class="nobr">Ações</span> </th>
@@ -123,7 +123,7 @@
                                                           array('class' => 'btn btn-round btn-danger'));
                                                       ?></td>
                                         </tr>
-                           <?php endforeach?>
+                           <?php endforeach; ?>
                  <!--<tr class="odd pointer">-->
                                     </tbody>
                                 </table>

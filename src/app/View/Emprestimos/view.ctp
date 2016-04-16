@@ -78,7 +78,7 @@
 
                         <div class="page-title">
                             <div class="title_left">
-                                <h3>Emprestimo</h3>
+                                <h3>Empréstimo</h3>
                             </div>
                         </div>
                     </div>
@@ -129,19 +129,19 @@
                                             </tr>
                                             <tr class="odd pointer">
                                                 <th> Solicitante: </th>
-                                                <td> <?php echo $emprestimos['Emprestimo']['horario']?></td>
+                                                <td> <?php echo $emprestimos['User']['nome']?></td>
                                             </tr>
                                             <tr class="odd pointer">
                                                 <th> Laboratório: </th>
-                                                <td> <?php echo $emprestimos['Emprestimo']['horario']?></td>
+                                                <td> <?php echo $emprestimos['Laboratorio']['nome'];?></td>
                                             </tr>
                                             <tr class="odd pointer">
                                                 <th> Estado: </th>
-                                                <td> <?php echo $emprestimos['Emprestimo']['estado']?></td>
+                                                <td> <?php echo ($emprestimos['Emprestimo']['estado'] == 0?'<span class="label label-danger">Aberta</span>':'<span class="label label-success">Finalizada</span>'); ?></td>
                                             </tr>
                                             <tr class="odd pointer">
                                                 <th> Notificação: </th>
-                                                <td> <?php echo $emprestimos['Emprestimo']['notificar']?></td>
+                                                <td> <?php echo ($emprestimos['Emprestimo']['notificar'] == 0?'<span class="label label-warning">Sem status</span>':($emprestimos['Emprestimo']['notificar'] == 1?'<span class="label label-success">Disponível</span>':($emprestimos['Emprestimo']['notificar'] == 2?'<span class="label label-primary">Parcialmente disponível</span>':'<span class="label label-danger">Indisponível</span>'))); ?></td>
                                             </tr>
                                             <tr class="odd pointer">
                                                 <th> Observações: </th>

@@ -19,13 +19,8 @@ class EmprestimosController extends AppController {
     }
 
     public function index() {
-        if($this->Auth->user('role') < 3){
-            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
+        if($this->Auth->user('role') == 2 || $this->Auth->user('role') == 0){
             return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
-        }
-        if($this->request->is('requested')){
-            $abertos = $this->Emprestimo->find('count',array('conditions' => array('Emprestimo.estado' => '0')));
-            return $abertos;
         }
         $this->Emprestimo->recursive = 0;
         $this->set('emprestimos',$this->Paginator->paginate(
@@ -35,13 +30,8 @@ class EmprestimosController extends AppController {
     }
 
     public function completed() {
-        if($this->Auth->user('role') < 3){
-            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
+        if($this->Auth->user('role') == 2 || $this->Auth->user('role') == 0){
             return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
-        }
-        if($this->request->is('requested')){
-            $finalizados = $this->Emprestimo->find('count',array('conditions' => array('Emprestimo.estado' => '1')));
-            return $abertos;
         }
         $this->Emprestimo->recursive = 0;
         $this->set('emprestimos',$this->Paginator->paginate(
@@ -54,19 +44,23 @@ class EmprestimosController extends AppController {
         $this->Emprestimo->id = $id;
         if (!$this->Emprestimo->exists()) {
             $this->Session->setFlash('Solicitação inexistente!', 'error');
-            if($this->Session->read($user('id')) == 0){
+            if($this->Auth->user('role') != 0 && $this->Auth->user('role') != 2){
                 return $this->redirect(array('action' => 'index'));
             }
             return $this->redirect(array('action' => 'profile'));
         }
-        $this->set('emprestimos', $this->Emprestimo->findById($id));
+        $emprestimo = $this->Emprestimo->findById($id);
+        if($this->Auth->user('role') == 0 && $emprestimo['Emprestimo']['user_id'] != $this->Auth->user('id')){
+            return $this->redirect(array('action' => 'profile'));
+        }
+        $this->set('emprestimos', $emprestimo);
     }
 
     public function add() {
-        if ($this->Auth->user('role') < 3) {
-            $this->set('user', $this->Emprestimo->User->find('list', array('conditions' => array('User.id' => $this->Auth->user('id')), 'fields' => array('User.id', 'User.nome'))));
+        if ($this->Auth->user('role') < 2) {
+            $this->set('users', $this->Emprestimo->User->find('list', array('conditions' => array('User.id' => $this->Auth->user('id')), 'fields' => array('User.id', 'User.nome'))));
         } else {
-            $this->set('user', $this->Emprestimo->User->find('list', array('fields' => array('User.id', 'User.nome'))));
+            $this->set('users', $this->Emprestimo->User->find('list', array('fields' => array('User.id', 'User.nome'))));
         }
         $this->set('laboratorio', $this->Emprestimo->Laboratorio->find('list', array('fields' => array('Laboratorio.id', 'Laboratorio.nome'))));
         if ($this->request->is('post')) {
@@ -90,13 +84,10 @@ class EmprestimosController extends AppController {
         $this->Emprestimo->id = $id;
         if (!$this->Emprestimo->exists()) {
             $this->Session->setFlash('Solicitação inexistente!', 'error');
-            if($this->Session->read($user('id')) == 0){
-                return $this->redirect(array('action' => 'index'));
-            }
-            return $this->redirect(array('action' => 'profile'));
+            return $this->redirect($this->referer());
         }
         $user_id = $this->Emprestimo->find('first', array('conditions' => array('Emprestimo.id' => $id)));
-        $this->set('user', $this->Emprestimo->User->find('list', array('conditions' => array('User.id' => $user_id['Emprestimo']['user_id']),
+        $this->set('users', $this->Emprestimo->User->find('list', array('conditions' => array('User.id' => $user_id['Emprestimo']['user_id']),
                     'fields' => array('User.id', 'User.nome'))));
         $laboratorio_id = $this->Emprestimo->find('first', array('conditions' => array('Emprestimo.id' => $id)));
         $this->set('laboratorio', $this->Emprestimo->Laboratorio->find('list', array('conditions' => array('Laboratorio.id' => $laboratorio_id['Laboratorio']['id']),

@@ -68,25 +68,33 @@
                   <li><?php echo $this->Html->link(__('Criar requisição'), array('controller' => 'emprestimos','action' => 'add')); ?>
                   </li>
                   <li><?php echo $this->Html->link(__('Minhas requisições'), array('controller' => 'emprestimos','action' => 'profile')); ?>
+                  </li>
               </ul>
           </li>
           <?php if($this->Session->read('Auth.User.role') == 3){ ?>
           <li><a><i class="fa fa-bar-chart"></i> Relatórios <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu" style="display: none">
-                  <li><?php echo $this->Html->link(__('Gerar Relatório de estoque'), array('controller' => '','action' => 'index')); ?>
+                  <li><?php echo $this->Html->link(__('Gerar Relatórios'), array('controller' => 'emprestimos','action' => 'reportmovement')); ?>
                   </li>
-                  <li><?php echo $this->Html->link(__('Gerar Relatório de movimentação'), array('controller' => '','action' => 'index')); ?>
+              </ul>
+          </li>
+          <?php } 
+              if($this->Session->read('Auth.User.role') == 3){
+          ?>
+          <li><a><i class="fa fa-wrench"></i> Equipamentos <span class="fa fa-chevron-down"></span></a>
+              <ul class="nav child_menu" style="display: none">
+                  <li><?php echo $this->Html->link(__('Listar danificados'), array('controller' => 'equipamentos','action' => 'index')); ?>
+                  </li>
+                  <li><?php echo $this->Html->link(__('Listar consertados'), array('controller' => 'equipamentos','action' => 'repaired')); ?>
                   </li>
               </ul>
           </li>
           <?php } ?>
           <li><a><i class="fa fa-cogs"></i> Suporte <span class="fa fa-chevron-down"></span></a>
               <ul class="nav child_menu" style="display: none">
-                  <li><a href="chartjs.html">Faltou algum componente?</a>
+                  <li><?php echo $this->Html->link(__('Tem  algum equipamento precisando de manutenção?'), array('controller' => 'equipamentos','action' => 'add')); ?>
                   </li>
-                  <li><a href="chartjs2.html">Tem  algum equipamento precisando de manutenção?</a>
-                  </li>
-                  <li><a href="chartjs2.html">Sugestões</a>
+                  <li><?php echo $this->Html->link(__('Faltou algum componente?'), array('controller' => 'pedidos','action' => 'add')); ?>
                   </li>
               </ul>
           </li>

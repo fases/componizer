@@ -27,10 +27,6 @@ class PedidosController extends AppController {
     }
 
     public function add() {
-        if($this->Auth->user('role') < 1){
-            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
-            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
-        }
         if ($this->request->is('post')) {
             $this->Pedido->create();
             if ($this->Pedido->save($this->request->data)) {
@@ -42,7 +38,7 @@ class PedidosController extends AppController {
     }
 
     public function edit($id = null) {
-        if($this->Auth->user('role') < 1){
+        if($this->Auth->user('role') != 1 && $this->Auth->user('role') != 3){
             $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
             return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
         }
@@ -69,24 +65,14 @@ class PedidosController extends AppController {
         $this->set('pedidos', $this->Pedido->findById($id));
     }
 
-    public function consert(){
-        $this->Pedido->id = $id;
-        if (!$this->Pedido->exists()) {
-            $this->Session->setFlash("A sugestão escolhida é inválido!", 'error');
-            $this->redirect(array('action' => 'index'));
-        }
-        if (!$this->request->is('get')) {
-            throw new MethodNotAllowedException();
-        }
-        if ($this->Pedido->delete($id)) {
-            $this->Session->setFlash('A sugestão foi deletada!', 'success');
-            $this->redirect(array('action' => 'index'));
-        }
-    }
     function delete($id) {
+        if($this->Auth->user('role') != 1 && $this->Auth->user('role') != 3){
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
+            return $this->redirect($this->referer());
+        }
         $this->Pedido->id = $id;
         if (!$this->Pedido->exists()) {
-            $this->Session->setFlash("A sugestão escolhida é inválido!", 'error');
+            $this->Session->setFlash("A sugestão escolhida é inválida!", 'error');
             $this->redirect(array('action' => 'index'));
         }
         if (!$this->request->is('get')) {

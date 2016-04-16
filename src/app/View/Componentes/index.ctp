@@ -129,10 +129,14 @@
                                             <td> <?php echo $this->Html->link($valor['Categoria']['nome'],array('controller' => 'categorias','action' => 'view',$valor['Categoria']['id'])); ?> </td>
                                             <td> <?php echo $this->Html->link($valor['Subcategoria']['nome'],array('controller' => 'subcategorias','action' => 'view',$valor['Subcategoria']['id'])); ?> </td>
                                             <td> <?php
-                                                  if($this->Session->read('Auth.User.role') != 0){
+                                                  if(is_null($valor['Componente']['datasheet'])){
                                                     echo $this->Html->link('Datasheet', array('action' => 'upload',
                                                                                     $valor['Componente']['id']),
                                                                                       array('class' => 'btn btn-round btn-success'));
+                                                  }else{
+                                                    echo $this->Html->link('Datasheet', array('action' => 'upload',
+                                                                                    $valor['Componente']['id']),
+                                                                                      array('class' => 'btn btn-round btn-success disabled'));
                                                   }
                                                                 echo $this->Html->link('Editar', array('action' => 'edit',
                                                                                     $valor['Componente']['id']),

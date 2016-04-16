@@ -129,7 +129,7 @@
                                                 <th> Datasheet </th>
                                                 <td>
                                                     <?php if(!is_null($componentes['Componente']['datasheet'])){ ?>
-                                                    <a href="<?php echo '/componizer'.$componentes['Componente']['datasheet'];?>">PDF</a>
+                                                    <a href="<?php echo '/componizer/src/files/datasheet/'.$componentes['Componente']['datasheet'];?>">PDF</a>
                                                     <?php }else if($this->Session->read('Auth.User.role') == 1 || $this->Session->read('Auth.User.role') == 3){
                                                         echo $this->Html->link('Anexar Datasheet',array('action' => 'upload',$componentes['Componente']['id'],'class' => 'btn btn-primary'));
                                                     } ?> </td>

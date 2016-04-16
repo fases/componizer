@@ -4,7 +4,7 @@
 		foreach ($componentes as $componente): ?>
     <li><p>
 			<?php echo $this->Js->submit('Adicionar',array('url' => array('controller' => 'componentes','action' => 'add_list',$componente['Componente']['id']),'update' => '#car','class' => 'btn btn-primary btn-xs','div' => false)); ?>
-            <a class="flat"><?php echo $componente['Componente']['nome']; ?></a></p>                                           
+            <a class="flat"><?php echo $componente['Componente']['nome'].' - '.$componente['Categoria']['nome']; ?></a></p>  
 		<?php endforeach; 
 		}else{ ?>
         <div class="alert alert-danger alert-dismissible fade in" role="alert">

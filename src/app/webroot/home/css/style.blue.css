@@ -1041,7 +1041,7 @@ strong {
 .navbar-brand {
   float: left;
   padding: 29px 15px;
-  color: #5091da;
+  color: #094377;
   font-family: 'Roboto Slab', serif;
   font-size: 22px;
   text-transform: uppercase;
@@ -1052,6 +1052,7 @@ strong {
 .navbar-brand:hover,
 .navbar-brand:focus {
   text-decoration: none;
+  color: #094377;
 }
 @media (min-width: 768px) {
   .navbar > .container .navbar-brand,

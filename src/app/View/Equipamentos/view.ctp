@@ -78,19 +78,8 @@
 
                         <div class="page-title">
                             <div class="title_left">
-                                <h3>Requisições</h3>
+                                <h3>Alerta de Equipamento</h3>
                             </div>
-
-                            <!--  <div class="title_right">
-                                  <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-                                      <div class="input-group">
-                                          <input type="text" class="form-control" placeholder="Pesquisar">
-                                          <span class="input-group-btn">
-                                  <button class="btn btn-default" type="button">OK!</button>
-                              </span>
-                                      </div>
-                                  </div>
-                              </div> -->
                         </div>
                     </div>
                     <br />
@@ -99,73 +88,57 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Editar Empréstimo <small></small></h2>
+                                    <h2><?php echo $equipamento['Equipamento']['id']?><small></small></h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+                                        <!--  <li class="dropdown">
+                                              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                              <ul class="dropdown-menu" role="menu">
+                                                  <li><a href="#">Settings 1</a>
+                                                  </li>
+                                                  <li><a href="#">Settings 2</a>
+                                                  </li>
+                                              </ul>
+                                          </li> -->
+                                        <li><a class="close-link"><i class="fa fa-close"></i></a>
+                                        </li>
+                                    </ul>
                                     <div class="clearfix"></div>
                                 </div>
-                            <?php echo $this->Session->flash(); ?>
+
                                 <div class="x_content">
 
-                                    <!--<form class="form-horizontal form-label-left" novalidate> -->
-                                <?php echo $this->Form->create('Emprestimo',array('action' => 'edit', 'class' => 'form-horizontal form-label-left', 'novalidate'));?>
+                              <!--  <p>Add class <code>bulk_action</code> to table for bulk actions options on row select</p> -->
 
-                                    <!--<p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a>
-                                    </p> -->
-                                    <!--<span class="section">Personal Info</span>-->
-                                    <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Horário <span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                          <?php echo $this->Form->input('Emprestimo.horario',array('type' => 'select', 'class' => 'form-control','options' => array('1º horário' => '1º horário','2º horário' => '2º horário','3º horário' => '3º horário','4º horário'=>'4º horário','5º horário'=>'5º horário','6º horário' => '6º horário'),'label' => false)); ?>
-                                        </div>
-                                    </div>
-                                    <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="matricula">Turno <span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                          <?php echo $this->Form->input('Emprestimo.turno',
-                                                  array('options' => array('Matutino' => 'Matutino','Vespertino' => 'Vespertino','Noturno' => 'Noturno'),'label' => false, 'type' => 'select', 'class' => 'form-control'));
-                                          $turno = array('Matutino','Vespertino','Noturno');?>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Data da aula<span class="required">*</span></label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                          <?php echo $this->Form->input('Emprestimo.data_aula', array( 'label' => false,'type' => 'date', 'class' => '',
-                                           'dateFormat' => 'DMY',
-                                           'minYear' => date('Y') - 0,
-                                           'maxYear' => date('Y') + 5 ));?>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Solicitante<span class="required">*</span></label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                          <?php echo $this->Form->input('Emprestimo.user_id',array('type' => 'select','class' => 'form-control','options' => $users,'label' => false)); ?>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Local<span class="required">*</span></label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                          <?php echo $this->Form->input('Emprestimo.laboratorio_id', array('type' => 'select', 'options' => $laboratorio, 'label' => false, 'class' => 'form-control'));?>
-                                        </div>
-                                    </div>
-                                    <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="matricula">Observações </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                          <?php echo $this->Form->textarea('Emprestimo.observacoes',array('label' => 'Observações','rows' => '3', 'class' => 'form-control')); ?>
-                                        </div>
-                                    </div>
-                                    <div class="ln_solid"></div>
-                                    <div class="form-group">
-                                        <div class="col-md-6 col-md-offset-3">
-                                          <?php
-                                              $options = array('label' => 'Editar', 'class' => 'btn btn-success');
-                                              echo $this->Form->end($options);
-                                              echo $this->Html->link('Cancelar',array('controller' => 'emprestimos','action' => 'profile'),array('class' => 'btn btn-danger'));
-                                          ?>
-                                        </div>
-                                    </div>
-                                    <!--</form> -->
+                                    <table class="table table-striped responsive-utilities jambo_table bulk_action">
 
+                                        <tbody>
+
+                                            <tr class="even pointer">
+                                                <th> Equipamento: </th>
+                                                <td> <?php echo $equipamento['Equipamento']['nome']?> </td>
+                                            </tr>
+                                            <tr class="odd pointer">
+                                                <th> Descrição do defeito: </th>
+                                                <td> <?php echo $equipamento['Equipamento']['descricao_defeito']?> </td>
+                                            </tr>
+                                            <tr class="odd pointer">
+                                                <th> Localização: </th>
+                                                <td> <?php echo $equipamento['Equipamento']['localizacao']?></td>
+                                            </tr>
+                                            <tr class="odd pointer">
+                                                <th> Laboratório: </th>
+                                                <td>
+                                                    <?php echo $this->Html->link($equipamento['Laboratorio']['nome'],array('controller' => 'laboratorios','action' => 'view',$equipamento['Equipamento']['laboratorio_id'])); ?></td>
+                                            </tr>
+                                            <tr class="odd pointer">
+                                                <th> Situação: </th>
+                                                <td> <?php echo ($equipamento['Equipamento']['situacao'] == 0?'<span class="label label-danger">Danificado</span>':'<span class="label label-success">Consertado</span>'); ?></td>
+                                            </tr>
+                                            <!---->
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -282,12 +255,12 @@
     </script>
 
     <!-- worldmap -->
-      <?php
-            echo $this->Html->script('maps/gdp-data.js');
-            echo $this->Html->script('maps/jquery-jvectormap-2.0.1.min.js');
-            echo $this->Html->script('maps/jquery-jvectormap-us-aea-en.js');
-            echo $this->Html->script('maps/jquery-jvectormap-world-mill-en.js');
-        ?>
+    <?php
+        echo $this->Html->script('maps/gdp-data.js');
+        echo $this->Html->script('maps/jquery-jvectormap-2.0.1.min.js');
+        echo $this->Html->script('maps/jquery-jvectormap-us-aea-en.js');
+        echo $this->Html->script('maps/jquery-jvectormap-world-mill-en.js');
+    ?>
     <script>
         $(function () {
             $('#world-map-gdp').vectorMap({
@@ -431,6 +404,3 @@
     </script>
     <!-- /datepicker -->
     <!-- /footer content -->
-</body>
-
-</html>

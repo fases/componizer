@@ -98,17 +98,16 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Criar relatório de movimentação<small></small></h2>
+                                    <h2>Movimentação<small></small></h2>
                                     <div class="clearfix"></div>
-                                <?php echo $this->Session->flash(); ?>
+                                
                                 </div>
                                 <div class="x_content">
-
-                              <?php echo $this->Form->create('Emprestimo',array('action' => 'reportmovement', 'class' => 'form-horizontal form-label-left', 'novalidate'));?>
-
-                                    <!--<p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a>
+                                    <?php echo $this->Session->flash(); ?>
+                                                <!--<p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a>
                                     </p> -->
                                     <!--<span class="section">Personal Info</span>-->
+                                    <?php echo $this->Form->create('Emprestimo',array('action' => 'reportmovement', 'class' => 'form-horizontal form-label-left', 'novalidate'));?>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Data de Início<span class="required">*</span></label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
@@ -133,15 +132,33 @@
                                           <?php
                                               $options = array('label' => 'Gerar', 'class' => 'btn btn-success');
                                               echo $this->Form->end($options);
-                                              echo $this->Html->link('Cancelar',array(
-                                                        'action' => 'index'),array('class' => 'btn btn-danger'));
+                                              echo $this->Html->link($this->Html->tag('i', '', array('class' => 'fa fa-reply')).' Solicitações abertas', array('action' => 'index'), array('escape' => false,'class' => 'btn btn-primary'));
                                           ?>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
-                        </div>
+                                            </div>
 
+                    </div>
+                    <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Estoque<small></small></h2>
+                                    <div class="clearfix"></div>
+                                <?php echo $this->Session->flash(); ?>
+                                </div>
+                                <div class="x_content">
+                                    <form class="form-horizontal">
+                                    <div class="form-group">
+                                        <div class="col-md-6 col-md-offset-3">
+                                            <div class="submit"> 
+                                          <?php
+                                                              echo $this->Html->link($this->Html->tag('i', '', array('class' => 'fa fa-download')).' Gerar', array('action' => 'reportstock'), array('escape' => false,'class' => 'btn btn-success'));
+                                                              echo $this->Html->link($this->Html->tag('i', '', array('class' => 'fa fa-reply')).' Ver estoque', array('controller' => 'componentes','action' => 'index'), array('escape' => false,'class' => 'btn btn-primary'));
+                                            ?>
+                                            </div>
+                                            </div>
+                                        </div>
+                                        </form>
+                                </div>
                     </div>
 
                     <!-- end of weather widget -->

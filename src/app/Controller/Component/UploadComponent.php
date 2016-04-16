@@ -4,16 +4,25 @@ App::uses('Component','Controller');
 
 		public function upload($data = null){
 			if(!empty($data)){
-				$filename = $data['name'];
-				$file_tmp_name = $data['tmp_name'];
-				$dir = WWW_ROOT.'files'.DS.'datasheet';
-				$allowed = array('pdf','jpg','png');
-				if(!in_array(substr(strrchr($filename, '.'), 1), $allowed)){
-					throw new NotFoundException('Erro ao processar requisição',1);
-				}elseif(is_uploaded_file($file_tmp_name)){
-					move_uploaded_file($file_tmp_name,$dir.DS.$filename);
-				}
+				$path = WWW_ROOT . 'files/datasheet/';
+      			$ext = substr(strtolower(strrchr($data['name'], '.')), 1);
+      			$arr_ext = array('png', 'jpg','pdf');
+      			if(file_exists($path . $data['name'])){
+        			return false;
+      			}else if (in_array($ext, $arr_ext)) {
+          			move_uploaded_file($data['tmp_name'], $path . $data['name']);
+          			return true;
+      			}else{
+          			return false;
+      			}
 			}
+		}
+
+		public function delete_file($data = null){
+			$path = WWW_ROOT . 'files/datasheet/';
+       		if(file_exists($path . $data)){
+          		unlink($path . $data);
+       		}
 		}
 	}
 ?>

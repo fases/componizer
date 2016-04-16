@@ -41,6 +41,17 @@
 
     <!-- Mordernizr -->
     <script src="../home/js/modernizr-2.6.2.min.js"></script>
+    <script type="text/javascript">
+        function mudartexto(id){
+            if(id == 1){
+                document.getElementById('ComponenteCampo').placeholder = 'Nome da categoria';
+            }else if(id == 2){
+                document.getElementById('ComponenteCampo').placeholder = 'Nome da subcategoria';
+            }else{
+                document.getElementById('ComponenteCampo').placeholder = 'Nome';
+            }
+        }
+    </script>
     <style type="text/css">
         /*body{padding-top:40px;}*/
         #intro{
@@ -119,10 +130,10 @@ _________________________________________________________ -->
     <div id="intro">
     <div class="container">
     <div class="row">
-        <div class="col-sm-6 col-sm-offset-2 col-md-6 col-md-offset-1 mt-big" data-animate="bounceIn">
-                        <?php echo $this->Html->image('../home/img/logo.jpg',array('class' => 'img img-responsive')); ?>
+        <div class="col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-1" data-animate="bounceIn">
+              <?php echo $this->Html->image('../home/img/logo.jpg',array('class' => 'img img-responsive')); ?>
         </div>
-        <div class="col-md-4 col-md-offset-1">
+        <div class="col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-1">
 <div class="login-panel panel panel-default" style="padding-top: 25%;">
                         <h2 class="title">Login</h2>
                     <div class="panel-body">
@@ -130,7 +141,7 @@ _________________________________________________________ -->
                             <fieldset>
                                 <?php echo $this->Session->flash(); ?>
                                 <div class="form-group">
-                                    <label> Email </label>
+                                    <label> Usuário </label>
                                     <?php echo $this->Form->input('username',array('class' => 'form-control','label' => false)); ?>
                                 </div>
                                 <div class="form-group">
@@ -176,7 +187,8 @@ _________________________________________________________ -->
 
                             <div class="col-sm-6 text-left" data-animate="fadeInUp">
 
-                                <p>O Componizer é um software que visa além da organização do estoque de componentes, facilitar as atividades dos professores e alunos auxiliando tanto no planejamento quanto na execução. Sem esquecer da praticidade para gerar relatórios, emitir alertas de equipamentos danificados e sugerir a compra de novos, assim ajudando no cotidiano das instituições que dele fizerem uso.</p>
+                                <p>O Componizer é um software que visa além da organização do estoque de componentes, facilitar as atividades dos professores e alunos auxiliando tanto no planejamento quanto na execução. Sem esquecer da praticidade para gerar relatórios, emitir alertas de equipamentos danificados e sugerir a compra de novos, ajudando assim no cotidiano das instituições que dele fizerem uso.</p>
+                                </p>    
                             </div>
 
                             <div class="col-sm-6" data-animate="fadeInUp">
@@ -187,7 +199,7 @@ _________________________________________________________ -->
                                     </div>
                                     <div class="progress">
                                         <div class="progress-bar progress-bar-skill1" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
-                                            <span class="sr-only">60</span>
+                                            <span class="sr-only">70</span>
                                         </div>
                                     </div>
                                 </div>
@@ -197,8 +209,8 @@ _________________________________________________________ -->
                                         Javascript
                                     </div>
                                     <div class="progress">
-                                        <div class="progress-bar progress-bar-skill2" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
-                                            <span class="sr-only">70</span>
+                                        <div class="progress-bar progress-bar-skill2" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
+                                            <span class="sr-only">50</span>
                                         </div>
                                     </div>
                                 </div>
@@ -208,8 +220,8 @@ _________________________________________________________ -->
                                         HTML coding
                                     </div>
                                     <div class="progress">
-                                        <div class="progress-bar progress-bar-skill3" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 5%;">
-                                            <span class="sr-only">80</span>
+                                        <div class="progress-bar progress-bar-skill3" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
+                                            <span class="sr-only">30</span>
                                         </div>
                                     </div>
                                 </div>
@@ -219,8 +231,8 @@ _________________________________________________________ -->
                                         SQL
                                     </div>
                                     <div class="progress">
-                                        <div class="progress-bar progress-bar-skill4" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 5%;">
-                                            <span class="sr-only">90</span>
+                                        <div class="progress-bar progress-bar-skill4" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" style="width: 30%;">
+                                            <span class="sr-only">30</span>
                                         </div>
                                     </div>
                                 </div>
@@ -251,14 +263,14 @@ _________________________________________________________ -->
                             <div class="icon"><i class="fa fa-exchange"></i>
                             </div>
                             <h3 class="heading">Requisições</h3>
-                            <p>Através de requisições, o usuário poderá escolher os materiais desejados para a realização das suas atividades cotidianas no ambiente acadêmico.</p>
+                            <p>Através de requisições, o usuário poderá escolher os materiais desejados para a realização das suas atividades cotidianas no ambiente acadêmico voltadas a área de eletrônica.</p>
                         </div>
 
                         <div class="col-md-4" data-animate="fadeInUp">
                             <div class="icon"><i class="fa fa-file-pdf-o"></i>
                             </div>
                             <h3 class="heading">Datasheets</h3>
-                            <p>Para facilitar consultas relacionadas aos dados dos componentes, o sistema conta com uma disponibilidade de anexo dos datasheets dos componentes em PDF.</p>
+                            <p>Para facilitar consultas relacionadas aos dados dos componentes, o sistema conta com a disponibilidade de visualizar os anexos dos datasheets em PDF através da pesquisa.</p>
                         </div>
 
                         <div class="col-md-4" data-animate="fadeInUp">
@@ -333,38 +345,38 @@ _________________________________________________________ -->
                 <div class="row showcase">
                     <div class="col-md-3 col-sm-6" data-animate="fadeInUp">
                         <div class="item">
-                            <div class="icon"><i class="fa fa-align-justify"></i>
+                            <div class="icon"><i class="fa fa-users"></i>
                             </div>
-                            <h4><span class="counter">120</span><br>
+                            <h4><span class="counter"><?php echo $user; ?></span><br>
 
-			Websites</h4>
+			Usuários </h4>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6" data-animate="fadeInUp">
                         <div class="item">
-                            <div class="icon"><i class="fa fa-users"></i>
+                            <div class="icon"><i class="fa fa-th"></i>
                             </div>
-                            <h4><span class="counter">50</span><br>
+                            <h4><span class="counter"><?php echo $components; ?></span><br>
 
-			Satisfied Clients</h4>
+			Componentes </h4>
                         </div>
                     </div>  
                     <div class="col-md-3 col-sm-6" data-animate="fadeInUp">
                         <div class="item">
-                            <div class="icon"><i class="fa fa-copy"></i>
+                            <div class="icon"><i class="fa fa-file-pdf-o"></i>
                             </div>
-                            <h4><span class="counter">320</span><br>
+                            <h4><span class="counter"><?php echo $datasheets; ?></span><br>
 
-			Projects</h4>
+			Datasheets </h4>
                         </div>
                     </div>
                     <div class="col-md-3 col-sm-6" data-animate="fadeInUp">
                         <div class="item">
-                            <div class="icon"><i class="fa fa-font"></i>
+                            <div class="icon"><i class="fa fa-exchange"></i>
                             </div>
-                            <h4><span class="counter">333</span><br>
+                            <h4><span class="counter"><?php echo $requisicoes; ?></span><br>
 
-			Magazines and Brochures</h4>
+            Requisições </h4>
                         </div>
                     </div>
                 </div>
@@ -743,7 +755,6 @@ _________________________________________________________ -->
                                 <img class="img-responsive" src="img/customers/vanek.png" title="VANĚK Strojírenská výroba" data-placement="bottom" data-toggle="tooltip" alt="">
                             </div>
                         </div>
-
                     </div>-->
                     <!-- /.row -->
 
@@ -781,15 +792,19 @@ _________________________________________________________ -->
                           <?php echo $this->Form->create('Componente',array('action' => 'datasheets'));?>
                             <div class="row">
                               <div>
+                                 <?php if($this->Session->check('error_pesquisa')){ ?>
+                                 <div class="alert alert-danger" role="alert"><?php echo $this->Session->read('error_pesquisa'); 
+                                        unset($_SESSION['error_pesquisa']);?></div>   
+                                 <?php } ?>
                               </div>
                                 <div class="col-md-12">
-                                  <?php echo $this->Form->input('name',array('class' => 'form-control','placeholder'=> 'Nome do Componente','label' => false)); ?>
+                                  <?php echo $this->Form->input('campo',array('class' => 'form-control','placeholder'=> 'Nome do Componente','label' => false)); ?>
                                 </div>
                                 <div class="col-md-12">
-                                  <br>  
+                                  <br>
                                   <?php 
                                   echo $this->Form->input('tipo', array(
-                                           'options' => array('Pesquisar por...','Categoria','Subcategoria','Todos'), 'class' => 'form-control','label' => false,'default' => 0,'div' => false)); 
+                                           'options' => array('Pesquisar por...','Categoria','Subcategoria','Todos'), 'class' => 'form-control','label' => false,'default' => 0,'div' => false,'onchange' => 'mudartexto(this.value)')); 
 
                                   ?>
                                 </div>

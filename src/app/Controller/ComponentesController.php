@@ -18,26 +18,26 @@ class ComponentesController extends AppController {
     }
 
     public function index() {
-        if($this->Auth->user('role') < 1){
-            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
-            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        if ($this->Auth->user('role') < 1) {
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário', 'error');
+            return $this->redirect(array('controller' => 'emprestimos', 'action' => 'profile'));
         }
         $this->Componente->recursive = 0;
         $this->set('componentes', $this->paginate());
     }
 
     public function view($id) {
-        if($this->Auth->user('role') < 1){
-            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
-            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        if ($this->Auth->user('role') < 1) {
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário', 'error');
+            return $this->redirect(array('controller' => 'emprestimos', 'action' => 'profile'));
         }
         $this->set('componentes', $this->Componente->findById($id));
     }
 
     public function add($subcategoria_id = null) {
-        if($this->Auth->user('role') < 1){
-            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
-            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        if ($this->Auth->user('role') < 1) {
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário', 'error');
+            return $this->redirect(array('controller' => 'emprestimos', 'action' => 'profile'));
         }
         if (is_null($subcategoria_id)) {
             $this->set('categoria', $this->Componente->Categoria->find('list', array('fields' => array('Categoria.id', 'Categoria.nome'))));
@@ -50,7 +50,7 @@ class ComponentesController extends AppController {
         if ($this->request->is('post') || $this->request->is('put')) {
             if ($this->request->is('post')) {           // checks for the post values
                 $this->Componente->create();
-                if($this->request->data['Componente']['subcategoria_id'] == 0){
+                if ($this->request->data['Componente']['subcategoria_id'] == 0) {
                     $this->request->data['Componente']['subcategoria_id'] = null;
                 }
                 // $this->Componente->request->data['Componente']['datasheet'] = 'src/files/'.$this->data['Componente']['datasheet']['name'];
@@ -130,9 +130,9 @@ class ComponentesController extends AppController {
     }
 
     public function edit($id = null) {
-        if($this->Auth->user('role') < 1){
-            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
-            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        if ($this->Auth->user('role') < 1) {
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário', 'error');
+            return $this->redirect(array('controller' => 'emprestimos', 'action' => 'profile'));
         }
         $this->Componente->id = $id;
         if (!$this->Componente->exists()) {
@@ -155,6 +155,8 @@ class ComponentesController extends AppController {
         if (!$this->request->is('get')) {
             throw new MethodNotAllowedException();
         }
+        $link = $this->Componente->findById($id);
+        $this->Upload->delete_file($link['Componente']['datasheet']);
         if ($this->Componente->delete($id)) {
             $this->Session->setFlash('O Componente de Id: ' . $id . ' foi deletado.', 'success');
             $this->redirect(array('action' => 'index'));
@@ -171,51 +173,64 @@ class ComponentesController extends AppController {
     }
 
     public function upload($id = null) {
-        if($this->Auth->user('role') < 1){
-            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
-            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        $this->set('componente',$this->Componente->findById($id));
+        if ($this->Auth->user('role') < 1) {
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário', 'error');
+            return $this->redirect(array('controller' => 'emprestimos', 'action' => 'profile'));
         }
         $this->Componente->id = $id;
         if (!$this->Componente->exists()) {
             $this->Session->setFlash('Componente inexistente!', 'error');
             return $this->redirect(array('action' => 'index'));
         }
-        $this->set('componente', $this->Componente->find('first', array('conditions' => array('Componente.id' => $id), 'fields' => 'Componente.nome')));
-        if (!empty($this->request->data)) {
-            $this->Upload->upload($this->request->data['Componente']['datasheet']);
-            if (is_null($this->request->data['Componente']['datasheet'])) {
+        $componente = $this->Componente->read();
+        if (!empty($this->request->data['Componente']['datasheet'])) {
+            if($this->Upload->upload($this->request->data['Componente']['datasheet'])){                
+                if ($this->Componente->saveField('datasheet', $this->request->data['Componente']['datasheet']['name'])) {
+                    $this->Session->setFlash('Datasheet adicionado com sucesso!', 'success');
+                    return $this->redirect(array('action' => 'index'));
+                }   
+            }else{
                 $this->Session->setFlash('Não foi anexado nenhum arquivo!', 'error');
-                return $this->redirect(array('action' => 'index'));
-            }
-            $arquivo = '/src/files/datasheet/' . $this->request->data['Componente']['datasheet']['name'];
-            if ($this->Componente->saveField('datasheet', $arquivo)) {
-                $this->Session->setFlash('Anexo adicionado com sucesso!', 'success');
-                return $this->redirect(array('action' => 'index'));
             }
         }
     }
 
     public function datasheets() {
-
-        if($this->request->data['Componente']['categoria'] == 0){
-            if($this->request->data['Componente']['subcategoria'] == 0){
-                $conditions = array('conditions' => array('Componente.datasheet is not null'),
-                    'fields' => array('all', 'Componente.datasheet'));
-            }   
+        $this->layout = 'home';
+        if ($this->request->is('post')) {
+            $valor = null;
+            $elemento = $this->request->data['Componente']['campo'];
+            switch ($this->request->data['Componente']['tipo']) {
+                case 1: //Categoria
+                    $valor = $this->Componente->query("SELECT * from componentes as c inner join categorias as ca on (c.categoria_id = ca.id) "
+                            ."inner join subcategorias as s on (c.subcategoria_id = s.id) "
+                            . "where ca.nome like '$elemento' and c.datasheet IS NOT NULL");
+                    break;
+                case 2: //Subcategoria
+                   $valor = $this->Componente->query("SELECT * from componentes as c inner join categorias as ca on (c.categoria_id = ca.id) "
+                            ."inner join subcategorias as s on (c.subcategoria_id = s.id) "
+                           . "where s.nome like '$elemento' and c.datasheet IS NOT NULL");
+                    break;
+                case 3: //Componente
+                    $valor = $this->Componente->query("SELECT * from componentes as c inner join categorias as ca on (c.categoria_id = ca.id) "
+                            ."inner join subcategorias as s on (c.subcategoria_id = s.id) where (ca.nome like '$elemento' "
+                            . "or c.nome like '$elemento' or s.nome like '$elemento') and c.datasheet IS NOT NULL");
+                    break;
+                default:
+                    $this->Session->write('error_pesquisa','Campo de Pesquisa vazio!');
+                    return $this->redirect('/users/login#pesquisa');
+                    break;
+            }
+            if(empty($valor)){
+                $this->Session->write('error_pesquisa','Não existem datasheets disponíveis do elemento buscado!');
+               return $this->redirect('/users/login#pesquisa');
+            }
+            $this->set('valor',$valor);
+        }else{
+            return $this->redirect(array('controller' => 'users','action' => 'login'));
         }
-        $this->set('componentes', $this->Componente->find('all', array('conditions' => array('Componente.datasheet is not null'),
-                    'fields' => array('Componente.nome', 'Componente.datasheet'))));
     }
-
-    public function download($id = null) {
-        $resultado = $this->Componente->find('first', array('conditions' => array('Componente.id' => $id),
-            'fields' => 'Componente.datasheet'));
-        $this->response->file(
-                $resultado['Componente']['datasheet'], array('download' => true, 'name' => $resultado['Componente']['nome'])
-        );
-        $this->render(false);
-    }
-
 }
 
 ?>

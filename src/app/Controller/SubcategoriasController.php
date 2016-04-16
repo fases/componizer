@@ -18,7 +18,7 @@ class SubcategoriasController extends AppController {
     }
 
     public function index() {
-        if($this->Auth->user('role') < 1){
+        if($this->Auth->user('role') != 1 && $this->Auth->user('role') != 3){
             $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
             return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
         }
@@ -27,13 +27,17 @@ class SubcategoriasController extends AppController {
     }
 
     public function view($id) {
+        if($this->Auth->user('role') != 1 && $this->Auth->user('role') != 3){
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
+            return $this->redirect($this->referer());   
+        }
         $this->set('subcategories', $this->Subcategoria->findById($id));
     }
 
     public function add($categoria_id = null) {
-        if($this->Auth->user('role') < 1){
+        if($this->Auth->user('role') != 1 && $this->Auth->user('role') != 3){
             $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
-            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+            return $this->redirect($this->referer());
         }
         if (is_null($categoria_id)) {
             $this->set('categories', $this->Subcategoria->Categoria->find('list', array('fields' => array('Categoria.id', 'Categoria.nome'))));
@@ -43,15 +47,15 @@ class SubcategoriasController extends AppController {
         if ($this->request->is('post')) {
             $this->Subcategoria->create();
             if ($this->Subcategoria->save($this->request->data)) {
-                $this->Session->setFlash('A Sub-Categoria foi salva!', 'success');
+                $this->Session->setFlash('A Subcategoria foi salva!', 'success');
                 return $this->redirect(array('action' => 'index'));
             }
-            $this->Session->setFlash('A Sub-Categoria não foi salva!', 'error');
+            $this->Session->setFlash('A Subcategoria não foi salva!', 'error');
         }
     }
 
     public function edit($id = null) {
-        if($this->Auth->user('role') < 1){
+        if($this->Auth->user('role') != 1 && $this->Auth->user('role') != 3){
             $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
             return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
         }

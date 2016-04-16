@@ -121,7 +121,7 @@
                             <?php echo $this->Session->flash(); ?>
                                 <div class="x_content">
 
-                              <?php echo $this->Form->create('Pedido',array('action' => 'add', 'class' => 'form-horizontal form-label-left', 'novalidate'));?>
+                              <?php echo $this->Form->create('Equipamento',array('action' => 'add', 'class' => 'form-horizontal form-label-left', 'novalidate'));?>
 
                                     <!--<p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a>
                                     </p> -->
@@ -154,7 +154,7 @@
                                           <?php echo $this->Form->input('laboratorio_id', array('type' => 'select', 'options' => $laboratorio, 'label' => false, 'class' => 'form-control'));?>
                                         </div>
                                     </div>
-                                    <?php echo $this->Form->input('status',array('label' => false,'value' => 0,'type' => 'hidden')); ?>
+                                    <?php echo $this->Form->input('situacao',array('label' => false,'value' => 0,'type' => 'hidden')); ?>
                                     <div class="ln_solid"></div>
                                     <div class="form-group">
                                         <div class="col-md-6 col-md-offset-3">

@@ -74,7 +74,7 @@ _________________________________________________________ -->
                 <div class="col-md-4">
                 <img src="../home/img/logo.jpg" class='pull-left image img-responsive' width='70' style="padding-top: 5px;" height='70'></div>
                 <div class="col-md-8">
-                <?php echo $this->Html->link('Componizer',array('action' => 'login'),
+                <?php echo $this->Html->link('Componizer',array('controller' => 'users','action' => 'login'),
                     array('class' => 'navbar-brand blue')); ?>
                 </div>
                 </div>
@@ -120,7 +120,7 @@ _________________________________________________________ -->
         <div class="col-md-12">
 
 
-            <h2 class="title">RECUPERAR SENHA</h2>
+            <h2 class="title">PESQUISA</h2>
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
             <?php echo $this->Session->flash(); ?>
@@ -129,33 +129,26 @@ _________________________________________________________ -->
             <div class="row">
 
                 <div class="col-md-8 col-md-offset-2">
-                        <div class="messages">
-
-                        </div>
-
-                        <div class="controls">
-                          <?php echo $this->Form->create('User',array('action' => 'recovery'));?>
-                            <div class="row">
-                              <div>
-                              </div>
-                                <div class="col-md-12">
-                                  <?php echo $this->Form->input('matricula',array('class' => 'form-control','placeholder'=> 'Matricula','label' => false)); ?>
-                                </div>
-                                <div class="col-md-12">
-                                  <?php echo $this->Form->input('email',array('class' => 'form-control','placeholder'=> 'Email','label' => false)); ?>
-                                </div>
-                                <div class="col-md-12 text-center">
-                                  <a>
-                                  <?php
-                                      $options = array('label' => 'Recuperar', 'class' => 'btn btn-info btn-lg', 'div' => false);
-                                      echo $this->Form->end($options);
-                                  ?></a>
-                                </div>
-                                <!--<div class="pull-right">
-                                  <?php //echo $this->Html->link(__('Esqueceu sua senha?'), array('controller' => 'users','action' => 'recovery'));?>
-                                </div>-->
-                            </div>
-                        </div>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th> Componente </th>
+                            <th> Categoria</th>
+                            <th> Quantidade</th>
+                            <th> Posicionamento </th>
+                            <th> Datasheet</th>
+                        </tr>
+                        </thead>
+                    <?php foreach ($valor as $value): ?>
+                        <tr>
+                            <td><?php echo $value['c']['nome']; ?></td>
+                            <td><?php echo $value['ca']['nome']; ?></td>
+                            <td><?php echo $value['c']['quantidade']; ?></td>
+                            <td><?php echo '('.$value['c']['linha'].','.$value['c']['coluna'].')'; ?></td>
+                            <td><a href="<?php echo '/componizer'.$value['c']['datasheet'];?>">PDF</a></td>
+                        </tr>   
+                    <?php endforeach; ?>
+                    </table>
                 </div>
 
             </div>
@@ -264,3 +257,4 @@ _________________________________________________________ -->
 </body>
 
 </html>
+

@@ -25,6 +25,10 @@ class UsersController extends AppController {
 
     public function view($id) {
         $this->set('usuario', $this->User->findById($id));
+        if ($this->Auth->user('role') || 1) {
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário', 'error');
+            return $this->redirect($this->referer());
+        }
     }
 
     public function profile() {
@@ -32,9 +36,9 @@ class UsersController extends AppController {
     }
 
     public function add() {
-        if($this->Auth->user('role') < 1){
-            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
-            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        if ($this->Auth->user('role') < 1) {
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário', 'error');
+            return $this->redirect(array('controller' => 'emprestimos', 'action' => 'profile'));
         }
         if ($this->request->is('post')) {
             $this->User->create();
@@ -67,9 +71,9 @@ class UsersController extends AppController {
     }
 
     public function edit_profile($id = null) {
-        if($this->Auth->user('id') != $id && $this->Auth->user('role') < 3){
-            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário','error');
-            return $this->redirect(array('controller' => 'emprestimos','action' => 'profile'));
+        if ($this->Auth->user('id') != $id && $this->Auth->user('role') < 3) {
+            $this->Session->setFlash('A funcionalidade não é acessível ao seu tipo de usuário', 'error');
+            return $this->redirect(array('controller' => 'emprestimos', 'action' => 'profile'));
         }
         $this->User->id = $id;
         if (!$this->User->exists()) {
@@ -136,9 +140,9 @@ class UsersController extends AppController {
 
     public function login() {
         $this->loadModel('Categoria');
-        $this->set('categorias',$this->Categoria->find('list',array('fields' => array('Categoria.id','Categoria.nome'))));
+        $this->set('categorias', $this->Categoria->find('list', array('fields' => array('Categoria.id', 'Categoria.nome'))));
         $this->loadModel('Subcategoria');
-        $this->set('subcategorias',$this->Subcategoria->find('list',array('fields' => array('Subcategoria.id','Subcategoria.nome'))));
+        $this->set('subcategorias', $this->Subcategoria->find('list', array('fields' => array('Subcategoria.id', 'Subcategoria.nome'))));
         $this->layout = 'home';
         if ($this->request->is('post')) {
             if ($this->Auth->login()) {
@@ -160,14 +164,16 @@ class UsersController extends AppController {
             $user = $this->User->find('first', array('conditions' => array('User.matricula' => $this->request->data['User']['matricula'],
                     'User.email' => $this->request->data['User']['email'])));
             if (empty($user)) {
-                $this->Session->setFlash('Dados incorretos, tente novamente!');
+                $this->Session->setFlash('Dados incorretos, tente novamente!', 'home_error');
             } else {
-                //Gera senha automática
-                $password = AuthComponent::password($this->data['User']['matricula']);
+                //Gerar senha de 6 digitos
+                $senha = md5($this->data['User']['matricula']);
+                $indice = rand(0, 20);
+                $senha = substr($senha, $indice, 6);
                 $this->User->id = $user['User']['id'];
-                $this->User->saveField('password',$password); 
-                $this->Session->setFlash('Sua nova senha é '.$user['User']['matricula'].'!','home_error');
-                $this->Auth->login(); 
+                $this->User->saveField('password', $senha);
+                $this->Session->setFlash('Sua nova senha é: ' . $senha, 'home_error');
+                return $this->redirect(array('action' => 'login'));
             }
         }
     }

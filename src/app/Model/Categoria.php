@@ -14,7 +14,7 @@ class Categoria extends AppModel {
             'foreignKey' => 'categoria_id',
             'dependent' => true,
             'conditions' => '',
-            'fields' => array('id', 'nome'))
+            'fields' => array('Categoria.id', 'Categoria.nome'))
     );
     public $validate = array(
         'nome' => array(

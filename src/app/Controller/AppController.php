@@ -35,7 +35,7 @@ class AppController extends Controller {
     public $components = array(
         'Session',
         'Auth' => array(
-            'loginRedirect' => array('controller' => 'emprestimos', 'action' => 'profile'),
+            'loginRedirect' => array('controller' => 'emprestimos', 'action' => 'index'),
             'logoutRedirect' => array('controller' => 'users', 'action' => 'login')
         )
     );
@@ -45,6 +45,14 @@ class AppController extends Controller {
     }
 
     function beforeRender() {
+        $this->loadModel('Emprestimo');
+        $this->set('requisicoes',$this->Emprestimo->find('count'));
+        $this->loadModel('Componente');
+        $this->set('components',$this->Componente->find('count'));
+        $this->set('datasheets',$this->Componente->find('count',array('conditions' => array('NOT' => array(
+        "Componente.datasheet " => null)))));
+        $this->loadModel('User');
+        $this->set('user',$this->User->find('count'));
         $this->_setErrorLayout();
     }
 

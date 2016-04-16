@@ -6,7 +6,7 @@ class Componente extends AppModel{
               'className' => 'Categoria',
               'foreignKey' => 'categoria_id',
               'conditions' => '',
-              'fields' => array('id','nome')
+              'fields' => array('Categoria.id','Categoria.nome')
             ),
             'Subcategoria' => array(
              'className' => 'Subcategoria',

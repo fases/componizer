@@ -103,7 +103,6 @@
                                 <?php echo $this->Session->flash(); ?>
                                 </div>
                                 <div class="x_content">
-
                               <?php echo $this->Form->create('Emprestimo',array('action' => 'add', 'class' => 'form-horizontal form-label-left', 'novalidate'));?>
 
                                     <!--<p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a>
@@ -139,7 +138,7 @@
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Solicitante<span class="required">*</span></label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                           <?php 
-                                          echo $this->Form->input('Emprestimo.user_id',array('type' => 'select','class' => 'form-control','options' => $user,'label' => false));?>
+                                          echo $this->Form->input('Emprestimo.user_id',array('type' => 'select','class' => 'form-control','options' => $users,'label' => false));?>
                                         </div>
                                     </div>
                                     <div class="form-group">

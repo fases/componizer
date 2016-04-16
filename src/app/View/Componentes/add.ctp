@@ -28,7 +28,6 @@
         <script>
             NProgress.start();
         </script>
-
         <!--[if lt IE 9]>
             <script src="../assets/js/ie8-responsive-file-warning.js"></script>
             <![endif]-->

@@ -99,30 +99,47 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>Editar Empréstimo <small></small></h2>
+                                    <h2>Editar Alerta de equipamento <small></small></h2>
                                     <div class="clearfix"></div>
                                 </div>
                             <?php echo $this->Session->flash(); ?>
                                 <div class="x_content">
 
                                     <!--<form class="form-horizontal form-label-left" novalidate> -->
-                                <?php echo $this->Form->create('Pedido',array('action' => 'edit', 'class' => 'form-horizontal form-label-left', 'novalidate'));?>
+                                <?php echo $this->Form->create('Equipamento',array('action' => 'edit', 'class' => 'form-horizontal form-label-left', 'novalidate'));?>
 
                                     <!--<p>For alternative validation library <code>parsleyJS</code> check out in the <a href="form.html">form page</a>
                                     </p> -->
                                     <!--<span class="section">Personal Info</span>-->
                                     <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Horário <span class="required">*</span>
-                                        </label>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="matricula">Equipamento</label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                          <?php echo $this->Form->input('nome',
-                                                  array('label' => false, 'class' => 'form-control'));?>
+                                          <?php echo $this->Form->input('nome',array('label' => false, 'class' => 'form-control')); ?>
                                         </div>
                                     </div>
                                     <div class="item form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="matricula">Descrição </label>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="matricula">Descrição do defeito </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                          <?php echo $this->Form->textarea('descricao',array('label' => false,'rows' => '3', 'class' => 'form-control')); ?>
+                                          <?php echo $this->Form->textarea('descricao_defeito',array('label' => false,'rows' => '3', 'class' => 'form-control')); ?>
+                                        </div>
+                                    </div>
+                                    <div class="item form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="matricula">Localização</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                          <?php echo $this->Form->input('localizacao',array('label' => false, 'class' => 'form-control')); ?>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Local<span class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                          <?php echo $this->Form->input('laboratorio_id', array('type' => 'select', 'options' => $laboratorio, 'label' => false, 'class' => 'form-control'));?>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Situação<span class="required">*</span></label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <?php echo $this->Form->input('situacao',
+                                                  array('options' => array('0' => 'danificado','1' => 'consertado'),'label' => false, 'type' => 'select', 'class' => 'form-control')); ?>
                                         </div>
                                     </div>
                                     <div class="ln_solid"></div>
@@ -131,7 +148,7 @@
                                           <?php
                                               $options = array('label' => 'Editar', 'class' => 'btn btn-success');
                                               echo $this->Form->end($options);
-                                              echo $this->Html->link('Cancelar',array('controller' => 'emprestimos','action' => 'profile'),array('class' => 'btn btn-danger'));
+                                              echo $this->Html->link('Cancelar',array('action' => 'index'),array('class' => 'btn btn-danger'));
                                           ?>
                                         </div>
                                     </div>
